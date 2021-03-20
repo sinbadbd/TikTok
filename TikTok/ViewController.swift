@@ -8,15 +8,15 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
-
+class ViewController: UIViewController {
+    
     var previewView = UIView()
     var captureImageView = UIImageView()
     
     let captureButton :  UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
-
+        
         return button
     }()
     
@@ -26,11 +26,10 @@ class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
     let closeBtn         :  UIButton = {
         let button = UIButton()
         
-//        button.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
-
+        //        button.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
+        
         return button
     }()
- 
     
     var captureSession = AVCaptureSession()
     var backCamera: AVCaptureDevice?
@@ -40,15 +39,24 @@ class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
     var photoOutput: AVCapturePhotoOutput?
     
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
- 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.captureSession.stopRunning()
+    
+    var image: UIImage?
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
     }
- 
+
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         setupCaptureSession()
         setupDevice()
@@ -60,12 +68,13 @@ class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
         bottomView()
         filterViewRight()
     }
+ 
     private func topHeaderView (){
         view.addSubview(addSoundView)
         addSoundView.position(top: view.topAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 0))
         addSoundView.size(width: 120, height: 40)
         addSoundView.centerXInSuper()
-        addSoundView.backgroundColor = .init(white: 0, alpha: 0.7)
+        addSoundView.backgroundColor = .init(white: 0, alpha: 0.3)
         addSoundView.layer.cornerRadius = 8
         
         let iconSound = UIImageView(image: UIImage(named: "music.note"))
@@ -87,8 +96,41 @@ class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
     private func filterViewRight(){
         view.addSubview(cameraFilterView)
         cameraFilterView.position(top: view.topAnchor, right: view.trailingAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 20))
-        cameraFilterView.size(width: 60, height: 300)
-        cameraFilterView.backgroundColor = .blue
+        cameraFilterView.size(width: 50, height: 300)
+//        cameraFilterView.backgroundColor = .blue
+        
+        
+        let flipButton = UIButton()
+        cameraFilterView.addSubview(flipButton)
+        flipButton.position(top: cameraFilterView.topAnchor, insets: .init(top: 5, left: 5, bottom: 0, right: 5))
+         flipButton.centerXInSuper()
+        flipButton.size(width:36, height: 36)
+        let btnImage = UIImage(named: "flip")
+        flipButton.setImage(btnImage , for: .normal)
+        flipButton.setImageTintColor(UIColor.white)
+        
+        
+        let speedButton = UIButton()
+        cameraFilterView.addSubview(speedButton)
+        speedButton.position(top: flipButton.bottomAnchor, insets: .init(top: 20, left: 5, bottom: 0, right: 5))
+        speedButton.centerXInSuper()
+        speedButton.size(width:36, height: 36)
+        let speedButtonBtnImage = UIImage(named: "speed")
+        speedButton.setImage(speedButtonBtnImage , for: .normal)
+        speedButton.setImageTintColor(UIColor.white)
+        
+        
+        
+        
+        let FiltersButton = UIButton()
+        cameraFilterView.addSubview(FiltersButton)
+        FiltersButton.position(top: speedButton.bottomAnchor, insets: .init(top: 20, left: 5, bottom: 0, right: 5))
+        FiltersButton.centerXInSuper()
+        FiltersButton.size(width:36, height: 36)
+        let FiltersButtonButtonBtnImage = UIImage(named: "image")
+        FiltersButton.setImage(FiltersButtonButtonBtnImage , for: .normal)
+        FiltersButton.setImageTintColor(UIColor.white)
+
     }
     private func bottomView(){
         
@@ -104,7 +146,7 @@ class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
     func setupCaptureSession() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
     }
-    var image: UIImage?
+
     
     func setupDevice() {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
@@ -132,6 +174,17 @@ class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
             print(error)
         }
     }
+ 
+    
+    func getButton(btn:UIButton, image:UIImage) -> UIButton  {
+        let btn = btn
+        let image = UIImage(named: "\(image)")
+        btn.setImage(image , for: .normal)
+        btn.setImageTintColor(UIColor.white)
+        
+        return btn
+    }
+    
     
     func setupPreviewLayer() {
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -147,26 +200,33 @@ class ViewController: UIViewController,AVCapturePhotoCaptureDelegate {
     
     
     @objc func takePhoto(_ sender: UIButton) {
-            print("hiii")
+        print("hiii")
         
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
- 
-    }
- 
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
-        func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-            if let imageData = photo.fileDataRepresentation() {
-                image = UIImage(data: imageData)
-//                captureImageView.image = image
-//                performSegue(withIdentifier: "showPhoto_Segue", sender: nil)
-            }
+        DispatchQueue.main.async {
+            let vc = CameraPreviewVC()
+            vc.image = self.image
+            print(self.image)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        
+
     }
+    
 
-
+    
+    
 }
 
- 
+
+extension ViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            self.image = UIImage(data: imageData)
+            print(imageData)
+
+        }
+    }
+    
+}

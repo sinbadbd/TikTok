@@ -31,6 +31,8 @@
 		1DE10C7C2605D795003D3C7A /* flip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE10C6D2605D795003D3C7A /* flip@2x.png */; };
 		1DE10C7D2605D795003D3C7A /* speed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE10C6E2605D795003D3C7A /* speed@2x.png */; };
 		1DE10C7E2605D795003D3C7A /* speed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE10C6F2605D795003D3C7A /* speed@3x.png */; };
+		1DE10C8126060C33003D3C7A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C8026060C33003D3C7A /* Helper.swift */; };
+		1DE10C84260612AE003D3C7A /* CameraPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		1DE10C6D2605D795003D3C7A /* flip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flip@2x.png"; sourceTree = "<group>"; };
 		1DE10C6E2605D795003D3C7A /* speed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speed@2x.png"; sourceTree = "<group>"; };
 		1DE10C6F2605D795003D3C7A /* speed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speed@3x.png"; sourceTree = "<group>"; };
+		1DE10C8026060C33003D3C7A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 				1DE10C462605B260003D3C7A /* LaunchScreen.storyboard */,
 				1DE10C492605B260003D3C7A /* Info.plist */,
 				1DE10C562605B8BE003D3C7A /* UIView+Extension.swift */,
+				1DE10C8026060C33003D3C7A /* Helper.swift */,
+				1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */,
 			);
 			path = TikTok;
 			sourceTree = "<group>";
@@ -218,6 +224,8 @@
 			files = (
 				1DE10C402605B25D003D3C7A /* ViewController.swift in Sources */,
 				1DE10C3C2605B25D003D3C7A /* AppDelegate.swift in Sources */,
+				1DE10C84260612AE003D3C7A /* CameraPreviewVC.swift in Sources */,
+				1DE10C8126060C33003D3C7A /* Helper.swift in Sources */,
 				1DE10C572605B8BE003D3C7A /* UIView+Extension.swift in Sources */,
 				1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */,
 			);
