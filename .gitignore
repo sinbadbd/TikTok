@@ -1,0 +1,6 @@
+
+*.xcuserstate
+Spotify.xcodeproj/project.xcworkspace/xcuserdata/imran.xcuserdatad/UserInterfaceState.xcuserstate
+Pods
+Podfile.lock
+/.idea
