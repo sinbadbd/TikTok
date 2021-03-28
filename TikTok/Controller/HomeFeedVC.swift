@@ -28,27 +28,32 @@ class HomeFeedVC: UIViewController {
         
     }()
     
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+//        view.backgroundColor = .red
         view.addSubview(collectionView)
-        //        collectionView
-        //        collectionView
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.fitToSuper()
         // collectionView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
         collectionView.backgroundColor = .white
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identify)
-        
+        collectionView.isScrollEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
  
 
         self.navigationController?.isNavigationBarHidden = true
         view.insetsLayoutMarginsFromSafeArea = false
 
         
+      
+        
         // Do any additional setup after loading the view.
     }
+    
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,6 +64,7 @@ class HomeFeedVC: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+
  
     
 }
@@ -71,12 +77,11 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identify, for: indexPath) as! HomeCollectionViewCell
         
-//        let indexItem = [indexPath.item]
-        
+ 
         if indexPath.item % 2 == 0 {
-            cell.backgroundColor = .red
+            cell.vedioLinkView.backgroundColor = .red
         }else {
-            cell.backgroundColor = .green
+            cell.vedioLinkView.backgroundColor = .green
         }
         
    
