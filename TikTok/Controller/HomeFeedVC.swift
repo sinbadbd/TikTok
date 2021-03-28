@@ -16,15 +16,10 @@ class HomeFeedVC: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         //          item.contentInsets.bottom = 201
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
-            
-            
-            //NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1)), subitems: [item])
-        
-        
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.orthogonalScrollingBehavior = .groupPagingCentered
+//        section.orthogonalScrollingBehavior = .groupPagingCentered
         
         let flowLayout = UICollectionViewCompositionalLayout(section: section)
         
@@ -46,6 +41,8 @@ class HomeFeedVC: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identify)
         
+ 
+
         self.navigationController?.isNavigationBarHidden = true
         view.insetsLayoutMarginsFromSafeArea = false
 

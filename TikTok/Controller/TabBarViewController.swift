@@ -9,7 +9,9 @@ import UIKit
 
 @available(iOS 13.0, *)
 class TabBarViewController: UITabBarController {
-
+    
+    var mTabBar: UITabBar?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +47,11 @@ class TabBarViewController: UITabBarController {
         
         self.navigationController?.isNavigationBarHidden = true
         view.insetsLayoutMarginsFromSafeArea = false
- 
+  
+//        UITabBar.appearance().barTintColor = UIColor(red: 0, green:0, blue: 0, alpha: 0)
+//        self.tabBarController?.tabBar.isTranslucent = true
+
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
