@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */; };
+		1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */; };
+		1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */; };
+		1DBA99622610D8E200B1F264 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99612610D8E200B1F264 /* SearchViewController.swift */; };
 		1DE10C3C2605B25D003D3C7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */; };
 		1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */; };
 		1DE10C402605B25D003D3C7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3F2605B25D003D3C7A /* ViewController.swift */; };
-		1DE10C432605B25D003D3C7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DE10C412605B25D003D3C7A /* Main.storyboard */; };
 		1DE10C452605B260003D3C7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DE10C442605B260003D3C7A /* Assets.xcassets */; };
 		1DE10C482605B260003D3C7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DE10C462605B260003D3C7A /* LaunchScreen.storyboard */; };
 		1DE10C572605B8BE003D3C7A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C562605B8BE003D3C7A /* UIView+Extension.swift */; };
@@ -33,14 +36,18 @@
 		1DE10C7E2605D795003D3C7A /* speed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE10C6F2605D795003D3C7A /* speed@3x.png */; };
 		1DE10C8126060C33003D3C7A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C8026060C33003D3C7A /* Helper.swift */; };
 		1DE10C84260612AE003D3C7A /* CameraPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */; };
+		1DE10C8C26061F6F003D3C7A /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C8B26061F6F003D3C7A /* RecordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedVC.swift; sourceTree = "<group>"; };
+		1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		1DBA99612610D8E200B1F264 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1DE10C382605B25D003D3C7A /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1DE10C3F2605B25D003D3C7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1DE10C422605B25D003D3C7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1DE10C442605B260003D3C7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DE10C472605B260003D3C7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DE10C492605B260003D3C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +71,7 @@
 		1DE10C6F2605D795003D3C7A /* speed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speed@3x.png"; sourceTree = "<group>"; };
 		1DE10C8026060C33003D3C7A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewVC.swift; sourceTree = "<group>"; };
+		1DE10C8B26061F6F003D3C7A /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DBA99642610D9FD00B1F264 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */,
+				1DE10C8B26061F6F003D3C7A /* RecordViewController.swift */,
+				1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */,
+				1DE10C3F2605B25D003D3C7A /* ViewController.swift */,
+				1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */,
+				1DBA99612610D8E200B1F264 /* SearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1DBA99652610DA0D00B1F264 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DBA99662610DA1200B1F264 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1DBA99672610DA1700B1F264 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1DBA99682610DA2A00B1F264 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */,
+				1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1DBA996A2610DA5F00B1F264 /* Extension+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1DE10C8026060C33003D3C7A /* Helper.swift */,
+				1DE10C562605B8BE003D3C7A /* UIView+Extension.swift */,
+			);
+			path = "Extension+Helper";
+			sourceTree = "<group>";
+		};
 		1DE10C2F2605B25D003D3C7A = {
 			isa = PBXGroup;
 			children = (
@@ -96,17 +157,16 @@
 		1DE10C3A2605B25D003D3C7A /* TikTok */ = {
 			isa = PBXGroup;
 			children = (
+				1DBA996A2610DA5F00B1F264 /* Extension+Helper */,
+				1DBA99682610DA2A00B1F264 /* App */,
+				1DBA99672610DA1700B1F264 /* ViewModel */,
+				1DBA99662610DA1200B1F264 /* Model */,
+				1DBA99652610DA0D00B1F264 /* View */,
+				1DBA99642610D9FD00B1F264 /* Controller */,
 				1DE10C5B2605CE03003D3C7A /* Resources */,
-				1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */,
-				1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */,
-				1DE10C3F2605B25D003D3C7A /* ViewController.swift */,
-				1DE10C412605B25D003D3C7A /* Main.storyboard */,
 				1DE10C442605B260003D3C7A /* Assets.xcassets */,
 				1DE10C462605B260003D3C7A /* LaunchScreen.storyboard */,
 				1DE10C492605B260003D3C7A /* Info.plist */,
-				1DE10C562605B8BE003D3C7A /* UIView+Extension.swift */,
-				1DE10C8026060C33003D3C7A /* Helper.swift */,
-				1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */,
 			);
 			path = TikTok;
 			sourceTree = "<group>";
@@ -199,7 +259,6 @@
 				1DE10C732605D795003D3C7A /* torch@3x.png in Resources */,
 				1DE10C452605B260003D3C7A /* Assets.xcassets in Resources */,
 				1DE10C762605D795003D3C7A /* pocket-watch.png in Resources */,
-				1DE10C432605B25D003D3C7A /* Main.storyboard in Resources */,
 				1DE10C792605D795003D3C7A /* torch.png in Resources */,
 				1DE10C7B2605D795003D3C7A /* flip@3x.png in Resources */,
 				1DE10C5F2605CE15003D3C7A /* capture-button@3x.png in Resources */,
@@ -223,10 +282,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DE10C402605B25D003D3C7A /* ViewController.swift in Sources */,
+				1DBA99622610D8E200B1F264 /* SearchViewController.swift in Sources */,
+				1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */,
 				1DE10C3C2605B25D003D3C7A /* AppDelegate.swift in Sources */,
 				1DE10C84260612AE003D3C7A /* CameraPreviewVC.swift in Sources */,
+				1DE10C8C26061F6F003D3C7A /* RecordViewController.swift in Sources */,
+				1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */,
 				1DE10C8126060C33003D3C7A /* Helper.swift in Sources */,
 				1DE10C572605B8BE003D3C7A /* UIView+Extension.swift in Sources */,
+				1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */,
 				1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,14 +298,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1DE10C412605B25D003D3C7A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1DE10C422605B25D003D3C7A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1DE10C462605B260003D3C7A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
        
+//        let vc = HomeFeedVC()
+        
+        let tabView =  TabBarViewController() //window.rootViewController = TabBarViewController()
+    
+        let rootVC = UINavigationController(rootViewController: tabView)
+//        self.window = UIWindow(windowScene: windowScne)
+
+//        let rootVC = UINavigationController(rootViewController: vc)
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        window?.rootViewController = rootVC
+        window?.makeKeyAndVisible()
+//       self.window = window
+        
+        let tabBar = UITabBar.appearance()
+        tabBar.barTintColor = UIColor.clear
+        tabBar.backgroundImage = UIImage()
+        tabBar.shadowImage = UIImage()
         return true
     }
 
