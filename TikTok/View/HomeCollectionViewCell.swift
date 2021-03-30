@@ -6,50 +6,20 @@
 //
 
 import UIKit
+import Lottie
 
-public extension UIStackView {
-    /// SwifterSwift: Initialize an UIStackView with an array of UIView and common parameters.
-    ///
-    ///     let stackView = UIStackView(arrangedSubviews: [UIView(), UIView()], axis: .vertical)
-    ///
-    /// - Parameters:
-    ///   - arrangedSubviews: The UIViews to add to the stack.
-    ///   - axis: The axis along which the arranged views are laid out.
-    ///   - spacing: The distance in points between the adjacent edges of the stack view’s arranged views (default: 0.0).
-    ///   - alignment: The alignment of the arranged subviews perpendicular to the stack view’s axis (default: .fill).
-    ///   - distribution: The distribution of the arranged views along the stack view’s axis (default: .fill).
-    convenience init(
-        arrangedSubviews: [UIView],
-        axis: NSLayoutConstraint.Axis,
-        spacing: CGFloat = 0.0,
-        alignment: UIStackView.Alignment = .fill,
-        distribution: UIStackView.Distribution = .fill) {
-        self.init(arrangedSubviews: arrangedSubviews)
-        self.axis = axis
-        self.spacing = spacing
-        self.alignment = alignment
-        self.distribution = distribution
-    }
-    
-    /// SwifterSwift: Adds array of views to the end of the arrangedSubviews array.
-    ///
-    /// - Parameter views: views array.
-    func addArrangedSubviews(_ views: [UIView]) {
-        for view in views {
-            addArrangedSubview(view)
-        }
-    }
-    
-    /// SwifterSwift: Removes all views in stack’s array of arranged subviews.
-    func removeArrangedSubviews() {
-        for view in arrangedSubviews {
-            removeArrangedSubview(view)
-        }
-    }
+var nav = UINavigationController()
+
+
+protocol HomeFeedButtonClickDeleget:AnyObject {
+    func profileButtonPressed()
+    func likeButtonPressed()
+    func commentButtonTapped()
+    func shareButtonTapped()
 }
 
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class HomeCollectionViewCell: UICollectionViewCell {
     static let identify = "HomeCollectionViewCell"
     
@@ -63,70 +33,191 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let stackview = UIStackView()
         stackview.axis = .vertical
         stackview.alignment = .center
-        stackview.distribution = .fillProportionally
-        stackview.spacing = 10
+        stackview.distribution = .equalSpacing
+        stackview.spacing = 20
         return stackview
     }()
     
     
-    let profilePicView  = UIView()
-    let likeButton      = UIButton()
-    let commentButton   = UIButton()
-    let shareButton     = UIButton()
-    let userProfileView = UIView()
+    let profileView     = UIImageView()
+    var likeButton      = TikTokButton()
+    var commentButton   = TikTokButton()
+    var shareButton     = TikTokButton()
+    let userProfileView = UIImageView()
+    
+    let leftContentView = UIView()
+    
+    var userName = TikTokLabel()
+    var commentLabel = TikTokLabel()
+    
+    weak var delegate : HomeFeedButtonClickDeleget!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
-        
     }
-    
     
     
     func setupUI(){
         addSubview(vedioLinkView)
         vedioLinkView.fitToSuper()
-        vedioLinkView.backgroundColor = .yellow
-        
         addSubview(VStackView)
-        VStackView.position( bottom:  bottomAnchor, right:  trailingAnchor, insets: .init(top: 0, left: 0, bottom: 80, right: 20))
-        VStackView.size(width:60,height: 350)
-        //        VStackView.backgroundColor = .blue
+        
+        vedioLinkView.backgroundColor = .darkGray
+        
+        var bottomPadding:CGFloat = 0
+        
+        if UIDevice.current.hasNotch {
+            //... consider notch
+            bottomPadding = 110
+        } else {
+            //... don't have to consider notch
+            bottomPadding = 80
+        }
+        
+        addSubview(leftContentView)
+        leftContentView.position( left: leadingAnchor, bottom: bottomAnchor, right: VStackView.trailingAnchor,insets: .init(top: 0, left: 20, bottom: bottomPadding, right: 90))
+        leftContentView.size(width: 200)
+        leftContentView.backgroundColor = .red
+        
+        let name = "@Imr4nTheM4ad#$sdfsdfs"
+        let str = "sfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdfsdfsdfsfs"
+        let hashTag = "#tiktok #game #more #ios #android"
+        userName = TikTokLabel(text: "\(name)\n\n\(str)\n\(hashTag)", textColor: .white, fontSize: UIFont.boldSystemFont(ofSize: 12), textAlign: .left)
+        leftContentView.addSubview(userName)
+        
+        
+        userName.position( left: leftContentView.leadingAnchor,bottom: leftContentView.bottomAnchor,right: leftContentView.trailingAnchor, insets: .init(top: 10, left: 10, bottom: 0, right: 10))
+        
+        
+        let soundTack = TikTokLabel( text: "Sound Tack(game of the month)", textColor: .white, fontSize: UIFont.boldSystemFont(ofSize: 10), textAlign: .left)
+        leftContentView.addSubview(soundTack)
+        
+        UIView.animateKeyframes(withDuration: 10, delay: 0, options: .repeat, animations: {
+            soundTack.center.x += self.leftContentView.bounds.width
+            
+        }, completion: nil)
+        
+        
+        VStackView.position( bottom:  bottomAnchor, right:  trailingAnchor, insets: .init(top: 0, left: 0, bottom: bottomPadding, right: 20))
         
         
         
-        profilePicView.size(width:60,height: 40)
-        profilePicView.backgroundColor = .yellow
+        profileView.size(width:60,height: 60)
+        profileView.layer.cornerRadius = 30
+        profileView.clipsToBounds = true
+        profileView.layer.masksToBounds = true
+        profileView.image = UIImage(named: "person.crop.circle.fill")?.withRenderingMode(.alwaysTemplate)
         
-        likeButton.size(width:40,height: 40)
-        likeButton.backgroundColor = .brown
-        likeButton.imageView?.contentMode = .scaleAspectFit
-        likeButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profileView.isUserInteractionEnabled = true
+        profileView.addGestureRecognizer(tapGestureRecognizer)
         
-        let likeLabel = UILabel()
+        
+        let btn = TikTokButton(setImage: "plus.circle.fill",tintColor: UIColor.red)
+        //        let btn = TikTokButton(setImage: UIImage(named: "person.crop.circle.fill"), tintColor: UIColor.white)
+        profileView.addSubview(btn)
+        btn.position(bottom: profileView.bottomAnchor, insets: .init(top: 0, left: 0, bottom: 0, right: 0  ))
+        btn.centerXInSuper()
+        btn.size(width:24, height: 24)
+        
+        
+        
+        
+        likeButton = TikTokButton(setImage: "heart.fill",tintColor: UIColor.white)
+        likeButton.size(width:34,height: 30)
+        likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        likeButton.clipsToBounds = true
+        likeButton.tag = 1
+        
+        let likeLabel = TikTokLabel( text: "112 K", textColor: UIColor.white, fontSize: UIFont.systemFont(ofSize: 14), textAlign: .center)
         likeLabel.size(height:10)
-        likeLabel.text = "Like"
-        likeLabel.backgroundColor = .black
+        
+        
+        
+        let VStackLikeView = UIStackView(
+            arrangedSubviews: [likeButton,likeLabel],
+            axis: .vertical, spacing: 5,
+            alignment: .center,
+            distribution: .fill
+        )
         //MARK: COMMENT
-        commentButton.size(width:60,height: 40)
-        commentButton.backgroundColor = .gray
         
         
-        shareButton.size(width:60,height: 40)
-        shareButton.backgroundColor = .cyan
+        commentButton = TikTokButton(setImage: "bubble.left.fill",tintColor: UIColor.white)
+        commentButton.size(width:34,height: 30)
+        commentButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        commentButton.clipsToBounds = true
+        commentButton.tag = 2
         
-        userProfileView.size(width:60,height: 40)
+        let commentLabel = TikTokLabel( text: "20 K", textColor: UIColor.white, fontSize: UIFont.systemFont(ofSize: 14), textAlign: .center)
+        commentLabel.size(height:10)
+        
+        
+        let VStackCommentiew = UIStackView(arrangedSubviews: [commentButton,commentLabel]
+                                           , axis: .vertical, spacing: 5, alignment: .center, distribution: .fill)
+        
+        
+        shareButton = TikTokButton(setImage: "arrowshape.turn.up.right.fill",tintColor: UIColor.white)
+        shareButton.size(width:34,height: 30)
+        shareButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        shareButton.clipsToBounds = true
+        shareButton.tag = 3
+        
+        let shareLabel = TikTokLabel( text: "20", textColor: UIColor.white, fontSize: UIFont.systemFont(ofSize: 14), textAlign: .center)
+        shareLabel.size(height:10)
+        
+        
+        let VStackShareView = UIStackView(arrangedSubviews: [shareButton,commentLabel]
+                                          , axis: .vertical, spacing: 5, alignment: .center, distribution: .fill)
+        
+        
+        userProfileView.size(width:60,height: 60)
         userProfileView.backgroundColor = .magenta
+        userProfileView.image = UIImage(named: "person.crop.circle.fill")?.withRenderingMode(.alwaysTemplate)
+        userProfileView.layer.cornerRadius = 30
+        userProfileView.layer.borderWidth = 10
+        userProfileView.layer.borderColor = UIColor.black.cgColor
         
-        VStackView.addArrangedSubview(profilePicView)
-        VStackView.addArrangedSubview(likeButton)
-        VStackView.addArrangedSubview(likeLabel)
-        VStackView.addArrangedSubview(commentButton)
-        VStackView.addArrangedSubview(shareButton)
+        
+        
+        
+        VStackView.addArrangedSubview(profileView)
+        
+        VStackView.addArrangedSubview(VStackLikeView)
+        VStackView.addArrangedSubview(VStackCommentiew)
+        
+        VStackView.addArrangedSubview(VStackShareView)
         VStackView.addArrangedSubview(userProfileView)
         
+        
+        
     }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        print("Profile vc")
+        delegate.profileButtonPressed()
+    }
+    
+    @objc func buttonPressed(_ sender: UIButton){
+        
+        if sender.tag == 1 {
+            print("Like button")
+            delegate.likeButtonPressed()
+        }else if sender.tag == 2 {
+            print("comment button")
+            delegate.commentButtonTapped()
+            
+        }else if sender.tag == 3 {
+            print("share button")
+            delegate.shareButtonTapped()
+        }
+        
+        
+    }
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
