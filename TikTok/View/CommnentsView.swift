@@ -56,6 +56,9 @@ class CommnentsView: UIView {
 //        removeFromSuperview()
     }
     
+    @objc func closeViewTapped(){
+        removeFromSuperview()
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -71,11 +74,39 @@ extension CommnentsView: UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0,
+                                              y: 0,
+                                              width: self.tableView.frame.width,
+                                              height: 50))
+        let title = UILabel()
+        headerView.addSubview(title)
+        title.centerInSuper()
+        title.text = "200 Comments"
+        
+        let  closeButton = TikTokButton( setImage: "delete.left", tintColor: .black)
+        headerView.addSubview(closeButton)
+        closeButton.position( right: headerView.trailingAnchor, insets: .init(top: 5, left: 0, bottom: 0, right: 10))
+        closeButton.centerYInSuper()
+        closeButton.size(width:30,height: 24)
+        closeButton.addTarget(self, action: #selector(closeViewTapped), for: .touchUpInside)
+        
+        headerView.backgroundColor = .orange
+        return headerView
+    }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-         self.layoutSubviews()
+      //   self.layoutSubviews()
     }
 }

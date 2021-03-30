@@ -29,6 +29,7 @@
 		1DD0FE432613612100736B91 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE422613612100736B91 /* UserProfileVC.swift */; };
 		1DD0FE8626138EA000736B91 /* CommnentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE8526138EA000736B91 /* CommnentsView.swift */; };
 		1DD0FE8926139A8F00736B91 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE8826139A8F00736B91 /* CommentTableViewCell.swift */; };
+		1DD0FE8C2613A62600736B91 /* delete.left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE8B2613A62600736B91 /* delete.left.png */; };
 		1DE10C3C2605B25D003D3C7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */; };
 		1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */; };
 		1DE10C402605B25D003D3C7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3F2605B25D003D3C7A /* ViewController.swift */; };
@@ -81,6 +82,7 @@
 		1DD0FE422613612100736B91 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		1DD0FE8526138EA000736B91 /* CommnentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommnentsView.swift; sourceTree = "<group>"; };
 		1DD0FE8826139A8F00736B91 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		1DD0FE8B2613A62600736B91 /* delete.left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.left.png; sourceTree = "<group>"; };
 		1DE10C382605B25D003D3C7A /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		1DE10C5B2605CE03003D3C7A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1DD0FE8B2613A62600736B91 /* delete.left.png */,
 				1DD0FE3F2613479C00736B91 /* house.png */,
 				1DD0FE33261346A500736B91 /* magnifyingglass.circle.fill.png */,
 				1DD0FE34261346A600736B91 /* magnifyingglass.circle.png */,
@@ -372,6 +375,7 @@
 				1DD0FE22261343FB00736B91 /* plus.circle.fill.png in Resources */,
 				1DE10C7D2605D795003D3C7A /* speed@2x.png in Resources */,
 				1DE10C7C2605D795003D3C7A /* flip@2x.png in Resources */,
+				1DD0FE8C2613A62600736B91 /* delete.left.png in Resources */,
 				1DE10C702605D795003D3C7A /* torch@2x.png in Resources */,
 				1DE10C722605D795003D3C7A /* image.png in Resources */,
 				1DD0FE132613219000736B91 /* like-button.json in Resources */,
