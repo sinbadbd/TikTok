@@ -33,9 +33,8 @@ class HomeFeedVC: UIViewController {
         return collection
     }()
     
-    //     var  delegate: HomeFeedButtonClickDeleget
     
-    //    var homeCell : HomeCollectionViewCell?
+    private var commentsView : CommnentsView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +108,14 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 extension HomeFeedVC: HomeFeedButtonClickDeleget{
     func commentButtonTapped() {
         
+        let window = UIApplication.shared.keyWindow!
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: .signalingNaN, options: .curveEaseIn) { [self] in
+            
+            self.commentsView = CommnentsView()
+            window.addSubview(commentsView!)
+            commentsView?.centerXInSuper()
+            commentsView?.fitToSuper()
+        } completion: {  _ in }
     }
     
     func shareButtonTapped() {
@@ -123,6 +130,7 @@ extension HomeFeedVC: HomeFeedButtonClickDeleget{
     func profileButtonPressed() {
         
         let vc = UserProfileVC()
+        vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
         
     }
