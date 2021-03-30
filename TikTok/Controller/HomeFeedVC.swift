@@ -15,11 +15,13 @@ class HomeFeedVC: UIViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         //          item.contentInsets.bottom = 201
+       
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         
 //        section.orthogonalScrollingBehavior = .groupPagingCentered
+//        section.orthogonalScrollingBehavior = .paging
         
         let flowLayout = UICollectionViewCompositionalLayout(section: section)
         
@@ -38,10 +40,10 @@ class HomeFeedVC: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.fitToSuper()
-        // collectionView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.backgroundColor = .white
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identify)
-        collectionView.isScrollEnabled = true
+        collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
  
 
@@ -79,9 +81,9 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
  
         if indexPath.item % 2 == 0 {
-            cell.vedioLinkView.backgroundColor = .red
+//            cell.vedioLinkView.backgroundColor = .red
         }else {
-            cell.vedioLinkView.backgroundColor = .green
+//            cell.vedioLinkView.backgroundColor = .green
         }
         
    
