@@ -17,6 +17,16 @@
 		1DD0FE132613219000736B91 /* like-button.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE122613219000736B91 /* like-button.json */; };
 		1DD0FE16261321B300736B91 /* LottieAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE15261321B300736B91 /* LottieAnimationView.swift */; };
 		1DD0FE1926132A2F00736B91 /* TikTokImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE1826132A2F00736B91 /* TikTokImage.swift */; };
+		1DD0FE1C261343DD00736B91 /* person.crop.circle.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE1B261343DD00736B91 /* person.crop.circle.fill.png */; };
+		1DD0FE1F261343EE00736B91 /* heart.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE1E261343EE00736B91 /* heart.fill.png */; };
+		1DD0FE22261343FB00736B91 /* plus.circle.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE21261343FA00736B91 /* plus.circle.fill.png */; };
+		1DD0FE252613440E00736B91 /* bubble.left.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE242613440E00736B91 /* bubble.left.fill.png */; };
+		1DD0FE282613441A00736B91 /* arrowshape.turn.up.right.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE272613441A00736B91 /* arrowshape.turn.up.right.fill.png */; };
+		1DD0FE312613469100736B91 /* house.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE302613469100736B91 /* house.fill.png */; };
+		1DD0FE35261346A600736B91 /* magnifyingglass.circle.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE33261346A500736B91 /* magnifyingglass.circle.fill.png */; };
+		1DD0FE36261346A600736B91 /* magnifyingglass.circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE34261346A600736B91 /* magnifyingglass.circle.png */; };
+		1DD0FE402613479C00736B91 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE3F2613479C00736B91 /* house.png */; };
+		1DD0FE432613612100736B91 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE422613612100736B91 /* UserProfileVC.swift */; };
 		1DE10C3C2605B25D003D3C7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */; };
 		1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */; };
 		1DE10C402605B25D003D3C7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C3F2605B25D003D3C7A /* ViewController.swift */; };
@@ -57,6 +67,16 @@
 		1DD0FE122613219000736B91 /* like-button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "like-button.json"; sourceTree = "<group>"; };
 		1DD0FE15261321B300736B91 /* LottieAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationView.swift; sourceTree = "<group>"; };
 		1DD0FE1826132A2F00736B91 /* TikTokImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokImage.swift; sourceTree = "<group>"; };
+		1DD0FE1B261343DD00736B91 /* person.crop.circle.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.crop.circle.fill.png; sourceTree = "<group>"; };
+		1DD0FE1E261343EE00736B91 /* heart.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.fill.png; sourceTree = "<group>"; };
+		1DD0FE21261343FA00736B91 /* plus.circle.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.circle.fill.png; sourceTree = "<group>"; };
+		1DD0FE242613440E00736B91 /* bubble.left.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.left.fill.png; sourceTree = "<group>"; };
+		1DD0FE272613441A00736B91 /* arrowshape.turn.up.right.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowshape.turn.up.right.fill.png; sourceTree = "<group>"; };
+		1DD0FE302613469100736B91 /* house.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house.fill.png; path = "../../../../../../Downloads/sf-symbols-online-master 2/glyphs/house.fill.png"; sourceTree = "<group>"; };
+		1DD0FE33261346A500736B91 /* magnifyingglass.circle.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingglass.circle.fill.png; sourceTree = "<group>"; };
+		1DD0FE34261346A600736B91 /* magnifyingglass.circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingglass.circle.png; sourceTree = "<group>"; };
+		1DD0FE3F2613479C00736B91 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
+		1DD0FE422613612100736B91 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		1DE10C382605B25D003D3C7A /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +148,7 @@
 				1DE10C3F2605B25D003D3C7A /* ViewController.swift */,
 				1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */,
 				1DBA99612610D8E200B1F264 /* SearchViewController.swift */,
+				1DD0FE422613612100736B91 /* UserProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -231,6 +252,15 @@
 		1DE10C5B2605CE03003D3C7A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1DD0FE3F2613479C00736B91 /* house.png */,
+				1DD0FE33261346A500736B91 /* magnifyingglass.circle.fill.png */,
+				1DD0FE34261346A600736B91 /* magnifyingglass.circle.png */,
+				1DD0FE302613469100736B91 /* house.fill.png */,
+				1DD0FE272613441A00736B91 /* arrowshape.turn.up.right.fill.png */,
+				1DD0FE242613440E00736B91 /* bubble.left.fill.png */,
+				1DD0FE1B261343DD00736B91 /* person.crop.circle.fill.png */,
+				1DD0FE21261343FA00736B91 /* plus.circle.fill.png */,
+				1DD0FE1E261343EE00736B91 /* heart.fill.png */,
 				1DD0FE112613217200736B91 /* LottieAnimation */,
 				1DE10C692605D795003D3C7A /* flip.png */,
 				1DE10C6D2605D795003D3C7A /* flip@2x.png */,
@@ -312,26 +342,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD0FE36261346A600736B91 /* magnifyingglass.circle.png in Resources */,
+				1DD0FE1C261343DD00736B91 /* person.crop.circle.fill.png in Resources */,
 				1DE10C772605D795003D3C7A /* speed.png in Resources */,
 				1DE10C752605D795003D3C7A /* pocket-watch@2x.png in Resources */,
 				1DE10C712605D795003D3C7A /* image@2x.png in Resources */,
 				1DE10C482605B260003D3C7A /* LaunchScreen.storyboard in Resources */,
 				1DE10C732605D795003D3C7A /* torch@3x.png in Resources */,
+				1DD0FE1F261343EE00736B91 /* heart.fill.png in Resources */,
 				1DE10C452605B260003D3C7A /* Assets.xcassets in Resources */,
 				1DE10C762605D795003D3C7A /* pocket-watch.png in Resources */,
+				1DD0FE252613440E00736B91 /* bubble.left.fill.png in Resources */,
 				1DE10C792605D795003D3C7A /* torch.png in Resources */,
 				1DE10C7B2605D795003D3C7A /* flip@3x.png in Resources */,
 				1DE10C5F2605CE15003D3C7A /* capture-button@3x.png in Resources */,
+				1DD0FE35261346A600736B91 /* magnifyingglass.circle.fill.png in Resources */,
 				1DE10C5E2605CE15003D3C7A /* capture-button@2x.png in Resources */,
 				1DE10C7A2605D795003D3C7A /* pocket-watch@3x.png in Resources */,
+				1DD0FE312613469100736B91 /* house.fill.png in Resources */,
 				1DE10C782605D795003D3C7A /* flip.png in Resources */,
 				1DE10C742605D795003D3C7A /* image@3x.png in Resources */,
+				1DD0FE402613479C00736B91 /* house.png in Resources */,
+				1DD0FE22261343FB00736B91 /* plus.circle.fill.png in Resources */,
 				1DE10C7D2605D795003D3C7A /* speed@2x.png in Resources */,
 				1DE10C7C2605D795003D3C7A /* flip@2x.png in Resources */,
 				1DE10C702605D795003D3C7A /* torch@2x.png in Resources */,
 				1DE10C722605D795003D3C7A /* image.png in Resources */,
 				1DD0FE132613219000736B91 /* like-button.json in Resources */,
 				1DE10C7E2605D795003D3C7A /* speed@3x.png in Resources */,
+				1DD0FE282613441A00736B91 /* arrowshape.turn.up.right.fill.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +438,7 @@
 				1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */,
 				1DD0FDD82612FB6B00736B91 /* TikTokButton.swift in Sources */,
 				1DD0FE16261321B300736B91 /* LottieAnimationView.swift in Sources */,
+				1DD0FE432613612100736B91 /* UserProfileVC.swift in Sources */,
 				1DD0FDDB2612FBE000736B91 /* TikTokLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

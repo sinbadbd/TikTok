@@ -6,7 +6,7 @@
 //
 
 import UIKit
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class TikTokButton: UIButton {
 
     convenience init(
@@ -14,7 +14,7 @@ class TikTokButton: UIButton {
         setTitle:String = "",
         bgColor:UIColor? = nil,
         textColor:UIColor? = nil,
-        setIcon:String? = nil,
+//        setIcon:String? = nil,
         setImage:String? = nil,
         tintColor:UIColor? = nil
     )
@@ -27,8 +27,8 @@ class TikTokButton: UIButton {
         self.backgroundColor = bgColor
         self.layer.cornerRadius = 4
         self.setTitle(setTitle.uppercased(), for: .normal)
-        self.setBackgroundImage(UIImage(systemName: "\(setIcon ?? "")"), for: .normal)
-        self.setImage(UIImage(named: "setImage"), for: .normal)
+//        self.setBackgroundImage(UIImage(systemName: "\(setIcon ?? "")"), for: .normal)
+        self.setBackgroundImage(UIImage(named:"\( setImage ?? "")")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.tintColor = tintColor
     }
     
