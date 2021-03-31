@@ -55,7 +55,11 @@ class HomeFeedVC: UIViewController {
         
         //        homeCell?.delegate = self
         
+ 
+        
     }
+    
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +72,15 @@ class HomeFeedVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    @objc func slideUpViewTapped(){
+        let screenSize = UIScreen.main.bounds.size
+          UIView.animate(withDuration: 0.5,
+                         delay: 0, usingSpringWithDamping: 1.0,
+                         initialSpringVelocity: 1.0,
+                         options: .curveEaseInOut, animations: {
+                            self.commentsView!.alpha = 0
+          }, completion: nil)
+    }
     
     
 }
@@ -107,15 +120,29 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 @available(iOS 13.0, *)
 extension HomeFeedVC: HomeFeedButtonClickDeleget{
     func commentButtonTapped() {
+     
+        
         
         let window = UIApplication.shared.keyWindow!
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: .signalingNaN, options: .curveEaseIn) { [self] in
-            
-            self.commentsView = CommnentsView()
-            window.addSubview(commentsView!)
-            commentsView?.centerXInSuper()
-            commentsView?.fitToSuper()
-        } completion: {  _ in }
+        self.commentsView = CommnentsView()
+        window.addSubview(commentsView!)
+        commentsView?.centerXInSuper()
+        commentsView?.fitToSuper()
+        
+        commentsView?.fadeIn()
+        
+        let tapGesture = UITapGestureRecognizer(target: self,
+                            action: #selector(slideUpViewTapped))
+        commentsView!.addGestureRecognizer(tapGesture)
+//
+//        commentsView!.alpha = 0
+//          UIView.animate(withDuration: 0.2,
+//                         delay: 0, usingSpringWithDamping: 1.0,
+//                         initialSpringVelocity: 1.0,
+//                         options: .curveEaseInOut, animations: {
+//                            self.commentsView?.alpha = 0.8
+//          }, completion: nil)
+        
     }
     
     func shareButtonTapped() {

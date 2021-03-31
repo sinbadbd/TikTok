@@ -42,9 +42,24 @@ class CommentTableViewCell: UITableViewCell {
         addSubview(commentsLabel)
         commentsLabel.position(top: topAnchor, left: profileImage.trailingAnchor, bottom: bottomAnchor , insets: .init(top: 10, left: 10, bottom: 10, right: 0))
 //        commentsLabel.backgroundColor = .blue
-        commentsLabel.text = "hahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdff"
+//
+//
+//
+//        commentsLabel.text = "hahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdff"
         commentsLabel.numberOfLines = 0
         commentsLabel.size(width:280)
+        
+        
+        let attributes = getAttributedText(string: "Imr4nTheM4dG4mer\n" , font: UIFont.boldSystemFont(ofSize: 15), color: .gray, lineSpace: 5, alignment: .left)
+        let attributes2 =  getAttributedText(string: "ahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfs r" , font: UIFont.systemFont(ofSize: 14),color: .lightGray, lineSpace: 5, alignment: .left)
+        let attributes3 = getAttributedText(string: "4d" , font: UIFont.boldSystemFont(ofSize: 14),color: .darkGray, lineSpace: 0, alignment: .left)
+         attributes.append(attributes2)
+        attributes.append(attributes3)
+        
+        self.commentsLabel.attributedText = attributes
+        
+        
+        
         
         addSubview(VStack)
         VStack.position(top: topAnchor, left: commentsLabel.trailingAnchor, right: trailingAnchor, insets: .init(top: 10, left: 5, bottom: 0, right: 10))
@@ -64,6 +79,12 @@ class CommentTableViewCell: UITableViewCell {
         VStack.addArrangedSubview(likeLabel)
         
        // VStack = UIStackView(arrangedSubviews: [likeButton,likeLabel], axis: .vertical, spacing: 2, alignment: .center, distribution: .fillEqually)
+        
+    }
+    
+    
+    
+    func configure(){
         
     }
     

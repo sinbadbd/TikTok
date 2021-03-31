@@ -6,8 +6,10 @@
 //
 
 import UIKit
-
-class CommnentsView: UIView {
+protocol CommentInputAccessoryViewDelegate {
+    func didSend(for comment: String)
+}
+class CommnentsView: UIView, UITextViewDelegate {
     
     let contentView = UIView()
     let mainView = UIView()
@@ -18,6 +20,13 @@ class CommnentsView: UIView {
         return tableView
     }()
     
+    let commentBottomView = UIView()
+    let fullWindowView = UIView()
+    
+    let bottomTextView = UITextView()
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -25,44 +34,85 @@ class CommnentsView: UIView {
         mainView.fitToSuper()
         mainView.backgroundColor =  UIColor.init(white: 0, alpha: 0.5)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped(tapGestureRecognizer:)))
-        mainView.isUserInteractionEnabled = true
-        mainView.addGestureRecognizer(tapGestureRecognizer)
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped(tapGestureRecognizer:)))
+//        mainView.isUserInteractionEnabled = true
+//        mainView.addGestureRecognizer(tapGestureRecognizer)
         
+ 
         
         mainView.addSubview(contentView)
         contentView.position( left: mainView.leadingAnchor, bottom: mainView.bottomAnchor, right: mainView.trailingAnchor)
         contentView.size(height:450)
-        contentView.backgroundColor = .white
+        //       contentView.backgroundColor = .white
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.separatorStyle   = .none
         
         
-         contentView.roundCorners([ .topLeft, .topRight], radius: 16)
-
+        contentView.roundCorners([ .topLeft, .topRight], radius: 16)
+        
         contentView.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.reuseIdentifier)
- 
+        
         tableView.fitToSuper()
+        
+        bottomTextView.delegate = self
+        
+        bottomTextView.backgroundColor = .blue
+        
+        contentView.addSubview(commentBottomView)
+        
+        commentBottomView.position( left: contentView.leadingAnchor, bottom: contentView.bottomAnchor, right: contentView.trailingAnchor)
+        commentBottomView.size(height:40)
+        commentBottomView.backgroundColor = .red
+        
+        commentBottomView.addSubview(bottomTextView)
+        bottomTextView.position( left: commentBottomView.leadingAnchor, bottom: commentBottomView.bottomAnchor, right: commentBottomView.trailingAnchor,insets: .init(top: 0, left: 20, bottom: 10, right: 20))
+        bottomTextView.size(height:30)
+        
+        bottomTextView.inputAccessoryView = commentBottomView
+        
+        
+        bottomTextView.delegate = self
         
         
     }
     
-    @objc func viewTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-//        removeFromSuperview()
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.backgroundColor = UIColor.systemPink
+        //        print(textView)
+        print("\( String(describing: bottomTextView.text) )")
+        
+        mainView.addSubview(fullWindowView)
+        fullWindowView.fitToSuper()
+        fullWindowView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(removeCommentBox(tapGestureRecognizer:)))
+        fullWindowView.isUserInteractionEnabled = true
+        fullWindowView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.backgroundColor = UIColor.systemTeal
+    }
+    
+    @objc func removeCommentBox(tapGestureRecognizer: UITapGestureRecognizer){
+        removeFromSuperview()
+        bottomTextView.inputAccessoryView =  nil
+        bottomTextView.reloadInputViews()
     }
     
     @objc func closeViewTapped(){
         removeFromSuperview()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
 extension CommnentsView: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +129,7 @@ extension CommnentsView: UITableViewDataSource,UITableViewDelegate {
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0,
                                               y: 0,
@@ -107,6 +157,7 @@ extension CommnentsView: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-      //   self.layoutSubviews()
+        //   self.layoutSubviews()
     }
 }
+
