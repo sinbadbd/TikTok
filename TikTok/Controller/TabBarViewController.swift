@@ -17,7 +17,7 @@ class TabBarViewController: UITabBarController {
         
         let vc1 = HomeFeedVC()
         let vc2 = SearchViewController()
-        let vc3 = UIViewController()
+        let vc3 = UserProfileVC()
         
         vc1.title = "Browse"
         vc2.title = "Search"
@@ -32,13 +32,13 @@ class TabBarViewController: UITabBarController {
         let nav3 = UINavigationController(rootViewController: vc3)
         
         
-        nav1.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(named: "house")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.white), selectedImage: UIImage(named: "house.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.yellow))
+        nav1.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(named: "house"), selectedImage: UIImage(named: "house.fill"))
         nav1.navigationBar.prefersLargeTitles = true
         
-        nav2.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "magnifyingglass.circle")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.white), selectedImage: UIImage(named: "magnifyingglass.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.yellow))
+        nav2.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "magnifyingglass.circle"), selectedImage: UIImage(named: "magnifyingglass.circle.fill") )
         nav2.navigationBar.prefersLargeTitles = true
         
-        nav3.tabBarItem = UITabBarItem(title: "Library", image: UIImage(named: "building.columns")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.white), selectedImage: UIImage(named: "building.columns.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.yellow))
+        nav3.tabBarItem = UITabBarItem(title: "Library", image: UIImage(named: "building.columns")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.white), selectedImage: UIImage(named: "building.columns.fill"))
         nav3.navigationBar.prefersLargeTitles = true
         
         

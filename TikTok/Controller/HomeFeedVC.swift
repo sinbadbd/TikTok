@@ -33,9 +33,8 @@ class HomeFeedVC: UIViewController {
         return collection
     }()
     
-    //     var  delegate: HomeFeedButtonClickDeleget
     
-    //    var homeCell : HomeCollectionViewCell?
+    private var commentsView : CommnentsView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +55,11 @@ class HomeFeedVC: UIViewController {
         
         //        homeCell?.delegate = self
         
+ 
+        
     }
+    
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +72,15 @@ class HomeFeedVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    @objc func slideUpViewTapped(){
+        let screenSize = UIScreen.main.bounds.size
+          UIView.animate(withDuration: 0.5,
+                         delay: 0, usingSpringWithDamping: 1.0,
+                         initialSpringVelocity: 1.0,
+                         options: .curveEaseInOut, animations: {
+                            self.commentsView!.alpha = 0
+          }, completion: nil)
+    }
     
     
 }
@@ -108,6 +120,28 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 @available(iOS 13.0, *)
 extension HomeFeedVC: HomeFeedButtonClickDeleget{
     func commentButtonTapped() {
+     
+        
+        
+        let window = UIApplication.shared.keyWindow!
+        self.commentsView = CommnentsView()
+        window.addSubview(commentsView!)
+        commentsView?.centerXInSuper()
+        commentsView?.fitToSuper()
+        
+        commentsView?.fadeIn()
+        
+        let tapGesture = UITapGestureRecognizer(target: self,
+                            action: #selector(slideUpViewTapped))
+        commentsView!.addGestureRecognizer(tapGesture)
+//
+//        commentsView!.alpha = 0
+//          UIView.animate(withDuration: 0.2,
+//                         delay: 0, usingSpringWithDamping: 1.0,
+//                         initialSpringVelocity: 1.0,
+//                         options: .curveEaseInOut, animations: {
+//                            self.commentsView?.alpha = 0.8
+//          }, completion: nil)
         
     }
     
@@ -123,6 +157,7 @@ extension HomeFeedVC: HomeFeedButtonClickDeleget{
     func profileButtonPressed() {
         
         let vc = UserProfileVC()
+        vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
         
     }

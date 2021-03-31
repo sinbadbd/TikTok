@@ -192,3 +192,54 @@ public extension UIStackView {
         }
     }
 }
+
+extension UIView {
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        if #available(iOS 11, *) {
+            var cornerMask = CACornerMask()
+            if(corners.contains(.topLeft)){
+                cornerMask.insert(.layerMinXMinYCorner)
+            }
+            if(corners.contains(.topRight)){
+                cornerMask.insert(.layerMaxXMinYCorner)
+            }
+            if(corners.contains(.bottomLeft)){
+                cornerMask.insert(.layerMinXMaxYCorner)
+            }
+            if(corners.contains(.bottomRight)){
+                cornerMask.insert(.layerMaxXMaxYCorner)
+            }
+            self.layer.cornerRadius = radius
+            self.layer.maskedCorners = cornerMask
+
+        } else {
+            let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            self.layer.mask = mask
+        }
+    }
+}
+
+extension UIView {
+
+func fadeIn(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in }) {
+    self.alpha = 0.0
+
+    UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        self.isHidden = false
+        self.alpha = 1.0
+    }, completion: completion)
+}
+
+func fadeOut(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in }) {
+    self.alpha = 1.0
+
+    UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        self.alpha = 0.0
+    }) { (completed) in
+        self.isHidden = true
+        completion(true)
+    }
+}
+}

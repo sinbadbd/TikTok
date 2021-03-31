@@ -201,19 +201,25 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func buttonPressed(_ sender: UIButton){
-        
-        if sender.tag == 1 {
-            print("Like button")
-            delegate.likeButtonPressed()
-        }else if sender.tag == 2 {
-            print("comment button")
-            delegate.commentButtonTapped()
+        UIView.animate(withDuration: 0.5) {
+            sender.alpha = 0.5
+        } completion: { [self] _  in
+            sender.alpha = 1
             
-        }else if sender.tag == 3 {
-            print("share button")
-            delegate.shareButtonTapped()
+            if sender.tag == 1 {
+                print("Like button")
+                delegate.likeButtonPressed()
+            }else if sender.tag == 2 {
+                print("comment button")
+                delegate.commentButtonTapped()
+                
+            }else if sender.tag == 3 {
+                print("share button")
+                delegate.shareButtonTapped()
+            }
+            
         }
-        
+
         
     }
     
