@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Firebase
+
 @available(iOS 13.0, *)
 class HomeFeedVC: UIViewController {
     
@@ -25,6 +27,7 @@ class HomeFeedVC: UIViewController {
      
      }()
      */
+    var dataArray = [String:Any]()
     
     private let collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -54,8 +57,27 @@ class HomeFeedVC: UIViewController {
         view.insetsLayoutMarginsFromSafeArea = false
         
         //        homeCell?.delegate = self
+        var db: Firestore!
+        db = Firestore.firestore()
         
+        db.collection("posts")
+            .addSnapshotListener { [self] querySnapShot, error in
+                guard let document = querySnapShot?.documents else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
  
+                document.forEach { item in
+                   
+                    let data = item.data()
+                    dataArray = data
+                    print("item\(dataArray)")
+                    
+                    collectionView.reloadData()
+                }
+            }
+        // [END listen_document]
+        
         
     }
     
@@ -74,12 +96,12 @@ class HomeFeedVC: UIViewController {
     
     @objc func slideUpViewTapped(){
         let screenSize = UIScreen.main.bounds.size
-          UIView.animate(withDuration: 0.5,
-                         delay: 0, usingSpringWithDamping: 1.0,
-                         initialSpringVelocity: 1.0,
-                         options: .curveEaseInOut, animations: {
-                            self.commentsView!.alpha = 0
-          }, completion: nil)
+        UIView.animate(withDuration: 0.5,
+                       delay: 0, usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 1.0,
+                       options: .curveEaseInOut, animations: {
+                        self.commentsView!.alpha = 0
+                       }, completion: nil)
     }
     
     
@@ -87,7 +109,8 @@ class HomeFeedVC: UIViewController {
 @available(iOS 13.0, *)
 extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        print(" dataArray.count:\( dataArray.count)")
+        return dataArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -95,13 +118,16 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identify, for: indexPath) as! HomeCollectionViewCell
         
+//        let data = dataArray[indexPath.item]
         
         
-        if indexPath.item % 2 == 0 {
-            cell.vedioLinkView.backgroundColor = .systemGreen
-        }else {
-            cell.vedioLinkView.backgroundColor = .systemOrange
-        }
+        cell.vedioLinkView.backgroundColor = .systemGreen
+        
+//        if indexPath.item % 2 == 0 {
+//            cell.vedioLinkView.backgroundColor = .systemGreen
+//        }else {
+//            cell.vedioLinkView.backgroundColor = .systemOrange
+//        }
         
         cell.delegate = self
         return cell
@@ -120,7 +146,7 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 @available(iOS 13.0, *)
 extension HomeFeedVC: HomeFeedButtonClickDeleget{
     func commentButtonTapped() {
-     
+        
         
         
         let window = UIApplication.shared.keyWindow!
@@ -132,16 +158,16 @@ extension HomeFeedVC: HomeFeedButtonClickDeleget{
         commentsView?.fadeIn()
         
         let tapGesture = UITapGestureRecognizer(target: self,
-                            action: #selector(slideUpViewTapped))
+                                                action: #selector(slideUpViewTapped))
         commentsView!.addGestureRecognizer(tapGesture)
-//
-//        commentsView!.alpha = 0
-//          UIView.animate(withDuration: 0.2,
-//                         delay: 0, usingSpringWithDamping: 1.0,
-//                         initialSpringVelocity: 1.0,
-//                         options: .curveEaseInOut, animations: {
-//                            self.commentsView?.alpha = 0.8
-//          }, completion: nil)
+        //
+        //        commentsView!.alpha = 0
+        //          UIView.animate(withDuration: 0.2,
+        //                         delay: 0, usingSpringWithDamping: 1.0,
+        //                         initialSpringVelocity: 1.0,
+        //                         options: .curveEaseInOut, animations: {
+        //                            self.commentsView?.alpha = 0.8
+        //          }, completion: nil)
         
     }
     

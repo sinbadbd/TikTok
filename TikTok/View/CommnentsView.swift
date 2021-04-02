@@ -6,9 +6,32 @@
 //
 
 import UIKit
-protocol CommentInputAccessoryViewDelegate {
-    func didSend(for comment: String)
+ 
+enum CommnetItemButton : Int {
+    case hastagBtn
+    case emojiBtn
+    case askBtn
 }
+//extension NSAttributedString {
+//    func getPlainString() -> String? {
+//        var plainString = string
+//        var base = 0
+//
+//        enumerateAttribute(
+//            .attachment,
+//            in: NSRange(location: 0, length: length),
+//            options: [],
+//            using: { value, range, stop in
+//                if value != nil && (value is EmojiTextAttachment) {
+//                    if let subRange = Range<String.Index>(NSRange(location: range.location + base, length: range.length), in: plainString) { plainString.replaceSubrange(subRange, with: (value as? EmojiTextAttachment)?.emojiTag ?? "") }
+//                    base += ((value as? EmojiTextAttachment)?.emojiTag.length ?? 0) - 1
+//                }
+//            })
+//
+//        return plainString
+//    }
+//}
+
 class CommnentsView: UIView, UITextViewDelegate {
     
     let contentView = UIView()
@@ -26,7 +49,8 @@ class CommnentsView: UIView, UITextViewDelegate {
     let bottomTextView = UITextView()
     
     
-    
+    let commentsIcon = ["😀","😂","😍","😝","😘","😎","😢","🥶"]
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -60,31 +84,115 @@ class CommnentsView: UIView, UITextViewDelegate {
         
         bottomTextView.delegate = self
         
-        bottomTextView.backgroundColor = .blue
-        
+        bottomTextView.backgroundColor = .white
+        bottomTextView.text = "Add comment..."
+        bottomTextView.textColor = UIColor.lightGray
         contentView.addSubview(commentBottomView)
         
-        commentBottomView.position( left: contentView.leadingAnchor, bottom: contentView.bottomAnchor, right: contentView.trailingAnchor)
-        commentBottomView.size(height:40)
-        commentBottomView.backgroundColor = .red
+        
+        commentBottomView.position( left: contentView.leadingAnchor, bottom: contentView.bottomAnchor, right: contentView.trailingAnchor, insets: .init(top: 0, left: 10, bottom: 0, right: 10))
+        commentBottomView.size(height:80)
+        commentBottomView.backgroundColor = .white
+        
+        let border = UIView()
+        commentBottomView.addSubview(border)
+        border.position(top: commentBottomView.topAnchor, left: commentBottomView.leadingAnchor, right: commentBottomView.trailingAnchor)
+        border.size(height:1)
+        border.backgroundColor = UIColor.systemGray
+        
         
         commentBottomView.addSubview(bottomTextView)
-        bottomTextView.position( left: commentBottomView.leadingAnchor, bottom: commentBottomView.bottomAnchor, right: commentBottomView.trailingAnchor,insets: .init(top: 0, left: 20, bottom: 10, right: 20))
+        bottomTextView.position( left: commentBottomView.leadingAnchor,insets: .init(top: 0, left: 10, bottom: 10, right: 10))
         bottomTextView.size(height:30)
-        
+        bottomTextView.backgroundColor = .brown
         bottomTextView.inputAccessoryView = commentBottomView
         
         
         bottomTextView.delegate = self
         
         
+        let HStavkView = UIStackView()
+        HStavkView.axis = .horizontal
+        HStavkView.distribution = .fillEqually
+        HStavkView.alignment = .center
+        
+        commentBottomView.addSubview(HStavkView)
+        HStavkView.position( top:commentBottomView.topAnchor ,left: bottomTextView.trailingAnchor, right: commentBottomView.trailingAnchor, insets: .init(top: 5, left: 5, bottom: 5, right: 10))
+        HStavkView.size(width:80)
+//        HStavkView.centerYInSuper()
+        
+        let hashTagBtn = TikTokButton(setTitle: "@", textColor: .black, setImage: nil)
+        hashTagBtn.size(width:20,height: 20)
+        hashTagBtn.tag = CommnetItemButton.hastagBtn.rawValue
+        hashTagBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+        
+        let emojiBtn = TikTokButton(setTitle: "@", textColor: .black, setImage: nil)
+        emojiBtn.size(width:20,height: 20)
+        emojiBtn.tag = CommnetItemButton.emojiBtn.rawValue
+        emojiBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+        
+        let addQuesBtn = TikTokButton(setTitle: "@", textColor: .black, setImage: nil)
+        addQuesBtn.size(width:20,height: 20)
+        addQuesBtn.tag = CommnetItemButton.askBtn.rawValue
+        addQuesBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+        
+        
+        HStavkView.addArrangedSubviews([hashTagBtn,emojiBtn,addQuesBtn])
+        
+        
+        let emojiBottomView = UIView()
+        commentBottomView.addSubview(emojiBottomView)
+        emojiBottomView.position(  left: commentBottomView.leadingAnchor, bottom: commentBottomView.bottomAnchor,  right: commentBottomView.trailingAnchor,insets: .init(top: 5, left: 10, bottom: 5, right: 10))
+//        emojiBottomView.backgroundColor = .red
+        emojiBottomView.size(  height: 30)
+        
+ 
+        var xPos = 2
+            for (emoji, index) in commentsIcon.enumerated() {
+              
+              //  let emo = commentsIcon[emoji]
+                print(emoji, index)
+                let emojiButton = UIButton()
+                emojiButton.frame = CGRect(x: xPos, y: 0, width: 50, height: 30)
+                emojiButton.setTitle("\(index)", for: .normal)
+                emojiButton.setTitleColor(UIColor.black, for: .normal)
+                emojiButton.tag = emoji
+                emojiButton.addTarget(self, action: #selector(handleEmojiButton), for: .touchUpInside)
+//                emojiButton.f
+                emojiBottomView.addSubview(emojiButton)
+                xPos += 50
+            }
+        
+    }
+ 
+
+    @objc func handleEmojiButton(sender : UIButton){
+           print(sender.tag)
+        var data = [String]()
+        
+        
+//        data = commentsIcon[sender]
+//        bottomTextView.attributedText = true
+        bottomTextView.text = commentsIcon[sender.tag]
+       }
+    
+    @objc func tapBtnTapped(_ sender:UIButton){
+        
+        if sender.tag == CommnetItemButton.hastagBtn.rawValue {
+            print(sender.tag)
+        } else if sender.tag == CommnetItemButton.emojiBtn.rawValue {
+            print(sender.tag)
+        } else if sender.tag == CommnetItemButton.askBtn.rawValue {
+            print(sender.tag)
+        }
     }
     
+    override var canBecomeFirstResponder: Bool {
+            return false
+        }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.backgroundColor = UIColor.systemPink
-        //        print(textView)
-        print("\( String(describing: bottomTextView.text) )")
-        
+ 
         mainView.addSubview(fullWindowView)
         fullWindowView.fitToSuper()
         fullWindowView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
@@ -92,20 +200,25 @@ class CommnentsView: UIView, UITextViewDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(removeCommentBox(tapGestureRecognizer:)))
         fullWindowView.isUserInteractionEnabled = true
         fullWindowView.addGestureRecognizer(tapGestureRecognizer)
+        bottomTextView.text = nil
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.backgroundColor = UIColor.systemTeal
+        if bottomTextView.text.isEmpty {
+            bottomTextView.text = nil
+            bottomTextView.textColor = UIColor.lightGray
+        }
     }
     
     @objc func removeCommentBox(tapGestureRecognizer: UITapGestureRecognizer){
-        removeFromSuperview()
-        bottomTextView.inputAccessoryView =  nil
+//        removeFromSuperview()
+//        bottomTextView.inputAccessoryView =  nil
         bottomTextView.reloadInputViews()
+        fullWindowView.backgroundColor = UIColor.clear
     }
     
     @objc func closeViewTapped(){
-        removeFromSuperview()
+//        removeFromSuperview()
     }
     
     required init?(coder: NSCoder) {
