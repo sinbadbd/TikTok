@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 @available(iOS 13.0, *)
 @main
@@ -14,10 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?   // For iOS 12
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        // Override point for customization after application launch.
-       
-//        let vc = HomeFeedVC()
+ 
+        
+        fireStoreDB()
         
         let tabView =  TabBarViewController() //window.rootViewController = TabBarViewController()
     
@@ -51,6 +51,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
+    func fireStoreDB(){
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+        
+        
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        ref = db.collection("posts").addDocument(
+            data: [
+            "userName":"Imr4nTh3M4dG4m3r",
+            "description":"This the first awesome app i had created",
+            "hashTag":"#ios #android #html #Unity",
+            "vedioURL": "Ada",
+//            "likeCount": 1232,
+//            "ShareCount": 1815,
+//            "CommentCount":34234
+            
+        ]
+        ) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+        
+        
+    }
    
 
 }
