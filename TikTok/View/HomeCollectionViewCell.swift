@@ -20,14 +20,18 @@ protocol HomeFeedButtonClickDeleget:AnyObject {
 
 
 //@available(iOS 13.0, *)
+@available(iOS 13.0, *)
 class HomeCollectionViewCell: UICollectionViewCell {
     static let identify = "HomeCollectionViewCell"
     
+    var playerView: VideoPlayerView?
     
-    let vedioLinkView : UIView = {
-        let vedio = UIView()
-        return vedio
-    }()
+    
+    
+//    let vedioLinkView : UIView = {
+//        let vedio = UIView()
+//        return vedio
+//    }()
     
     let VStackView : UIStackView = {
         let stackview = UIStackView()
@@ -52,18 +56,44 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     weak var delegate : HomeFeedButtonClickDeleget!
     
+    // MARK: - Variables
+    private(set) var isPlaying = false
+    private(set) var liked = false
+    var post: Post?
+    
+//    var pauseImgView: UIImageView?{
+//        didSet{
+//            pauseImgView?.alpha = 0
+//        }
+//    }
+    
+    
+//    weak var delegate: HomeCellNavigationDelegate?
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
+    // MARK: LIfecycles
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        playerView?.cancelAllLoadingRequest()
+        resetViewsForReuse()
+    }
     
     
     func setupUI(){
-        addSubview(vedioLinkView)
-        vedioLinkView.fitToSuper()
+//        addSubview(vedioLinkView)
+//        vedioLinkView.fitToSuper()
+        playerView = VideoPlayerView()
+        addSubview(playerView!)
+        playerView?.fitToSuper()
+        
         addSubview(VStackView)
         
-        vedioLinkView.backgroundColor = .darkGray
+//        vedioLinkView.backgroundColor = .darkGray
         
         var bottomPadding:CGFloat = 0
         
@@ -190,9 +220,34 @@ class HomeCollectionViewCell: UICollectionViewCell {
         VStackView.addArrangedSubview(VStackShareView)
         VStackView.addArrangedSubview(userProfileView)
         
-        
-        
+//        pauseImgView = UIImageView()
+//        addSubview(pauseImgView!)
+//        pauseImgView?.fitToSuper()
+//        pauseImgView?.size(width:50, height: 50)
     }
+    func configure(post: Post){
+        self.post = post
+        /*
+        nameBtn.setTitle("@" + post.autherName, for: .normal)
+        nameBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        musicLbl.text = post.music + "   " + post.music + "   " + post.music + "   "// Long enough to enable scrolling
+        captionLbl.text = post.caption
+        likeCountLbl.text = post.likeCount.shorten()
+        shareCountLbl.text = post.shareCount.shorten()
+        */
+        
+        likeButton.setTitle(post.likeCount.shorten(), for: .normal)
+        shareButton.setTitle(post.shareCount.shorten(), for: .normal)
+        
+        let name = "@ \(post.autherName)"
+        let str = "\(post.music + "   " + post.music + "   " + post.music + "   ")"
+        let hashTag = "\(post.caption)"
+        userName = TikTokLabel(text: "\(name)\n\n\(str)\n\(hashTag)", textColor: .white, fontSize: UIFont.boldSystemFont(ofSize: 12), textAlign: .left)
+        
+        
+        playerView?.configure(url: post.videoURL, fileExtension: post.videoFileExtension, size: (post.videoWidth, post.videoHeight))
+    }
+    
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -221,6 +276,99 @@ class HomeCollectionViewCell: UICollectionViewCell {
         }
 
         
+    }
+    
+    func replay(){
+        if !isPlaying {
+            playerView?.replay()
+            play()
+        }
+    }
+    
+    func play() {
+        if !isPlaying {
+            playerView?.play()
+//            musicLbl.holdScrolling = false
+            isPlaying = true
+        }
+    }
+    
+    func pause(){
+        if isPlaying {
+            playerView?.pause()
+//            musicLbl.holdScrolling = true
+            isPlaying = false
+        }
+    }
+    
+    @objc func handlePause(){
+//        if isPlaying {
+//            // Pause video and show pause sign
+//            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseIn, animations: { [weak self] in
+//                guard let self = self else { return }
+//                self.pauseImgView?.alpha = 0.35
+//                self.pauseImgView?.transform = CGAffineTransform.init(scaleX: 0.45, y: 0.45)
+//            }, completion: { [weak self] _ in
+//                self?.pause()
+//            })
+//        } else {
+//            // Start video and remove pause sign
+//            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
+//                guard let self = self else { return }
+//                self.pauseImgView?.alpha = 0
+//            }, completion: { [weak self] _ in
+//                self?.play()
+//                self?.pauseImgView?.transform = .identity
+//            })
+//        }
+    }
+    
+    func resetViewsForReuse(){
+        likeButton.tintColor = .white
+//        pauseImgView?.alpha = 0
+    }
+    
+    
+    // MARK: - Actions
+    // Like Video Actions
+    @IBAction func like(_ sender: Any) {
+        if !liked {
+            likeVideo()
+        } else {
+            liked = false
+            likeButton.tintColor = .white
+        }
+        
+    }
+    
+    @objc func likeVideo(){
+        if !liked {
+            liked = true
+            likeButton.tintColor = .red
+        }
+    }
+    
+    // Heart Animation with random angle
+    @objc func handleLikeGesture(sender: UITapGestureRecognizer){
+        let location = sender.location(in: self)
+        let heartView = UIImageView(image: UIImage(named: "heart.fill"))
+        heartView.tintColor = .red
+        let width : CGFloat = 110
+        heartView.contentMode = .scaleAspectFit
+        heartView.frame = CGRect(x: location.x - width / 2, y: location.y - width / 2, width: width, height: width)
+        heartView.transform = CGAffineTransform(rotationAngle: CGFloat.random(in: -CGFloat.pi * 0.2...CGFloat.pi * 0.2))
+        self.contentView.addSubview(heartView)
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 3, options: [.curveEaseInOut], animations: {
+            heartView.transform = heartView.transform.scaledBy(x: 0.85, y: 0.85)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.4, delay: 0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 3, options: [.curveEaseInOut], animations: {
+                heartView.transform = heartView.transform.scaledBy(x: 2.3, y: 2.3)
+                heartView.alpha = 0
+            }, completion: { _ in
+                heartView.removeFromSuperview()
+            })
+        })
+        likeVideo()
     }
     
     

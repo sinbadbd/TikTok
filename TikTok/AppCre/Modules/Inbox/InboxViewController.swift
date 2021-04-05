@@ -1,8 +1,9 @@
 //
 //  InboxViewController.swift
-//  TikTok
+//  KD Tiktok-Clone
 //
-//  Created by Imran on 2/4/21.
+//  Created by Sam Ding on 9/8/20.
+//  Copyright © 2020 Kaishan. All rights reserved.
 //
 
 import UIKit

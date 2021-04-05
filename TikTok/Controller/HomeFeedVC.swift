@@ -6,27 +6,21 @@
 //
 
 import UIKit
-
 import Firebase
+import SnapKit
+import AVFoundation
+import RxSwift
+import Lottie
 
 @available(iOS 13.0, *)
 class HomeFeedVC: UIViewController {
     
+    let viewModel = HomeViewModel()
+    let disposeBag = DisposeBag()
+    var data = [Post]()
     
-    /*
-     let collectionView : UICollectionView = {
-     
-     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-     let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
-     let section = NSCollectionLayoutSection(group: group)
-     let flowLayout = UICollectionViewCompositionalLayout(section: section)
-     
-     let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-     return collection
-     
-     
-     }()
-     */
+    
+    
     var dataArray = [String:Any]()
     
     private let collectionView : UICollectionView = {
@@ -35,13 +29,37 @@ class HomeFeedVC: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collection
     }()
-    
+    lazy var loadingAnimation: AnimationView = {
+        let animationView = AnimationView(name: "LoadingAnimation")
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.contentMode = .scaleAspectFill
+        animationView.animationSpeed = 0.8
+        animationView.loopMode = .loop
+        self.view.addSubview(animationView)
+        self.view.bringSubviewToFront(animationView)
+        animationView.snp.makeConstraints({make in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(55)
+        })
+        return animationView
+    }()
     
     private var commentsView : CommnentsView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        view.backgroundColor = .red
+        
+        viewModel.setAudioMode()
+        setupUI()
+        setupBinding()
+        setupObservers()
+     
+        
+       
+        
+    }
+    func setupUI(){
+        
         view.addSubview(collectionView)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -57,41 +75,90 @@ class HomeFeedVC: UIViewController {
         view.insetsLayoutMarginsFromSafeArea = false
         
         //        homeCell?.delegate = self
-        var db: Firestore!
-        db = Firestore.firestore()
-        
-        db.collection("posts")
-            .addSnapshotListener { [self] querySnapShot, error in
-                guard let document = querySnapShot?.documents else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
- 
-                document.forEach { item in
-                   
-                    let data = item.data()
-                    dataArray = data
-                    print("item\(dataArray)")
-                    
-                    collectionView.reloadData()
-                }
-            }
+//        var db: Firestore!
+//        db = Firestore.firestore()
+//
+//        db.collection("posts")
+//            .addSnapshotListener { [self] querySnapShot, error in
+//                guard let document = querySnapShot?.documents else {
+//                    print("Error fetching document: \(error!)")
+//                    return
+//                }
+//
+//                document.forEach { item in
+//
+//                    let data = item.data()
+//                    dataArray = data
+//                    print("item\(dataArray)")
+//
+//                    collectionView.reloadData()
+//                }
+//            }
         // [END listen_document]
-        
-        
     }
     
-    
-    
+    /// Set up Binding
+    func setupBinding(){
+        // Posts
+        viewModel.posts
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { posts in
+                self.data = posts
+                self.collectionView.reloadData()
+            }).disposed(by: disposeBag)
+        
+        viewModel.isLoading
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { isLoading in
+                if isLoading {
+                    self.loadingAnimation.alpha = 1
+                    self.loadingAnimation.play()
+                } else {
+                    self.loadingAnimation.alpha = 0
+                    self.loadingAnimation.stop()
+                }
+            }).disposed(by: disposeBag)
+        
+        viewModel.error
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { err in
+                self.showAlert(err.localizedDescription)
+            }).disposed(by: disposeBag)
+        
+        ProfileViewModel.shared.cleardCache
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { cleard in
+                if cleard {
+                    //self.mainTableView.reloadData()
+                }
+            }).disposed(by: disposeBag)
+    }
+    func setupObservers(){
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+//        if let cell = mainTableView.visibleCells.first as? HomeTableViewCell {
+//            cell.play()
+//        }
+        if let cell = collectionView.visibleCells.first as? HomeCollectionViewCell {
+            cell.play()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        if let cell = collectionView.visibleCells.first as? HomeCollectionViewCell {
+            cell.pause()
+        }
     }
     
     @objc func slideUpViewTapped(){
@@ -109,27 +176,19 @@ class HomeFeedVC: UIViewController {
 @available(iOS 13.0, *)
 extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(" dataArray.count:\( dataArray.count)")
-        return dataArray.count
+//        print(" dataArray.count:\( dataArray.count)")
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identify, for: indexPath) as! HomeCollectionViewCell
-        
-//        let data = dataArray[indexPath.item]
-        
-        
-        cell.vedioLinkView.backgroundColor = .systemGreen
-        
-//        if indexPath.item % 2 == 0 {
-//            cell.vedioLinkView.backgroundColor = .systemGreen
-//        }else {
-//            cell.vedioLinkView.backgroundColor = .systemOrange
-//        }
-        
+
+        cell.configure(post: data[indexPath.row])
         cell.delegate = self
+//        cell.vedioLinkView.backgroundColor = .systemGreen
+
         return cell
     }
     
@@ -161,13 +220,7 @@ extension HomeFeedVC: HomeFeedButtonClickDeleget{
                                                 action: #selector(slideUpViewTapped))
         commentsView!.addGestureRecognizer(tapGesture)
         //
-        //        commentsView!.alpha = 0
-        //          UIView.animate(withDuration: 0.2,
-        //                         delay: 0, usingSpringWithDamping: 1.0,
-        //                         initialSpringVelocity: 1.0,
-        //                         options: .curveEaseInOut, animations: {
-        //                            self.commentsView?.alpha = 0.8
-        //          }, completion: nil)
+
         
     }
     

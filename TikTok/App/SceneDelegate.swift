@@ -19,15 +19,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         
  
-        guard let windowScne = (scene as? UIWindowScene) else { return }
+//        guard let windowScne = (scene as? UIWindowScene) else { return }
+//
+////        let vc = HomeFeedVC()
+//        let tabView =  TabBarViewController() //window.rootViewController = TabBarViewController()
+//
+//        let rootVC = UINavigationController(rootViewController: tabView)
+//        self.window = UIWindow(windowScene: windowScne)
+//        window?.rootViewController = rootVC
+//        window?.makeKeyAndVisible()
         
-//        let vc = HomeFeedVC()
-        let tabView =  TabBarViewController() //window.rootViewController = TabBarViewController()
-    
-        let rootVC = UINavigationController(rootViewController: tabView)
-        self.window = UIWindow(windowScene: windowScne)
-        window?.rootViewController = rootVC
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
+        
+        
     }
 
     @available(iOS 13.0, *)
