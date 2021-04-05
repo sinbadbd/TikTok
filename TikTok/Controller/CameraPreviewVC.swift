@@ -28,7 +28,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         return button
     }()
     
- 
+    
     let addSoundView     = UIView()
     
     let closeBtn         :  UIButton = {
@@ -171,14 +171,14 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         //        addStickersImgView.alpha = 1
         //        addStickersLbl.alpha = 1
         //
-//        filterViewRight(isHidden: true)
+        //        filterViewRight(isHidden: true)
         
         if let error = err {
             self.showAlert(error.localizedDescription)
         } else {
             self.videoURL = videoURL
         }
-//        self.cameraFilterView.isHidden = false
+        //        self.cameraFilterView.isHidden = false
         presentPlayerView()
     }
     
@@ -193,10 +193,25 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
             closeBtn.size(width:20,height: 20)
             closeBtn.tag = CameraTapItem.closeBtn.rawValue
             closeBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+            
+            
+            
+            let nextBtn = UIButton()
+            playerView?.addSubview(nextBtn)
+            nextBtn.position( bottom: playerView?.bottomAnchor, right: playerView?.trailingAnchor, insets: .init(top: 0, left: 0, bottom: 20, right: 20))
+            nextBtn.size(width:80,height: 40)
+            nextBtn.setTitle("Next", for: .normal)
+            
+            nextBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+            nextBtn.tag = CameraTapItem.nextBtnVc.rawValue
+            
             playerView?.play()
+            
+            
         }
         
     }
+    
     
     private func topHeaderView (){
         cameraTopView = CameraTopView()
@@ -211,7 +226,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         closeBtn.size(width:20,height: 20)
         closeBtn.tag = CameraTapItem.closeBtn.rawValue
         closeBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
-
+        
     }
     
     private func filterViewRight(isHidden:Bool?=false){
@@ -219,13 +234,13 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         view.addSubview(cameraFilterView!)
         cameraFilterView?.position(top: view.topAnchor, right: view.trailingAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 20))
         cameraFilterView?.size(width: 50, height: 300)
- 
+        
     }
     @objc func tapBtnTapped(_ sender:UIButton){
         
         UIView.animate(withDuration: 0.2) {
             sender.alpha = 0.5
-        } completion: { _ in
+        } completion: { [self] _ in
             sender.alpha = 1
             if sender.tag == CameraTapItem.addSoundbtn.rawValue {
                 print(sender.tag)
@@ -236,6 +251,15 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
             }else if sender.tag == CameraTapItem.closeBtn.rawValue {
                 print("\(sender.tag)")
                 self.dismiss(animated: true, completion: nil)
+            }else if (sender.tag == CameraTapItem.nextBtnVc.rawValue){
+                
+//                let vc = UIStoryboard(name: "MediaViews", bundle: nil).instantiateViewController(identifier: "MediaPostingVC") as! MediaPostingViewController
+                let vc = VedioPostVC()
+                guard let videoURL = self.videoURL else { return }
+                cameraManager.saveToLibrary(videoURL: videoURL)
+                vc.videoURL = videoURL
+                self.navigationController?.pushViewController(vc, animated: true)
+                
             }
         }
         
@@ -249,14 +273,14 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         view.addSubview(recBtn)
         recBtn.position( bottom: view.bottomAnchor)
         recBtn.size(width:100,height: 100)
-//        recBtn.backgroundColor = .blue
+        //        recBtn.backgroundColor = .blue
         recBtn.centerXInSuper()
         
         recBtn.addSubview(recordView!)
         recordView?.isUserInteractionEnabled = true
         recordView?.position(left:recBtn.leadingAnchor,bottom: recBtn.bottomAnchor,right: recBtn.trailingAnchor,insets: .init(top: 0, left: 0, bottom: 0, right: 0))
         recordView?.size(height: 100, dimensionHeight:view.widthAnchor)
-//        recordView?.backgroundColor = .green
+        //        recordView?.backgroundColor = .green
         recordView?.centerXInSuper()
         recordView?.layoutIfNeeded()
         let recordLongPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(recordBtnPressed(sender:)))
@@ -278,10 +302,10 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
     
     @objc func takePhoto(_ sender: UIButton) {
         print("hiii")
-
+        
     }
     func startRecording(){
-
+        
         recordView?.startRecordingAnimation()
         cameraManager.startRecording()
     }
@@ -316,15 +340,4 @@ extension CameraPreviewVC {
         recordLongPressGesture.minimumPressDuration = 0
         recordView?.addGestureRecognizer(recordLongPressGesture)
     }
-}
-@available(iOS 13.0, *)
-extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
-    //    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-    //        if let imageData = photo.fileDataRepresentation() {
-    //            self.image = UIImage(data: imageData)
-    //            print(imageData)
-    //
-    //        }
-    //    }
-    
 }

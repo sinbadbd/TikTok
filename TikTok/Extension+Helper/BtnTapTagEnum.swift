@@ -19,6 +19,7 @@ enum CameraTapItem: Int{
     case addSoundbtn
     case cameraSwitchbtn
     case filterBtn
+    case nextBtnVc
 }
 /*
  

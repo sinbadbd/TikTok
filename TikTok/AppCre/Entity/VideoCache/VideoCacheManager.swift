@@ -8,6 +8,7 @@
 
 import Foundation
 import CryptoKit
+import CommonCrypto
 import FirebaseStorage
 
 @available(iOS 13.0, *)
@@ -152,7 +153,7 @@ class VideoCacheManager: NSObject {
     // MARK: - Secure Hashing
     /// Get Disk Cache Path: encrypting the key with SHA-2 in pathName
     private func diskCachePathForKey(key: String, fileExtension: String?) -> String?{
-        let fileName = sha2(key: key)
+        let fileName = getHash(key) //sha2(key: key)
         var cachePathForKey = diskDirectoryURL?.appendingPathComponent(fileName).path
         if let fileExtension = fileExtension{
             cachePathForKey = cachePathForKey! + "." + fileExtension
@@ -169,5 +170,23 @@ class VideoCacheManager: NSObject {
         return hashString
     }
     
+    private func getHash(_ phrase:String) -> String{
+        let data = phrase.data(using: String.Encoding.utf8)!
+        let length = Int(CC_SHA256_DIGEST_LENGTH)
+        var digest = [UInt8](repeating: 0, count: length)
+        data.withUnsafeBytes {
+            _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &digest)
+        }
+        return digest.map { String(format: "%02x", $0) }.joined(separator: "")
+    }
+    
+    
+//    func sha256(data : Data) -> Data {
+//        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+//        data.withUnsafeBytes {
+//            _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
+//        }
+//        return Data(hash)
+//    }
 }
-
+ 

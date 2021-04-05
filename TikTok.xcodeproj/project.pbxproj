@@ -18,6 +18,9 @@
 		1D6F63D9261B4702000E7AA8 /* plus (3)@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63D7261B4702000E7AA8 /* plus (3)@3x.png */; };
 		1D6F63DC261B56CA000E7AA8 /* CameraTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63DB261B56CA000E7AA8 /* CameraTopView.swift */; };
 		1D6F63E0261B58C0000E7AA8 /* CameraFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63DF261B58C0000E7AA8 /* CameraFilterView.swift */; };
+		1D6F63E3261B79B4000E7AA8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */; };
+		1D6F63E6261B7A95000E7AA8 /* VedioPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */; };
+		1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */; };
 		1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */; };
 		1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */; };
 		1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */; };
@@ -125,6 +128,9 @@
 		1D6F63D7261B4702000E7AA8 /* plus (3)@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus (3)@3x.png"; sourceTree = "<group>"; };
 		1D6F63DB261B56CA000E7AA8 /* CameraTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTopView.swift; sourceTree = "<group>"; };
 		1D6F63DF261B58C0000E7AA8 /* CameraFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFilterView.swift; sourceTree = "<group>"; };
+		1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioPostVC.swift; sourceTree = "<group>"; };
+		1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedVC.swift; sourceTree = "<group>"; };
 		1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +277,8 @@
 				1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */,
 				1DBA99612610D8E200B1F264 /* SearchViewController.swift */,
 				1DD0FE422613612100736B91 /* UserProfileVC.swift */,
+				1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */,
+				1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,6 +341,7 @@
 		1DD0FE112613217200736B91 /* LottieAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */,
 				1DD0FE122613219000736B91 /* like-button.json */,
 			);
 			path = LottieAnimation;
@@ -660,6 +669,7 @@
 				1DD0FE312613469100736B91 /* house.fill.png in Resources */,
 				1DE10C782605D795003D3C7A /* flip.png in Resources */,
 				1DE10C742605D795003D3C7A /* image@3x.png in Resources */,
+				1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */,
 				1DD0FE402613479C00736B91 /* house.png in Resources */,
 				1DD0FE22261343FB00736B91 /* plus.circle.fill.png in Resources */,
 				1DDAED1A261779B20008A056 /* HomeTableViewCell.xib in Resources */,
@@ -768,12 +778,14 @@
 				1DDAED0D261779B20008A056 /* Number.swift in Sources */,
 				1DDAED1F261779B20008A056 /* ProfileSlideBarView.swift in Sources */,
 				1DDAED27261779B20008A056 /* CameraManager.swift in Sources */,
+				1D6F63E6261B7A95000E7AA8 /* VedioPostVC.swift in Sources */,
 				1DDAED0E261779B20008A056 /* URL.swift in Sources */,
 				1DDAED20261779B20008A056 /* ProfileCollectionViewCell.swift in Sources */,
 				1DD0FE8626138EA000736B91 /* CommnentsView.swift in Sources */,
 				1DDAED0B261779B20008A056 /* UserRequest.swift in Sources */,
 				1DDAED29261779B20008A056 /* AccessPermissionView.swift in Sources */,
 				1DD0FDD82612FB6B00736B91 /* TikTokButton.swift in Sources */,
+				1D6F63E3261B79B4000E7AA8 /* ProfileVC.swift in Sources */,
 				1DD0FE16261321B300736B91 /* LottieAnimationView.swift in Sources */,
 				1DDAED1D261779B20008A056 /* ProfileHeaderView.swift in Sources */,
 				1DD0FE8926139A8F00736B91 /* CommentsTableViewCell.swift in Sources */,
