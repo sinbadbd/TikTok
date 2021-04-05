@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommentTableViewCell: UITableViewCell {
+class CommentsTableViewCell: UITableViewCell {
     static let reuseIdentifier = "CommentTableViewCell"
     
     let profileImage = UIImageView()

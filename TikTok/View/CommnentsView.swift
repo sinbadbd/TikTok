@@ -7,11 +7,7 @@
 
 import UIKit
  
-enum CommnetItemButton : Int {
-    case hastagBtn
-    case emojiBtn
-    case askBtn
-}
+
 //extension NSAttributedString {
 //    func getPlainString() -> String? {
 //        var plainString = string
@@ -78,7 +74,7 @@ class CommnentsView: UIView, UITextViewDelegate {
         contentView.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.reuseIdentifier)
+        tableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.reuseIdentifier)
         
         tableView.fitToSuper()
         
@@ -233,7 +229,7 @@ extension CommnentsView: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.reuseIdentifier, for: indexPath) as!  CommentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommentsTableViewCell.reuseIdentifier, for: indexPath) as!  CommentsTableViewCell
         return cell
     }
     

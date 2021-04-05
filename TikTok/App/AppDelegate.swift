@@ -15,11 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?   // For iOS 12
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
- 
         
-        fireStoreDB()
+        FirebaseApp.configure()
         
-        let tabView =  TabBarViewController() //window.rootViewController = TabBarViewController()
+       // fireStoreDB()
+        
+        let tabView =  TabBarController() //window.rootViewController = TabBarViewController()
     
         let rootVC = UINavigationController(rootViewController: tabView)
 //        self.window = UIWindow(windowScene: windowScne)
