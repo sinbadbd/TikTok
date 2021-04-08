@@ -13,7 +13,7 @@ import UIKit
 class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     
     var homeNavigationController: BaseNavigationController!
-    var homeViewController: HomeFeedVC!
+    var homeViewController: HomeFeedVC!//VedioPostVC!//HomeFeedVC!
     var discoverViewController: DiscoverViewController!
     var mediaViewController: CameraPreviewVC!//MediaViewController!
     var inboxViewController: InboxViewController!
@@ -30,7 +30,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
 //        tabBar.unselectedItemTintColor = .gray
 //        tabBar.tintColor = .white
         
-        homeViewController = HomeFeedVC()
+        homeViewController = HomeFeedVC()//VedioPostVC()//HomeFeedVC()
         homeNavigationController = BaseNavigationController(rootViewController: homeViewController)
         discoverViewController = DiscoverViewController()
         mediaViewController = CameraPreviewVC()//MediaViewController()

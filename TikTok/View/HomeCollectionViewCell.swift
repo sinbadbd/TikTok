@@ -110,10 +110,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         leftContentView.size(width: 200)
         leftContentView.backgroundColor = .red
         
-        let name = "@Imr4nTheM4ad#$sdfsdfs"
-        let str = "sfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdfsdfsdfsfs"
-        let hashTag = "#tiktok #game #more #ios #android"
-        userName = TikTokLabel(text: "\(name)\n\n\(str)\n\(hashTag)", textColor: .white, fontSize: UIFont.boldSystemFont(ofSize: 12), textAlign: .left)
+//        let name = "@Imr4nTheM4ad#$sdfsdfs"
+//        let str = "sfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdfsdfsdfsfs"
+//        let hashTag = "#tiktok #game #more #ios #android"
+//        userName = TikTokLabel(text: "\(name)\n\n\(str)\n\(hashTag)", textColor: .white, fontSize: UIFont.boldSystemFont(ofSize: 12), textAlign: .left)
         leftContentView.addSubview(userName)
         
         

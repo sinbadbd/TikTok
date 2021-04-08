@@ -21,6 +21,8 @@
 		1D6F63E3261B79B4000E7AA8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */; };
 		1D6F63E6261B7A95000E7AA8 /* VedioPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */; };
 		1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */; };
+		1D6F64EA261CAFB8000E7AA8 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */; };
+		1D6F64EF261CC3A2000E7AA8 /* VedioPostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F64EE261CC3A2000E7AA8 /* VedioPostHeaderView.swift */; };
 		1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */; };
 		1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */; };
 		1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */; };
@@ -29,7 +31,6 @@
 		1DD0FDDB2612FBE000736B91 /* TikTokLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FDDA2612FBE000736B91 /* TikTokLabel.swift */; };
 		1DD0FDDE2612FBFF00736B91 /* TikTokTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FDDD2612FBFF00736B91 /* TikTokTextLabel.swift */; };
 		1DD0FE132613219000736B91 /* like-button.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE122613219000736B91 /* like-button.json */; };
-		1DD0FE16261321B300736B91 /* LottieAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE15261321B300736B91 /* LottieAnimationView.swift */; };
 		1DD0FE1926132A2F00736B91 /* TikTokImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FE1826132A2F00736B91 /* TikTokImage.swift */; };
 		1DD0FE1C261343DD00736B91 /* person.crop.circle.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE1B261343DD00736B91 /* person.crop.circle.fill.png */; };
 		1DD0FE1F261343EE00736B91 /* heart.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE1E261343EE00736B91 /* heart.fill.png */; };
@@ -131,6 +132,8 @@
 		1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioPostVC.swift; sourceTree = "<group>"; };
 		1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
+		1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		1D6F64EE261CC3A2000E7AA8 /* VedioPostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioPostHeaderView.swift; sourceTree = "<group>"; };
 		1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedVC.swift; sourceTree = "<group>"; };
 		1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -139,7 +142,6 @@
 		1DD0FDDA2612FBE000736B91 /* TikTokLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokLabel.swift; sourceTree = "<group>"; };
 		1DD0FDDD2612FBFF00736B91 /* TikTokTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokTextLabel.swift; sourceTree = "<group>"; };
 		1DD0FE122613219000736B91 /* like-button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "like-button.json"; sourceTree = "<group>"; };
-		1DD0FE15261321B300736B91 /* LottieAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationView.swift; sourceTree = "<group>"; };
 		1DD0FE1826132A2F00736B91 /* TikTokImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokImage.swift; sourceTree = "<group>"; };
 		1DD0FE1B261343DD00736B91 /* person.crop.circle.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.crop.circle.fill.png; sourceTree = "<group>"; };
 		1DD0FE1E261343EE00736B91 /* heart.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.fill.png; sourceTree = "<group>"; };
@@ -268,6 +270,14 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		1D6F64ED261CC380000E7AA8 /* VedioPost */ = {
+			isa = PBXGroup;
+			children = (
+				1D6F64EE261CC3A2000E7AA8 /* VedioPostHeaderView.swift */,
+			);
+			path = VedioPost;
+			sourceTree = "<group>";
+		};
 		1DBA99642610D9FD00B1F264 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +296,7 @@
 		1DBA99652610DA0D00B1F264 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D6F64ED261CC380000E7AA8 /* VedioPost */,
 				1D6F63DE261B58AE000E7AA8 /* Camera */,
 				1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */,
 				1DD0FE8526138EA000736B91 /* CommnentsView.swift */,
@@ -321,8 +332,8 @@
 				1DD0FF9926173BFB00736B91 /* Colors.swift */,
 				1DE10C8026060C33003D3C7A /* Helper.swift */,
 				1DE10C562605B8BE003D3C7A /* UIView+Extension.swift */,
-				1DD0FE15261321B300736B91 /* LottieAnimationView.swift */,
 				1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */,
+				1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */,
 			);
 			path = "Extension+Helper";
 			sourceTree = "<group>";
@@ -744,6 +755,7 @@
 				1DD0FDDE2612FBFF00736B91 /* TikTokTextLabel.swift in Sources */,
 				1DDAED22261779B20008A056 /* ProfileViewController.swift in Sources */,
 				1DBA99622610D8E200B1F264 /* SearchViewController.swift in Sources */,
+				1D6F64EA261CAFB8000E7AA8 /* LoadingAnimationView.swift in Sources */,
 				1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */,
 				1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */,
 				1DDAED21261779B20008A056 /* ProfileCollectionViewFlowLayout.swift in Sources */,
@@ -782,11 +794,11 @@
 				1DDAED0E261779B20008A056 /* URL.swift in Sources */,
 				1DDAED20261779B20008A056 /* ProfileCollectionViewCell.swift in Sources */,
 				1DD0FE8626138EA000736B91 /* CommnentsView.swift in Sources */,
+				1D6F64EF261CC3A2000E7AA8 /* VedioPostHeaderView.swift in Sources */,
 				1DDAED0B261779B20008A056 /* UserRequest.swift in Sources */,
 				1DDAED29261779B20008A056 /* AccessPermissionView.swift in Sources */,
 				1DD0FDD82612FB6B00736B91 /* TikTokButton.swift in Sources */,
 				1D6F63E3261B79B4000E7AA8 /* ProfileVC.swift in Sources */,
-				1DD0FE16261321B300736B91 /* LottieAnimationView.swift in Sources */,
 				1DDAED1D261779B20008A056 /* ProfileHeaderView.swift in Sources */,
 				1DD0FE8926139A8F00736B91 /* CommentsTableViewCell.swift in Sources */,
 				1DDAED23261779B20008A056 /* ProfileViewModel.swift in Sources */,
