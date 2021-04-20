@@ -9,9 +9,19 @@ import UIKit
 
 class VedioPostHeaderView: UIView,UITextViewDelegate {
     
-    var captionTextView = UITextView()
-    var placeholderLabel =  UILabel()
-    var coverImgView = UIImageView()
+    var captionTextView : UITextView = {
+        let captionView = UITextView()
+        return captionView
+    }()
+    private var placeholderLabel : UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private var coverImgView: UIImageView = {
+        let img = UIImageView()
+        return img
+    }()
     
     
     override init(frame: CGRect) {
@@ -21,12 +31,12 @@ class VedioPostHeaderView: UIView,UITextViewDelegate {
         addSubview(captionViewWithPicture)
         captionViewWithPicture.position(top: topAnchor, left: leadingAnchor,right: trailingAnchor,insets: .init(top: 10, left: 10, bottom: 0, right: 10))
        captionViewWithPicture.size(height:150)
-       captionViewWithPicture.backgroundColor = .blue
+//       captionViewWithPicture.backgroundColor = .blue
         
         
         captionViewWithPicture.addSubview(captionTextView)
         captionTextView.position(top: captionViewWithPicture.topAnchor, left: captionViewWithPicture.leadingAnchor, insets: .init(top: 0, left: 0, bottom: 0, right: 0))
-        captionTextView.size(width:250,height: 100)
+        captionTextView.size(width:230,height: 100)
         captionTextView.delegate = self
         captionTextView.backgroundColor = .red
         captionTextView.text = "Add description..."
@@ -39,6 +49,7 @@ class VedioPostHeaderView: UIView,UITextViewDelegate {
         //        pictureView.mask
         pictureView.backgroundColor = .green
         pictureView.position(top: captionViewWithPicture.topAnchor, left: captionTextView.trailingAnchor, bottom: captionViewWithPicture.bottomAnchor,right: captionViewWithPicture.trailingAnchor, insets: .init(top: 0, left: 10, bottom: 0, right: 0))
+        pictureView.layer.cornerRadius = 4
         //        pictureView.size(height:150)
         
         

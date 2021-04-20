@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+ import SwiftUI
 
 @available(iOS 13.0, *)
 class VedioPostVC: UIViewController {
@@ -96,3 +97,21 @@ class VedioPostVC: UIViewController {
     
     
 }
+// MARK: SwiftUI Preview
+#if DEBUG
+struct ContentViewControllerContainerView: UIViewControllerRepresentable {
+    typealias UIViewControllerType = ContentViewController
+
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        return VedioPostVC()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+}
+
+struct ContentViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentViewControllerContainerView().colorScheme(.light) // or .dark
+    }
+}
+#endif
