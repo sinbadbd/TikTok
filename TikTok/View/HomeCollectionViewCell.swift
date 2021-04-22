@@ -227,14 +227,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     func configure(post: Post){
         self.post = post
-        /*
-        nameBtn.setTitle("@" + post.autherName, for: .normal)
-        nameBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        musicLbl.text = post.music + "   " + post.music + "   " + post.music + "   "// Long enough to enable scrolling
-        captionLbl.text = post.caption
-        likeCountLbl.text = post.likeCount.shorten()
-        shareCountLbl.text = post.shareCount.shorten()
-        */
+
         
         likeButton.setTitle(post.likeCount.shorten(), for: .normal)
         shareButton.setTitle(post.shareCount.shorten(), for: .normal)
