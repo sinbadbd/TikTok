@@ -23,14 +23,14 @@ class MediaPlayerView: UIView{
     init(frame: CGRect, videoURL: URL) {
         super.init(frame: frame)
         self.clipsToBounds = true
-        self.layer.cornerRadius = 12.0
+        self.layer.cornerRadius = 0.0
         player = AVQueuePlayer()
         playerLayer = AVPlayerLayer(player: player)
         playerItem = AVPlayerItem(url: videoURL)
         playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
         playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         playerLayer.frame = self.layer.bounds
-        playerLayer.cornerRadius = 12.0
+        playerLayer.cornerRadius = 0.0
         self.layer.addSublayer(playerLayer)
     }
     

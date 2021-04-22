@@ -63,9 +63,9 @@ class VideoPlayerView: UIView {
         self.layer.addSublayer(self.avPlayerLayer)
     }
     
-    func configure(url: URL?, fileExtension: String?, size: (Int, Int)){
+    func configure(url: URL?, fileExtension: String?, size: (Int, Int)?){
         // If Height is larger than width, change the aspect ratio of the video
-        avPlayerLayer.videoGravity = (size.0 < size.1) ? .resizeAspectFill : .resizeAspect
+        avPlayerLayer.videoGravity = (size?.0 ?? 0 < size?.1 ?? 0) ? .resizeAspectFill : .resizeAspect
         self.layer.addSublayer(self.avPlayerLayer)
         
         

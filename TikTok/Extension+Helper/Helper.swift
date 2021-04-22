@@ -52,3 +52,6 @@ func getAttributedText(string:String, font:UIFont, color:UIColor, lineSpace:Floa
         attributes:[NSAttributedString.Key.font:font,NSAttributedString.Key.paragraphStyle:textStyle,NSAttributedString.Key.foregroundColor:color])
     return aMutableString
 }
+
+
+ 

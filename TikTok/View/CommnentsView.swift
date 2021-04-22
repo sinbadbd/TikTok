@@ -7,27 +7,6 @@
 
 import UIKit
  
-
-//extension NSAttributedString {
-//    func getPlainString() -> String? {
-//        var plainString = string
-//        var base = 0
-//
-//        enumerateAttribute(
-//            .attachment,
-//            in: NSRange(location: 0, length: length),
-//            options: [],
-//            using: { value, range, stop in
-//                if value != nil && (value is EmojiTextAttachment) {
-//                    if let subRange = Range<String.Index>(NSRange(location: range.location + base, length: range.length), in: plainString) { plainString.replaceSubrange(subRange, with: (value as? EmojiTextAttachment)?.emojiTag ?? "") }
-//                    base += ((value as? EmojiTextAttachment)?.emojiTag.length ?? 0) - 1
-//                }
-//            })
-//
-//        return plainString
-//    }
-//}
-
 class CommnentsView: UIView, UITextViewDelegate {
     
     let contentView = UIView()

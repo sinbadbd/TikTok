@@ -19,7 +19,6 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
     
     
     var previewView = UIView()
-    var captureImageView = UIImageView()
     
     let captureButton :  UIButton = {
         let button = UIButton()
@@ -38,17 +37,6 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         
         return button
     }()
-    
-    var captureSession = AVCaptureSession()
-    var backCamera: AVCaptureDevice?
-    var frontCamera: AVCaptureDevice?
-    var currentCamrera: AVCaptureDevice?
-    
-    var photoOutput: AVCapturePhotoOutput?
-    
-    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
-    
-    var image: UIImage?
     
     
     /*
@@ -252,14 +240,10 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
                 print("\(sender.tag)")
                 self.dismiss(animated: true, completion: nil)
             }else if (sender.tag == CameraTapItem.nextBtnVc.rawValue){
-                
-//                let vc = UIStoryboard(name: "MediaViews", bundle: nil).instantiateViewController(identifier: "MediaPostingVC") as! MediaPostingViewController
                 let vc = VedioPostVC()
                 guard let videoURL = self.videoURL else { return }
-                cameraManager.saveToLibrary(videoURL: videoURL)
                 vc.videoURL = videoURL
                 self.navigationController?.pushViewController(vc, animated: true)
-                
             }
         }
         

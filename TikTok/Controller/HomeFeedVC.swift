@@ -15,6 +15,11 @@ import Lottie
 @available(iOS 13.0, *)
 class HomeFeedVC: UIViewController {
     
+    
+    @objc dynamic var currentIndex = 0
+    var oldAndNewIndices = (0,0)
+    
+    
     let viewModel = HomeViewModel()
     let disposeBag = DisposeBag()
     var data = [Post]()
@@ -69,32 +74,11 @@ class HomeFeedVC: UIViewController {
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identify)
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
-        
+        collectionView.reloadData()
         
         self.navigationController?.isNavigationBarHidden = true
         view.insetsLayoutMarginsFromSafeArea = false
-        
-        //        homeCell?.delegate = self
-//        var db: Firestore!
-//        db = Firestore.firestore()
-//
-//        db.collection("posts")
-//            .addSnapshotListener { [self] querySnapShot, error in
-//                guard let document = querySnapShot?.documents else {
-//                    print("Error fetching document: \(error!)")
-//                    return
-//                }
-//
-//                document.forEach { item in
-//
-//                    let data = item.data()
-//                    dataArray = data
-//                    print("item\(dataArray)")
-//
-//                    collectionView.reloadData()
-//                }
-//            }
-        // [END listen_document]
+  
     }
     
     /// Set up Binding
@@ -113,11 +97,15 @@ class HomeFeedVC: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { isLoading in
                 if isLoading {
-                    self.loadingAnimation.alpha = 1
-                    self.loadingAnimation.play()
+//                    self.loadingAnimation.alpha = 1
+//                    self.loadingAnimation.play()
+                    customActivityIndicatory(self.view, startAnimate: true)
+                    //hide activityIndicatorView
+                   
                 } else {
-                    self.loadingAnimation.alpha = 0
-                    self.loadingAnimation.stop()
+//                    self.loadingAnimation.alpha = 0
+//                    self.loadingAnimation.stop()
+                    customActivityIndicatory(self.view, startAnimate: false)
                 }
             }).disposed(by: disposeBag)
         
@@ -144,9 +132,7 @@ class HomeFeedVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-//        if let cell = mainTableView.visibleCells.first as? HomeTableViewCell {
-//            cell.play()
-//        }
+//
         if let cell = collectionView.visibleCells.first as? HomeCollectionViewCell {
             cell.play()
         }
@@ -186,6 +172,7 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identify, for: indexPath) as! HomeCollectionViewCell
 
         cell.configure(post: data[indexPath.row])
+        cell.play()
         cell.delegate = self
 //        cell.vedioLinkView.backgroundColor = .systemGreen
 
@@ -201,6 +188,18 @@ extension HomeFeedVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return 0
     }
 }
+// MARK: - ScrollView Extension
+@available(iOS 13.0, *)
+extension HomeFeedVC: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        //let cell = self.collectionView.cellForRow(at: IndexPath(row: self.currentIndex, section: 0)) as? HomeCollectionViewCell
+        let cell = self.collectionView.cellForItem(at: IndexPath(row: self.currentIndex, section: 0)) as? HomeCollectionViewCell
+        cell?.replay()
+    }
+    
+}
+
+
 //@available(iOS 13.0, *)
 @available(iOS 13.0, *)
 extension HomeFeedVC: HomeFeedButtonClickDeleget{
