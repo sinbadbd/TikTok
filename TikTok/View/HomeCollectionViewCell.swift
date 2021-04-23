@@ -28,10 +28,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     
     
-//    let vedioLinkView : UIView = {
-//        let vedio = UIView()
-//        return vedio
-//    }()
+    //    let vedioLinkView : UIView = {
+    //        let vedio = UIView()
+    //        return vedio
+    //    }()
     
     let VStackView : UIStackView = {
         let stackview = UIStackView()
@@ -61,17 +61,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private(set) var liked = false
     var post: Post?
     
-//    var pauseImgView: UIImageView?{
-//        didSet{
-//            pauseImgView?.alpha = 0
-//        }
-//    }
-    
-    
-//    weak var delegate: HomeCellNavigationDelegate?
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -85,15 +74,14 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     
     func setupUI(){
-//        addSubview(vedioLinkView)
-//        vedioLinkView.fitToSuper()
+        
         playerView = VideoPlayerView()
         addSubview(playerView!)
         playerView?.fitToSuper()
         
         addSubview(VStackView)
         
-//        vedioLinkView.backgroundColor = .darkGray
+        //        vedioLinkView.backgroundColor = .darkGray
         
         var bottomPadding:CGFloat = 0
         
@@ -109,11 +97,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         leftContentView.position( left: leadingAnchor, bottom: bottomAnchor, right: VStackView.trailingAnchor,insets: .init(top: 0, left: 20, bottom: bottomPadding, right: 90))
         leftContentView.size(width: 200)
         leftContentView.backgroundColor = .red
-        
-//        let name = "@Imr4nTheM4ad#$sdfsdfs"
-//        let str = "sfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdfsdfsdfsfs"
-//        let hashTag = "#tiktok #game #more #ios #android"
-//        userName = TikTokLabel(text: "\(name)\n\n\(str)\n\(hashTag)", textColor: .white, fontSize: UIFont.boldSystemFont(ofSize: 12), textAlign: .left)
+
         leftContentView.addSubview(userName)
         
         
@@ -220,14 +204,14 @@ class HomeCollectionViewCell: UICollectionViewCell {
         VStackView.addArrangedSubview(VStackShareView)
         VStackView.addArrangedSubview(userProfileView)
         
-//        pauseImgView = UIImageView()
-//        addSubview(pauseImgView!)
-//        pauseImgView?.fitToSuper()
-//        pauseImgView?.size(width:50, height: 50)
+        //        pauseImgView = UIImageView()
+        //        addSubview(pauseImgView!)
+        //        pauseImgView?.fitToSuper()
+        //        pauseImgView?.size(width:50, height: 50)
     }
     func configure(post: Post){
         self.post = post
-
+        
         
         likeButton.setTitle(post.likeCount.shorten(), for: .normal)
         shareButton.setTitle(post.shareCount.shorten(), for: .normal)
@@ -267,7 +251,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
             }
             
         }
-
+        
         
     }
     
@@ -281,7 +265,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     func play() {
         if !isPlaying {
             playerView?.play()
-//            musicLbl.holdScrolling = false
+            //            musicLbl.holdScrolling = false
             isPlaying = true
         }
     }
@@ -289,36 +273,36 @@ class HomeCollectionViewCell: UICollectionViewCell {
     func pause(){
         if isPlaying {
             playerView?.pause()
-//            musicLbl.holdScrolling = true
+            //            musicLbl.holdScrolling = true
             isPlaying = false
         }
     }
     
     @objc func handlePause(){
-//        if isPlaying {
-//            // Pause video and show pause sign
-//            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseIn, animations: { [weak self] in
-//                guard let self = self else { return }
-//                self.pauseImgView?.alpha = 0.35
-//                self.pauseImgView?.transform = CGAffineTransform.init(scaleX: 0.45, y: 0.45)
-//            }, completion: { [weak self] _ in
-//                self?.pause()
-//            })
-//        } else {
-//            // Start video and remove pause sign
-//            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
-//                guard let self = self else { return }
-//                self.pauseImgView?.alpha = 0
-//            }, completion: { [weak self] _ in
-//                self?.play()
-//                self?.pauseImgView?.transform = .identity
-//            })
-//        }
+        //        if isPlaying {
+        //            // Pause video and show pause sign
+        //            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseIn, animations: { [weak self] in
+        //                guard let self = self else { return }
+        //                self.pauseImgView?.alpha = 0.35
+        //                self.pauseImgView?.transform = CGAffineTransform.init(scaleX: 0.45, y: 0.45)
+        //            }, completion: { [weak self] _ in
+        //                self?.pause()
+        //            })
+        //        } else {
+        //            // Start video and remove pause sign
+        //            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
+        //                guard let self = self else { return }
+        //                self.pauseImgView?.alpha = 0
+        //            }, completion: { [weak self] _ in
+        //                self?.play()
+        //                self?.pauseImgView?.transform = .identity
+        //            })
+        //        }
     }
     
     func resetViewsForReuse(){
         likeButton.tintColor = .white
-//        pauseImgView?.alpha = 0
+        //        pauseImgView?.alpha = 0
     }
     
     

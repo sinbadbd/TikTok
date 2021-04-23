@@ -8,6 +8,9 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import ADEUMInstrumentation
+
+
 @available(iOS 13.0, *)
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBar.barTintColor = UIColor.clear
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
+        
+        
+        AppDynamicConfiguration()
+        
+        
         return true
     }
 
@@ -50,6 +58,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+    func AppDynamicConfiguration(){
+        
+//        let config = ADEumAgentConfiguration(appKey: "")
+//        config.collectorURL = "https://col.eum-appdynamics.com"
+//        config.screenshotURL = "https://image.eum-appdynamics.com"
+//        ADEumInstrumentation.initWith(config)
     }
 
     func fireStoreDB(){
