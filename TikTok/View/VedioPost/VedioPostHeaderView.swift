@@ -173,7 +173,6 @@ class VedioPostHeaderView: UIView,UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if captionTextView.text == "Add description..." {
             captionTextView.text = ""
-            captionTextView.textColor = UIColor.black
         }
     }
     

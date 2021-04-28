@@ -41,11 +41,7 @@ class CommentsTableViewCell: UITableViewCell {
         
         addSubview(commentsLabel)
         commentsLabel.position(top: topAnchor, left: profileImage.trailingAnchor, bottom: bottomAnchor , insets: .init(top: 10, left: 10, bottom: 10, right: 0))
-//        commentsLabel.backgroundColor = .blue
-//
-//
-//
-//        commentsLabel.text = "hahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdffhahahahahahahahahahahahahahahdfsfsdfsfsffdff"
+ 
         commentsLabel.numberOfLines = 0
         commentsLabel.size(width:280)
         

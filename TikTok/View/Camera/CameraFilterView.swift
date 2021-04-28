@@ -9,6 +9,9 @@ import UIKit
 
 class CameraFilterView: UIView {
     
+    let cameraManager = CameraManager()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -21,7 +24,7 @@ class CameraFilterView: UIView {
         let btnImage = UIImage(named: "flip")
         flipButton.setImage(btnImage , for: .normal)
         flipButton.setImageTintColor(UIColor.white)
-//        flipButton.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+        flipButton.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
         flipButton.tag = CameraTapItem.cameraSwitchbtn.rawValue
         
         let speedButton = UIButton()
@@ -32,7 +35,7 @@ class CameraFilterView: UIView {
         let speedButtonBtnImage = UIImage(named: "speed")
         speedButton.setImage(speedButtonBtnImage , for: .normal)
         speedButton.setImageTintColor(UIColor.white)
-//        speedButton.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+         speedButton.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
         speedButton.tag =  CameraTapItem.addSoundbtn.rawValue
         
         
@@ -50,6 +53,13 @@ class CameraFilterView: UIView {
         
         
         
+    }
+    @objc func tapBtnTapped(_ sender:UIButton){
+        if sender.tag == CameraTapItem.cameraSwitchbtn.rawValue {
+            print(sender.tag)
+//            cameraManager.switchCamera()
+ 
+         }
     }
     
     required init?(coder: NSCoder) {

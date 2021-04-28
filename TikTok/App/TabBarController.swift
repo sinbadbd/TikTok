@@ -19,7 +19,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     var inboxViewController: InboxViewController!
     var profileViewController: ProfileViewController!
 
-    
+    var recordViewController: RecordViewController! //MARK::
     //MARK: - LifeCycles
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         inboxViewController = InboxViewController()
         profileViewController = ProfileViewController()
      
-        
+        recordViewController = RecordViewController()
         homeViewController.tabBarItem.image = UIImage(named: "house")
         homeViewController.tabBarItem.selectedImage = UIImage(named: "house.fill")
         

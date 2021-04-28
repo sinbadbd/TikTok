@@ -58,10 +58,7 @@ class HomeFeedVC: UIViewController {
         setupUI()
         setupBinding()
         setupObservers()
-     
-        
-       
-        
+
     }
     func setupUI(){
         
