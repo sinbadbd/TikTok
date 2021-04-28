@@ -21,5 +21,4 @@ pod 'SnapKit'
 pod 'RxSwift', '~> 5'
 pod 'MarqueeLabel'
 pod 'lottie-ios'
-pod 'AppDynamicsAgent'
 end
