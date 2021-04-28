@@ -13,7 +13,7 @@ import AVKit
 
 class RecordViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
-    @IBOutlet weak var recordButton: UIButton!
+    let recordButton =  UIButton()
     
     let captureSession = AVCaptureSession()
     var backCamera: AVCaptureDevice?
@@ -50,6 +50,13 @@ class RecordViewController: UIViewController, AVCaptureFileOutputRecordingDelega
         zoomOutGestureRecognizer.direction = .left
         zoomOutGestureRecognizer.addTarget(self, action: #selector(zoomOut))
         view.addGestureRecognizer(zoomOutGestureRecognizer)
+        
+        view.addSubview(recordButton)
+        recordButton.position(bottom: view.bottomAnchor, insets: .init(top: 0, left: 0, bottom: 50, right: 0))
+        recordButton.size(width:50,height: 50)
+        recordButton.backgroundColor = .red
+        recordButton.centerXInSuper()
+        recordButton.addTarget(self, action: #selector(capture), for: .touchUpInside)
     }
     
     func setupCaptureSession() {
@@ -94,12 +101,9 @@ class RecordViewController: UIViewController, AVCaptureFileOutputRecordingDelega
         captureSession.startRunning()
     }
     // MARK: - Action methods
+   
     
-    @IBAction func unwindToCamera(segue:UIStoryboardSegue) {
-        
-    }
-    
-    @IBAction func capture(sender: UIButton) {
+  @objc  func capture(sender: UIButton) {
         if !isRecording {
             isRecording = true
             
@@ -129,7 +133,7 @@ class RecordViewController: UIViewController, AVCaptureFileOutputRecordingDelega
             return
         }
         
-        performSegue(withIdentifier: "playVideo", sender: outputFileURL)
+//        performSegue(withIdentifier: "playVideo", sender: outputFileURL)
     }
     
     
@@ -194,12 +198,12 @@ class RecordViewController: UIViewController, AVCaptureFileOutputRecordingDelega
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "playVideo" {
-            let videoPlayerViewController = segue.destination as! AVPlayerViewController
-            let videoFileURL = sender as! URL
-            videoPlayerViewController.player = AVPlayer(url: videoFileURL)
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "playVideo" {
+//            let videoPlayerViewController = segue.destination as! AVPlayerViewController
+//            let videoFileURL = sender as! URL
+//            videoPlayerViewController.player = AVPlayer(url: videoFileURL)
+//        }
+//    }
 }
 

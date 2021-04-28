@@ -26,7 +26,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
     /// Capture session with customized settings
     var captureSession: AVCaptureSession?
     /// Capture Device with customized settings
-    var captureDevice: AVCaptureDevice!
+    var captureDevice: AVCaptureDevice?
     /// Access Permission to both Camera and Microphone
     var cameraAndAudioAccessPermitted: Bool!
     /// Parent View that contains preview layer
@@ -38,6 +38,15 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
     fileprivate var movieOutput: AVCaptureMovieFileOutput?
     fileprivate var previewLayer: AVCaptureVideoPreviewLayer?
     fileprivate var photoLibrary: PHPhotoLibrary?
+    
+    var toggleCameraGestureRecognizer = UISwipeGestureRecognizer()
+    
+    
+    var backCamera: AVCaptureDevice?
+    var frontCamera: AVCaptureDevice?
+//    var currentDevice: AVCaptureDevice?
+    
+    
     fileprivate var tempFilePath: URL {
         get{
             let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("tempMovie\(Date())").appendingPathExtension(VIDEO_FILE_EXTENSION)
@@ -62,16 +71,22 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
             if let previewLayer = previewLayer {
                 previewLayer.removeFromSuperlayer()
             }
-            setupCamera {
+            setupCamera { [self] in
                 self.embeddingView = view
                 DispatchQueue.main.async {
                     guard let previewLayer = self.previewLayer else { return }
                     previewLayer.frame = view.layer.bounds
                     view.clipsToBounds = true
                     view.layer.addSublayer(previewLayer)
+                    
+                    /*
+                    toggleCameraGestureRecognizer.direction = .up
+                    toggleCameraGestureRecognizer.addTarget(self, action: #selector(self.switchCamera))
+                    view.addGestureRecognizer(toggleCameraGestureRecognizer)
+                    */
                 }
+               
             }
-
         }
     }
     
@@ -96,15 +111,33 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
     fileprivate func setupCamera(completion: @escaping RegularCompletionBlock){
         captureSession = AVCaptureSession()
         
-        guard let device = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .back) else { return }
-        captureDevice = device
+        
+        
+//        guard let device = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .back) else { return }
+//
+//        captureDevice = device
+        
+        
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+        let devices = deviceDiscoverySession.devices
+        
+        for device in devices {
+            if device.position == AVCaptureDevice.Position.back {
+                backCamera = device
+            } else if device.position == AVCaptureDevice.Position.front {
+                frontCamera = device
+            }
+        }
+        captureDevice = backCamera
+        
+        
         
         guard let audioDevice = AVCaptureDevice.default(for: .audio) else { return }
         
         var deviceInput: AVCaptureDeviceInput!
         var audioDeviceInput: AVCaptureDeviceInput!
         do {
-            deviceInput = try AVCaptureDeviceInput(device: captureDevice)
+            deviceInput = try AVCaptureDeviceInput(device: captureDevice!)
             guard deviceInput != nil else {
                 print("error: cant get deviceInput")
                 return
@@ -153,6 +186,36 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
             print("Device Input Error: \(error.localizedDescription)")
         }
         
+    }
+    
+    @objc func switchCamera() {
+        captureSession?.beginConfiguration()
+        
+        // Change the device based on the current camera
+        let newDevice = (captureDevice?.position == AVCaptureDevice.Position.back) ? frontCamera : backCamera
+        print("newDevice:\(newDevice)")
+        // Remove all inputs from the session
+        captureSession = AVCaptureSession()
+        for input in captureSession!.inputs {
+            captureSession?.removeInput(input as! AVCaptureDeviceInput)
+        }
+        
+        // Change to the new input
+        let cameraInput:AVCaptureDeviceInput?
+        
+        do {
+            cameraInput = try AVCaptureDeviceInput(device: newDevice!)
+        } catch {
+            print(error)
+            return
+        }
+        
+        if ((captureSession?.canAddInput(cameraInput!)) != nil) {
+            captureSession?.addInput(cameraInput!)
+        }
+        
+        captureDevice = newDevice
+        captureSession?.commitConfiguration()
     }
     
     

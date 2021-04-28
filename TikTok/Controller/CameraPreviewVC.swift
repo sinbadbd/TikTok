@@ -225,7 +225,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         
     }
     @objc func tapBtnTapped(_ sender:UIButton){
-        
+        print("sender:\(sender)")
         UIView.animate(withDuration: 0.2) {
             sender.alpha = 0.5
         } completion: { [self] _ in
@@ -234,6 +234,9 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
                 print(sender.tag)
             } else if sender.tag == CameraTapItem.cameraSwitchbtn.rawValue {
                 print(sender.tag)
+//                cameraFilterView = CameraFilterView()
+//                cameraFilterView.ca
+//                cameraManager.setupDevice()
             } else if sender.tag == CameraTapItem.filterBtn.rawValue {
                 print(sender.tag)
             }else if sender.tag == CameraTapItem.closeBtn.rawValue {
