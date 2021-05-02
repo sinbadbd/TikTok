@@ -355,7 +355,7 @@ extension CameraPreviewVC: CameraFilterProtocol {
 
 //        
         filterView.position(bottom: view.bottomAnchor)
-        filterView.size(  height: 200, dimensionWidth: view.widthAnchor)
+        filterView.size(  height: 160, dimensionWidth: view.widthAnchor)
     
         
         if ( self.view?.viewWithTag(100) != nil ){

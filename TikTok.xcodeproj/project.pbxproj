@@ -12,6 +12,7 @@
 		1D0EBEDC263DBE1100B17FD4 /* CameraFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */; };
 		1D0EBEDE263DDE7900B17FD4 /* FilterCameraDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */; };
 		1D0EBEE0263E833800B17FD4 /* FilterCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */; };
+		1D0EBEE2263EB2D300B17FD4 /* disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0EBEE1263EB2D300B17FD4 /* disabled.png */; };
 		1D6F63BE261B2C1E000E7AA8 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BC261B2C1E000E7AA8 /* close@3x.png */; };
 		1D6F63BF261B2C1E000E7AA8 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BD261B2C1E000E7AA8 /* close@2x.png */; };
 		1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */; };
@@ -127,6 +128,7 @@
 		1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFilterView.swift; sourceTree = "<group>"; };
 		1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraDesignView.swift; sourceTree = "<group>"; };
 		1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraCollectionViewCell.swift; sourceTree = "<group>"; };
+		1D0EBEE1263EB2D300B17FD4 /* disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled.png; sourceTree = "<group>"; };
 		1D6F63BC261B2C1E000E7AA8 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		1D6F63BD261B2C1E000E7AA8 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnTapTagEnum.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 				1DE10C5D2605CE15003D3C7A /* capture-button@3x.png */,
 				1D0EBED7263DBC7900B17FD4 /* turn-off.png */,
 				1D0EBED9263DBCB700B17FD4 /* flash.png */,
+				1D0EBEE1263EB2D300B17FD4 /* disabled.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				1D6F63BE261B2C1E000E7AA8 /* close@3x.png in Resources */,
 				1DD0FE36261346A600736B91 /* magnifyingglass.circle.png in Resources */,
 				1D6F63CC261B386C000E7AA8 /* plus@2x.png in Resources */,
+				1D0EBEE2263EB2D300B17FD4 /* disabled.png in Resources */,
 				1DD0FE1C261343DD00736B91 /* person.crop.circle.fill.png in Resources */,
 				1DE10C772605D795003D3C7A /* speed.png in Resources */,
 				1DE10C752605D795003D3C7A /* pocket-watch@2x.png in Resources */,

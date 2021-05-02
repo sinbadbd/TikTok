@@ -7,8 +7,9 @@
 
 import UIKit
 
-protocol didSelectIndexItem :AnyObject{
+@objc protocol didSelectIndexItem :AnyObject{
     func tapItem(index:Int)
+    @objc optional func closeButtonView()
 }
 
 
@@ -18,7 +19,7 @@ class FilterCameraDesignView: UIView {
     
     let filterView : UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -38,31 +39,33 @@ class FilterCameraDesignView: UIView {
         return collection
     }()
     
+    let closeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "disabled"), for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         delegate = self
-        
-        
-        
         setupUI()
         setupDelegate()
     }
     
     private func setupUI(){
         
-        addSubview(mainContentView)
-        //                mainContentView.fitToSuper()
-        //                let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleDismiss))
-        //                mainContentView.addGestureRecognizer(tapGesture)
-        //
-        //
-        //                mainContentView.addSubview(filterView)
-        //                filterView.position( left: mainContentView.leadingAnchor, bottom: mainContentView.bottomAnchor, right: mainContentView.trailingAnchor)
-        //                filterView.size(height:200)
+       
         
         addSubview(filterView)
         filterView.position( left:  leadingAnchor, bottom:   bottomAnchor, right:  trailingAnchor)
         filterView.size(height:200)
+        
+        filterView.addSubview(closeButton)
+        closeButton.position(top: filterView.topAnchor, left: filterView.leadingAnchor, insets: .init(top: 5, left: 10, bottom: 0, right: 0))
+        closeButton.size(width:50,height: 30)
+        closeButton.isUserInteractionEnabled = true
+        closeButton.addTarget(self, action: #selector(dissmissView), for: .touchUpInside)
+        delegate?.closeButtonView?()
     }
     
     private func setupDelegate(){
@@ -71,15 +74,19 @@ class FilterCameraDesignView: UIView {
         
         collectionView.position(left: filterView.leadingAnchor, bottom: filterView.bottomAnchor, right: filterView.trailingAnchor, insets: .init(top: 0, left: 10, bottom: 10, right: 0))
         //        collectionView.fitToSuper()
-        collectionView.size(height:80)
+        collectionView.size(height:120)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
-        collectionView.backgroundColor = .blue
-        
+        collectionView.backgroundColor = .green
+        collectionView.allowsMultipleSelection = false
         
     }
     
+    @objc func dissmissView(_ sender: UIButton){
+        print(sender.tag)
+        removeFromSuperview()
+    }
     
     @objc func handleDismiss(){
         //       removeFromSuperview()
@@ -121,10 +128,13 @@ extension FilterCameraDesignView: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.tapItem(index: indexPath.item)
-        
-        print(indexPath.item)
-        
+        if let cell = collectionView.cellForItem(at: indexPath) as? FilterCameraCollectionViewCell {
+            //            cell.contentView.backgroundColor = .blue
+            cell.isSelected = (indexPath.item != 0)
+            let index = indexPath.item
+            self.delegate?.tapItem(index: index)
+            
+        }
     }
     
     
@@ -134,4 +144,7 @@ extension FilterCameraDesignView: didSelectIndexItem{
         print("index: \(index)")
     }
     
+    func closeButtonView(){
+        removeFromSuperview()
+    }
 }
