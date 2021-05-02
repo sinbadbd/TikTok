@@ -56,6 +56,7 @@ class RecordViewController: UIViewController, AVCaptureFileOutputRecordingDelega
         recordButton.size(width:50,height: 50)
         recordButton.backgroundColor = .red
         recordButton.centerXInSuper()
+        recordButton.layer.cornerRadius = 25
         recordButton.addTarget(self, action: #selector(capture), for: .touchUpInside)
     }
     

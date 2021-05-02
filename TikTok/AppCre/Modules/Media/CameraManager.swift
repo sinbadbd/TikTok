@@ -16,7 +16,7 @@ typealias AccessPermissionCompletionBlock = (Bool) -> Void
 /// No input and returns nothing
 typealias RegularCompletionBlock = () -> Void
 /// Finish Recording Completion Block: URL(*Path to the video*), Error
-protocol RecordingDelegate: class {
+protocol RecordingDelegate: AnyObject {
     func finishRecording(_ videoURL: URL?, _ err: Error?)
 }
 
@@ -44,7 +44,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     var backCamera: AVCaptureDevice?
     var frontCamera: AVCaptureDevice?
-//    var currentDevice: AVCaptureDevice?
+    //    var currentDevice: AVCaptureDevice?
     
     
     fileprivate var tempFilePath: URL {
@@ -59,7 +59,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
     override init() {
         super.init()
         cameraAndAudioAccessPermitted = (AVCaptureDevice.authorizationStatus(for: .video) == .authorized) &&
-                                        (AVCaptureDevice.authorizationStatus(for: .audio) == .authorized)
+            (AVCaptureDevice.authorizationStatus(for: .audio) == .authorized)
         photoLibrary = PHPhotoLibrary.shared()
     }
     
@@ -80,12 +80,12 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
                     view.layer.addSublayer(previewLayer)
                     
                     /*
-                    toggleCameraGestureRecognizer.direction = .up
-                    toggleCameraGestureRecognizer.addTarget(self, action: #selector(self.switchCamera))
-                    view.addGestureRecognizer(toggleCameraGestureRecognizer)
-                    */
+                     toggleCameraGestureRecognizer.direction = .up
+                     toggleCameraGestureRecognizer.addTarget(self, action: #selector(self.switchCamera))
+                     view.addGestureRecognizer(toggleCameraGestureRecognizer)
+                     */
                 }
-               
+                
             }
         }
     }
@@ -107,15 +107,9 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         removeAllTempFiles()
     }
     
-
+    
     fileprivate func setupCamera(completion: @escaping RegularCompletionBlock){
         captureSession = AVCaptureSession()
-        
-        
-        
-//        guard let device = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .back) else { return }
-//
-//        captureDevice = device
         
         
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
@@ -193,7 +187,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         // Change the device based on the current camera
         let newDevice = (captureDevice?.position == AVCaptureDevice.Position.back) ? frontCamera : backCamera
-        print("newDevice:\(newDevice)")
+        print("newDevice:\(String(describing: newDevice))")
         // Remove all inputs from the session
         captureSession = AVCaptureSession()
         for input in captureSession!.inputs {
@@ -204,7 +198,9 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         let cameraInput:AVCaptureDeviceInput?
         
         do {
+            
             cameraInput = try AVCaptureDeviceInput(device: newDevice!)
+            print("cameraInput:::\(String(describing: cameraInput))")
         } catch {
             print(error)
             return
@@ -217,7 +213,37 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         captureDevice = newDevice
         captureSession?.commitConfiguration()
     }
-    
+    var isFlash:Bool = false
+    func isCameraFlushEnable(flashToggle:Bool){
+        let avDevice = AVCaptureDevice.default(for: AVMediaType.video)
+
+        // check if the device has torch
+        if ((avDevice?.hasTorch) != nil) {
+            // lock your device for configuration
+            do {
+                let _: ()? = try avDevice?.lockForConfiguration()
+            } catch {
+                print("aaaa")
+            }
+
+            // check if your torchMode is on or off. If on turns it off otherwise turns it on
+            if isFlash == true {
+                avDevice?.torchMode = AVCaptureDevice.TorchMode.off
+                isFlash = false
+            } else {
+                // sets the torch intensity to 100%
+                do {
+                    let _: ()? = try avDevice?.setTorchModeOn(level: 1.0)
+                    isFlash = true
+                } catch {
+                    print("bbb")
+                }
+            //    avDevice.setTorchModeOnWithLevel(1.0, error: nil)
+            }
+            // unlock your device
+            avDevice?.unlockForConfiguration()
+        }
+    }
     
     fileprivate func setupPreviewLayer(){
         // Preview Layer

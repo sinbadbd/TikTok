@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0EBED8263DBC7900B17FD4 /* turn-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0EBED7263DBC7900B17FD4 /* turn-off.png */; };
+		1D0EBEDA263DBCB800B17FD4 /* flash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0EBED9263DBCB700B17FD4 /* flash.png */; };
+		1D0EBEDC263DBE1100B17FD4 /* CameraFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */; };
+		1D0EBEDE263DDE7900B17FD4 /* FilterCameraDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */; };
 		1D6F63BE261B2C1E000E7AA8 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BC261B2C1E000E7AA8 /* close@3x.png */; };
 		1D6F63BF261B2C1E000E7AA8 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BD261B2C1E000E7AA8 /* close@2x.png */; };
 		1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */; };
@@ -17,7 +21,6 @@
 		1D6F63D8261B4702000E7AA8 /* plus (3)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63D6261B4702000E7AA8 /* plus (3)@2x.png */; };
 		1D6F63D9261B4702000E7AA8 /* plus (3)@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63D7261B4702000E7AA8 /* plus (3)@3x.png */; };
 		1D6F63DC261B56CA000E7AA8 /* CameraTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63DB261B56CA000E7AA8 /* CameraTopView.swift */; };
-		1D6F63E0261B58C0000E7AA8 /* CameraFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63DF261B58C0000E7AA8 /* CameraFilterView.swift */; };
 		1D6F63E3261B79B4000E7AA8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */; };
 		1D6F63E6261B7A95000E7AA8 /* VedioPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */; };
 		1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */; };
@@ -37,7 +40,6 @@
 		1DD0FE22261343FB00736B91 /* plus.circle.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE21261343FA00736B91 /* plus.circle.fill.png */; };
 		1DD0FE252613440E00736B91 /* bubble.left.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE242613440E00736B91 /* bubble.left.fill.png */; };
 		1DD0FE282613441A00736B91 /* arrowshape.turn.up.right.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE272613441A00736B91 /* arrowshape.turn.up.right.fill.png */; };
-		1DD0FE312613469100736B91 /* house.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE302613469100736B91 /* house.fill.png */; };
 		1DD0FE35261346A600736B91 /* magnifyingglass.circle.fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE33261346A500736B91 /* magnifyingglass.circle.fill.png */; };
 		1DD0FE36261346A600736B91 /* magnifyingglass.circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE34261346A600736B91 /* magnifyingglass.circle.png */; };
 		1DD0FE402613479C00736B91 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD0FE3F2613479C00736B91 /* house.png */; };
@@ -119,6 +121,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D0EBED7263DBC7900B17FD4 /* turn-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turn-off.png"; sourceTree = "<group>"; };
+		1D0EBED9263DBCB700B17FD4 /* flash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash.png; sourceTree = "<group>"; };
+		1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFilterView.swift; sourceTree = "<group>"; };
+		1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraDesignView.swift; sourceTree = "<group>"; };
 		1D6F63BC261B2C1E000E7AA8 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		1D6F63BD261B2C1E000E7AA8 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnTapTagEnum.swift; sourceTree = "<group>"; };
@@ -129,7 +135,6 @@
 		1D6F63D6261B4702000E7AA8 /* plus (3)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus (3)@2x.png"; sourceTree = "<group>"; };
 		1D6F63D7261B4702000E7AA8 /* plus (3)@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus (3)@3x.png"; sourceTree = "<group>"; };
 		1D6F63DB261B56CA000E7AA8 /* CameraTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTopView.swift; sourceTree = "<group>"; };
-		1D6F63DF261B58C0000E7AA8 /* CameraFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFilterView.swift; sourceTree = "<group>"; };
 		1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioPostVC.swift; sourceTree = "<group>"; };
 		1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
@@ -149,7 +154,6 @@
 		1DD0FE21261343FA00736B91 /* plus.circle.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.circle.fill.png; sourceTree = "<group>"; };
 		1DD0FE242613440E00736B91 /* bubble.left.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.left.fill.png; sourceTree = "<group>"; };
 		1DD0FE272613441A00736B91 /* arrowshape.turn.up.right.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowshape.turn.up.right.fill.png; sourceTree = "<group>"; };
-		1DD0FE302613469100736B91 /* house.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house.fill.png; path = "../../../../../../Downloads/sf-symbols-online-master 2/glyphs/house.fill.png"; sourceTree = "<group>"; };
 		1DD0FE33261346A500736B91 /* magnifyingglass.circle.fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingglass.circle.fill.png; sourceTree = "<group>"; };
 		1DD0FE34261346A600736B91 /* magnifyingglass.circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingglass.circle.png; sourceTree = "<group>"; };
 		1DD0FE3F2613479C00736B91 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
@@ -267,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				1D6F63DB261B56CA000E7AA8 /* CameraTopView.swift */,
-				1D6F63DF261B58C0000E7AA8 /* CameraFilterView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -304,6 +307,8 @@
 				1DD0FE8526138EA000736B91 /* CommnentsView.swift */,
 				1DD0FE8826139A8F00736B91 /* CommentsTableViewCell.swift */,
 				1DF73EDF2630A90800A2ED59 /* FullScreenVedioView.swift */,
+				1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */,
+				1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -569,7 +574,6 @@
 				1DD0FE3F2613479C00736B91 /* house.png */,
 				1DD0FE33261346A500736B91 /* magnifyingglass.circle.fill.png */,
 				1DD0FE34261346A600736B91 /* magnifyingglass.circle.png */,
-				1DD0FE302613469100736B91 /* house.fill.png */,
 				1DD0FE272613441A00736B91 /* arrowshape.turn.up.right.fill.png */,
 				1DD0FE242613440E00736B91 /* bubble.left.fill.png */,
 				1DD0FE1B261343DD00736B91 /* person.crop.circle.fill.png */,
@@ -593,6 +597,8 @@
 				1DE10C642605D795003D3C7A /* torch@3x.png */,
 				1DE10C5C2605CE15003D3C7A /* capture-button@2x.png */,
 				1DE10C5D2605CE15003D3C7A /* capture-button@3x.png */,
+				1D0EBED7263DBC7900B17FD4 /* turn-off.png */,
+				1D0EBED9263DBCB700B17FD4 /* flash.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -680,7 +686,6 @@
 				1D6F63BF261B2C1E000E7AA8 /* close@2x.png in Resources */,
 				1DE10C5E2605CE15003D3C7A /* capture-button@2x.png in Resources */,
 				1DE10C7A2605D795003D3C7A /* pocket-watch@3x.png in Resources */,
-				1DD0FE312613469100736B91 /* house.fill.png in Resources */,
 				1DE10C782605D795003D3C7A /* flip.png in Resources */,
 				1DE10C742605D795003D3C7A /* image@3x.png in Resources */,
 				1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */,
@@ -693,8 +698,10 @@
 				1D6F63D8261B4702000E7AA8 /* plus (3)@2x.png in Resources */,
 				1DE10C702605D795003D3C7A /* torch@2x.png in Resources */,
 				1DDAED1E261779B20008A056 /* ProfileHeaderView.xib in Resources */,
+				1D0EBED8263DBC7900B17FD4 /* turn-off.png in Resources */,
 				1DE10C722605D795003D3C7A /* image.png in Resources */,
 				1DD0FE132613219000736B91 /* like-button.json in Resources */,
+				1D0EBEDA263DBCB800B17FD4 /* flash.png in Resources */,
 				1DE10C7E2605D795003D3C7A /* speed@3x.png in Resources */,
 				1DDAED2A261779B20008A056 /* MediaViews.storyboard in Resources */,
 				1DD0FE282613441A00736B91 /* arrowshape.turn.up.right.fill.png in Resources */,
@@ -758,6 +765,7 @@
 				1DD0FDDE2612FBFF00736B91 /* TikTokTextLabel.swift in Sources */,
 				1DDAED22261779B20008A056 /* ProfileViewController.swift in Sources */,
 				1DBA99622610D8E200B1F264 /* SearchViewController.swift in Sources */,
+				1D0EBEDE263DDE7900B17FD4 /* FilterCameraDesignView.swift in Sources */,
 				1D6F64EA261CAFB8000E7AA8 /* LoadingAnimationView.swift in Sources */,
 				1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */,
 				1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */,
@@ -806,12 +814,12 @@
 				1DD0FE8926139A8F00736B91 /* CommentsTableViewCell.swift in Sources */,
 				1DDAED23261779B20008A056 /* ProfileViewModel.swift in Sources */,
 				1DDAED24261779B20008A056 /* MediaPostingViewController.swift in Sources */,
-				1D6F63E0261B58C0000E7AA8 /* CameraFilterView.swift in Sources */,
 				1DDAED15261779B20008A056 /* CommentPopUpView.swift in Sources */,
 				1DDAED07261779B20008A056 /* User.swift in Sources */,
 				1DF73EE02630A90800A2ED59 /* FullScreenVedioView.swift in Sources */,
 				1DD0FE432613612100736B91 /* UserProfileVC.swift in Sources */,
 				1DDAED10261779B20008A056 /* UIKit Extensions.swift in Sources */,
+				1D0EBEDC263DBE1100B17FD4 /* CameraFilterView.swift in Sources */,
 				1DDAED05261779B20008A056 /* VideoCacheManager.swift in Sources */,
 				1DDAED0F261779B20008A056 /* String.swift in Sources */,
 				1DDAED28261779B20008A056 /* MediaPlayerView.swift in Sources */,
