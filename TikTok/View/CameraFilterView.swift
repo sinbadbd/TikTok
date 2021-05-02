@@ -11,6 +11,8 @@ protocol CameraFilterProtocol: AnyObject {
     func flipCamera()
     func filterCamera()
     func flashCamera()
+    func isShowView()
+    func isHiddenView()
 }
 
 

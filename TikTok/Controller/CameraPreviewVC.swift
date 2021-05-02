@@ -225,7 +225,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         view.addSubview(cameraFilterView!)
         cameraFilterView?.position(top: view.topAnchor, right: view.trailingAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 20))
         cameraFilterView?.size(width: 50, height: 300)
-        
+        cameraFilterView?.tag = 100
     }
     @objc func tapBtnTapped(_ sender:UIButton){
         print("sender:\(sender)")
@@ -333,6 +333,15 @@ extension CameraPreviewVC {
 
 @available(iOS 13.0, *)
 extension CameraPreviewVC: CameraFilterProtocol {
+    
+    func isShowView() {
+        print("show")
+    }
+    
+    func isHiddenView() {
+        print("hide")
+    }
+    
     func flipCamera() {
         print("flipCamera")
     }
@@ -342,14 +351,24 @@ extension CameraPreviewVC: CameraFilterProtocol {
  
         let filterView = FilterCameraDesignView()
         view.addSubview(filterView)
-        filterView.fitToSuper()
- 
-        cameraFilterView = CameraFilterView()
- 
-        cameraFilterView?.isHidden = true
-        cameraFilterView?.removeFromSuperview()
+//        filterView.fitToSuper()
+
+//        
+        filterView.position(bottom: view.bottomAnchor)
+        filterView.size(  height: 200, dimensionWidth: view.widthAnchor)
+    
         
- 
+        if ( self.view?.viewWithTag(100) != nil ){
+            print("contain")
+            cameraFilterView?.isHidden = true
+          }
+         else {
+//            view.addSubview(cameraFilterView!)
+//            cameraFilterView?.position(top: view.topAnchor, right: view.trailingAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 20))
+//            cameraFilterView?.size(width: 50, height: 300)
+//            cameraFilterView?.isHidden = false
+//            print("not contain")
+         }
     }
     
     func flashCamera() {

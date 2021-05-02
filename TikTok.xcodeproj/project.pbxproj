@@ -11,6 +11,7 @@
 		1D0EBEDA263DBCB800B17FD4 /* flash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0EBED9263DBCB700B17FD4 /* flash.png */; };
 		1D0EBEDC263DBE1100B17FD4 /* CameraFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */; };
 		1D0EBEDE263DDE7900B17FD4 /* FilterCameraDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */; };
+		1D0EBEE0263E833800B17FD4 /* FilterCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */; };
 		1D6F63BE261B2C1E000E7AA8 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BC261B2C1E000E7AA8 /* close@3x.png */; };
 		1D6F63BF261B2C1E000E7AA8 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BD261B2C1E000E7AA8 /* close@2x.png */; };
 		1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */; };
@@ -125,6 +126,7 @@
 		1D0EBED9263DBCB700B17FD4 /* flash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash.png; sourceTree = "<group>"; };
 		1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFilterView.swift; sourceTree = "<group>"; };
 		1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraDesignView.swift; sourceTree = "<group>"; };
+		1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D6F63BC261B2C1E000E7AA8 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		1D6F63BD261B2C1E000E7AA8 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnTapTagEnum.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				1DF73EDF2630A90800A2ED59 /* FullScreenVedioView.swift */,
 				1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */,
 				1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */,
+				1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				1DDAED29261779B20008A056 /* AccessPermissionView.swift in Sources */,
 				1DD0FDD82612FB6B00736B91 /* TikTokButton.swift in Sources */,
 				1D6F63E3261B79B4000E7AA8 /* ProfileVC.swift in Sources */,
+				1D0EBEE0263E833800B17FD4 /* FilterCameraCollectionViewCell.swift in Sources */,
 				1DDAED1D261779B20008A056 /* ProfileHeaderView.swift in Sources */,
 				1DD0FE8926139A8F00736B91 /* CommentsTableViewCell.swift in Sources */,
 				1DDAED23261779B20008A056 /* ProfileViewModel.swift in Sources */,
