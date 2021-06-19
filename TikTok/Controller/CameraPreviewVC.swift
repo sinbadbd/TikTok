@@ -230,6 +230,8 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         cameraTopView?.position(top: view.topAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 0))
         cameraTopView?.size(width: 120, height: 40)
         cameraTopView?.centerXInSuper()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addSoundVC))
+        cameraTopView?.addGestureRecognizer(tapGesture)
         
         
         view.addSubview(closeBtn)
@@ -306,6 +308,12 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         recordView?.addGestureRecognizer(recordLongPressGesture)
     }
     
+    @objc
+    func addSoundVC(){
+        let vc = AddSoundVC()
+        
+        present(vc, animated: true, completion: nil)
+    }
     
     func getButton(btn:UIButton, image:UIImage) -> UIButton  {
         let btn = btn
