@@ -199,11 +199,22 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
             let nextBtn = UIButton()
             playerView?.addSubview(nextBtn)
             nextBtn.position( bottom: playerView?.bottomAnchor, right: playerView?.trailingAnchor, insets: .init(top: 0, left: 0, bottom: 20, right: 20))
-            nextBtn.size(width:80,height: 40)
+            nextBtn.size(width:80,height: 34)
             nextBtn.setTitle("Next", for: .normal)
-            
+            nextBtn.backgroundColor = .systemRed
+            nextBtn.layer.cornerRadius = 4
             nextBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
             nextBtn.tag = CameraTapItem.nextBtnVc.rawValue
+            
+            
+            
+            cameraFilterView = CameraFilterView()
+            cameraFilterView?.delegate = self
+            playerView!.addSubview(cameraFilterView!)
+            cameraFilterView?.position(top: playerView?.topAnchor, right: playerView?.trailingAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 20))
+            cameraFilterView?.size(width: 50, height: 300)
+            cameraFilterView?.tag = 100
+            
             
             playerView?.play()
             
@@ -212,7 +223,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         
     }
     
-    
+    // MARK:- TOP VIEW
     private func topHeaderView (){
         cameraTopView = CameraTopView()
         view.addSubview(cameraTopView!)
@@ -311,7 +322,17 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         print("hiii")
         
     }
+    
     func startRecording(){
+        
+        cameraFilterView?.alpha = 0
+        cameraTopView?.alpha = 0
+        //closeBtn.alpha = 0
+        
+//        cameraFilterView?.removeFromSuperview()
+//        cameraTopView?.removeFromSuperview()
+//        closeBtn.removeFromSuperview()
+       
         
         recordView?.startRecordingAnimation()
         cameraManager.startRecording()

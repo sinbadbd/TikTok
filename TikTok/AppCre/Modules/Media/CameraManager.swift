@@ -53,7 +53,7 @@ class CameraManager: NSObject,
     var frontCamera: AVCaptureDevice?
     //    var currentDevice: AVCaptureDevice?
     
-  
+    
     
     fileprivate var tempFilePath: URL {
         get{
@@ -69,7 +69,7 @@ class CameraManager: NSObject,
         cameraAndAudioAccessPermitted = (AVCaptureDevice.authorizationStatus(for: .video) == .authorized) &&
             (AVCaptureDevice.authorizationStatus(for: .audio) == .authorized)
         photoLibrary = PHPhotoLibrary.shared()
-//        setupDevice()
+        //        setupDevice()
     }
     
     /**
@@ -87,7 +87,7 @@ class CameraManager: NSObject,
                     previewLayer.frame = view.layer.bounds
                     view.clipsToBounds = true 
                     view.layer.addSublayer(previewLayer)
- 
+                    
                     /*
                      toggleCameraGestureRecognizer.direction = .up
                      toggleCameraGestureRecognizer.addTarget(self, action: #selector(self.switchCamera))
@@ -97,7 +97,7 @@ class CameraManager: NSObject,
                 
             }
             
-//            switchCamera()
+            //            switchCamera()
         }
     }
     
@@ -119,26 +119,32 @@ class CameraManager: NSObject,
     }
     
     /*
-    func setupDevice() {
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
-        let devices = deviceDiscoverySession.devices
-        
-        for device in devices {
-            if device.position == AVCaptureDevice.Position.back {
-                backCamera = device
-            } else if device.position == AVCaptureDevice.Position.front {
-                frontCamera = device
-            }
-        }
-        captureDevice = backCamera
-        
-    }*/
+     func setupDevice() {
+     let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+     let devices = deviceDiscoverySession.devices
+     
+     for device in devices {
+     if device.position == AVCaptureDevice.Position.back {
+     backCamera = device
+     } else if device.position == AVCaptureDevice.Position.front {
+     frontCamera = device
+     }
+     }
+     captureDevice = backCamera
+     
+     }*/
     
     fileprivate func setupCamera(completion: @escaping RegularCompletionBlock){
+        
         captureSession = AVCaptureSession()
         
-        
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [
+                AVCaptureDevice.DeviceType.builtInWideAngleCamera
+            ],
+            mediaType: AVMediaType.video,
+            position: AVCaptureDevice.Position.unspecified
+        )
         let devices = deviceDiscoverySession.devices
         
         for device in devices {
@@ -156,6 +162,7 @@ class CameraManager: NSObject,
         
         var deviceInput: AVCaptureDeviceInput!
         var audioDeviceInput: AVCaptureDeviceInput!
+        
         do {
             deviceInput = try AVCaptureDeviceInput(device: captureDevice!)
             guard deviceInput != nil else {
@@ -241,10 +248,10 @@ class CameraManager: NSObject,
     }
     
     
-   
+    
     func isCameraFlushEnable(flashToggle:Bool){
         let avDevice = AVCaptureDevice.default(for: AVMediaType.video)
-
+        
         // check if the device has torch
         if ((avDevice?.hasTorch) != nil) {
             // lock your device for configuration
@@ -253,7 +260,7 @@ class CameraManager: NSObject,
             } catch {
                 print("aaaa")
             }
-
+            
             // check if your torchMode is on or off. If on turns it off otherwise turns it on
             if isFlash == true {
                 avDevice?.torchMode = AVCaptureDevice.TorchMode.off
@@ -266,7 +273,7 @@ class CameraManager: NSObject,
                 } catch {
                     print("bbb")
                 }
-            //    avDevice.setTorchModeOnWithLevel(1.0, error: nil)
+                //    avDevice.setTorchModeOnWithLevel(1.0, error: nil)
             }
             // unlock your device
             avDevice?.unlockForConfiguration()
@@ -292,26 +299,26 @@ class CameraManager: NSObject,
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
-            let videoOutput = AVCaptureVideoDataOutput()
-            videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
-
-            let comicEffect = CIFilter(name: "CIComicEffect")
-
-            let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-            let cameraImage = CIImage(cvImageBuffer: pixelBuffer!)
-
-            comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
-
-            //let filteredImage = UIImage(CIImage: comicEffect!.valueForKey(kCIOutputImageKey) as! CIImage!)
-            let filteredImage = UIImage(ciImage: (comicEffect!.value(forKey: kCICategoryVideo) as! CIImage?)!)
-
-            print("made it here")
-
-
-            DispatchQueue.main.async {
-                self.filteredImage.image = filteredImage
-            }
+        let videoOutput = AVCaptureVideoDataOutput()
+        videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
+        
+        let comicEffect = CIFilter(name: "CIComicEffect")
+        
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        let cameraImage = CIImage(cvImageBuffer: pixelBuffer!)
+        
+        comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
+        
+        //let filteredImage = UIImage(CIImage: comicEffect!.valueForKey(kCIOutputImageKey) as! CIImage!)
+        let filteredImage = UIImage(ciImage: (comicEffect!.value(forKey: kCICategoryVideo) as! CIImage?)!)
+        
+        print("made it here")
+        
+        
+        DispatchQueue.main.async {
+            self.filteredImage.image = filteredImage
         }
+    }
     
     func removeAllTempFiles(){
         var directory = NSTemporaryDirectory()

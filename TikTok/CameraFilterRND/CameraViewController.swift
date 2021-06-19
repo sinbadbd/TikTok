@@ -106,10 +106,11 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVC
     
     private let videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(
         deviceTypes: [  .builtInDualCamera,
-                        .builtInWideAngleCamera],
+                        .builtInWideAngleCamera
+        ],
                     mediaType:
                             .video,position:
-                                .unspecified
+                             .unspecified
     )
     
     private var statusBarOrientation: UIInterfaceOrientation = .portrait
