@@ -13,6 +13,23 @@
 		1D0EBEDE263DDE7900B17FD4 /* FilterCameraDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */; };
 		1D0EBEE0263E833800B17FD4 /* FilterCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */; };
 		1D0EBEE2263EB2D300B17FD4 /* disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0EBEE1263EB2D300B17FD4 /* disabled.png */; };
+		1D2FCE18267DC1FB00485D5B /* Pods_TikTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */; };
+		1D2FCE19267DC1FB00485D5B /* Pods_TikTok.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D2FCE2E267DC35800485D5B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE1F267DC35700485D5B /* CameraViewController.swift */; };
+		1D2FCE2F267DC35800485D5B /* DepthToGrayscaleConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE20267DC35700485D5B /* DepthToGrayscaleConverter.swift */; };
+		1D2FCE30267DC35800485D5B /* VideoMixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE21267DC35700485D5B /* VideoMixer.swift */; };
+		1D2FCE31267DC35800485D5B /* FilterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE22267DC35800485D5B /* FilterRenderer.swift */; };
+		1D2FCE32267DC35800485D5B /* RosyCIRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE24267DC35800485D5B /* RosyCIRenderer.swift */; };
+		1D2FCE33267DC35800485D5B /* RosyMetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE25267DC35800485D5B /* RosyMetalRenderer.swift */; };
+		1D2FCE34267DC35800485D5B /* PreviewMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE27267DC35800485D5B /* PreviewMetalView.swift */; };
+		1D2FCE35267DC35800485D5B /* RosyEffect.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE29267DC35800485D5B /* RosyEffect.metal */; };
+		1D2FCE36267DC35800485D5B /* DepthToGrayscale.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE2A267DC35800485D5B /* DepthToGrayscale.metal */; };
+		1D2FCE37267DC35800485D5B /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE2B267DC35800485D5B /* Mixer.metal */; };
+		1D2FCE38267DC35800485D5B /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE2C267DC35800485D5B /* PassThrough.metal */; };
+		1D2FCE39267DC35800485D5B /* minMaxFromBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE2D267DC35800485D5B /* minMaxFromBuffer.m */; };
+		1D2FCE3B267DFD0700485D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2FCE3A267DFD0700485D5B /* Main.storyboard */; };
+		1D2FCE3D267E40D800485D5B /* DemoFilterCamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE3C267E40D800485D5B /* DemoFilterCamVC.swift */; };
+		1D2FCE3F267E44B800485D5B /* CapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE3E267E44B800485D5B /* CapturedImageView.swift */; };
 		1D6F63BE261B2C1E000E7AA8 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BC261B2C1E000E7AA8 /* close@3x.png */; };
 		1D6F63BF261B2C1E000E7AA8 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BD261B2C1E000E7AA8 /* close@2x.png */; };
 		1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */; };
@@ -119,8 +136,21 @@
 		1DE10C84260612AE003D3C7A /* CameraPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */; };
 		1DE10C8C26061F6F003D3C7A /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE10C8B26061F6F003D3C7A /* RecordViewController.swift */; };
 		1DF73EE02630A90800A2ED59 /* FullScreenVedioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF73EDF2630A90800A2ED59 /* FullScreenVedioView.swift */; };
-		D4C4B145C1C3C577621F7808 /* Pods_TikTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1D2FCE1A267DC1FB00485D5B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1D2FCE19267DC1FB00485D5B /* Pods_TikTok.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D0EBED7263DBC7900B17FD4 /* turn-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turn-off.png"; sourceTree = "<group>"; };
@@ -129,6 +159,24 @@
 		1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraDesignView.swift; sourceTree = "<group>"; };
 		1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D0EBEE1263EB2D300B17FD4 /* disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled.png; sourceTree = "<group>"; };
+		1D2FCE1E267DC35600485D5B /* TikTok-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TikTok-Bridging-Header.h"; sourceTree = "<group>"; };
+		1D2FCE1F267DC35700485D5B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		1D2FCE20267DC35700485D5B /* DepthToGrayscaleConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthToGrayscaleConverter.swift; sourceTree = "<group>"; };
+		1D2FCE21267DC35700485D5B /* VideoMixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMixer.swift; sourceTree = "<group>"; };
+		1D2FCE22267DC35800485D5B /* FilterRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterRenderer.swift; sourceTree = "<group>"; };
+		1D2FCE23267DC35800485D5B /* AVCamFilter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVCamFilter-Bridging-Header.h"; sourceTree = "<group>"; };
+		1D2FCE24267DC35800485D5B /* RosyCIRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosyCIRenderer.swift; sourceTree = "<group>"; };
+		1D2FCE25267DC35800485D5B /* RosyMetalRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosyMetalRenderer.swift; sourceTree = "<group>"; };
+		1D2FCE26267DC35800485D5B /* minMaxFromBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minMaxFromBuffer.h; sourceTree = "<group>"; };
+		1D2FCE27267DC35800485D5B /* PreviewMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewMetalView.swift; sourceTree = "<group>"; };
+		1D2FCE29267DC35800485D5B /* RosyEffect.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = RosyEffect.metal; sourceTree = "<group>"; };
+		1D2FCE2A267DC35800485D5B /* DepthToGrayscale.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = DepthToGrayscale.metal; sourceTree = "<group>"; };
+		1D2FCE2B267DC35800485D5B /* Mixer.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
+		1D2FCE2C267DC35800485D5B /* PassThrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
+		1D2FCE2D267DC35800485D5B /* minMaxFromBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = minMaxFromBuffer.m; sourceTree = "<group>"; };
+		1D2FCE3A267DFD0700485D5B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1D2FCE3C267E40D800485D5B /* DemoFilterCamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoFilterCamVC.swift; sourceTree = "<group>"; };
+		1D2FCE3E267E44B800485D5B /* CapturedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageView.swift; sourceTree = "<group>"; };
 		1D6F63BC261B2C1E000E7AA8 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		1D6F63BD261B2C1E000E7AA8 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnTapTagEnum.swift; sourceTree = "<group>"; };
@@ -247,7 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C4B145C1C3C577621F7808 /* Pods_TikTok.framework in Frameworks */,
+				1D2FCE18267DC1FB00485D5B /* Pods_TikTok.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +317,46 @@
 				3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1D2FCE17267DC19A00485D5B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1D2FCE3A267DFD0700485D5B /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		1D2FCE1D267DC2AD00485D5B /* CameraFilterRND */ = {
+			isa = PBXGroup;
+			children = (
+				1D2FCE23267DC35800485D5B /* AVCamFilter-Bridging-Header.h */,
+				1D2FCE1F267DC35700485D5B /* CameraViewController.swift */,
+				1D2FCE20267DC35700485D5B /* DepthToGrayscaleConverter.swift */,
+				1D2FCE22267DC35800485D5B /* FilterRenderer.swift */,
+				1D2FCE26267DC35800485D5B /* minMaxFromBuffer.h */,
+				1D2FCE2D267DC35800485D5B /* minMaxFromBuffer.m */,
+				1D2FCE27267DC35800485D5B /* PreviewMetalView.swift */,
+				1D2FCE24267DC35800485D5B /* RosyCIRenderer.swift */,
+				1D2FCE25267DC35800485D5B /* RosyMetalRenderer.swift */,
+				1D2FCE28267DC35800485D5B /* Shaders */,
+				1D2FCE21267DC35700485D5B /* VideoMixer.swift */,
+				1D2FCE1E267DC35600485D5B /* TikTok-Bridging-Header.h */,
+				1D2FCE3C267E40D800485D5B /* DemoFilterCamVC.swift */,
+				1D2FCE3E267E44B800485D5B /* CapturedImageView.swift */,
+			);
+			path = CameraFilterRND;
+			sourceTree = "<group>";
+		};
+		1D2FCE28267DC35800485D5B /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				1D2FCE29267DC35800485D5B /* RosyEffect.metal */,
+				1D2FCE2A267DC35800485D5B /* DepthToGrayscale.metal */,
+				1D2FCE2B267DC35800485D5B /* Mixer.metal */,
+				1D2FCE2C267DC35800485D5B /* PassThrough.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 		1D6F63DE261B58AE000E7AA8 /* Camera */ = {
@@ -549,6 +637,8 @@
 		1DE10C3A2605B25D003D3C7A /* TikTok */ = {
 			isa = PBXGroup;
 			children = (
+				1D2FCE1D267DC2AD00485D5B /* CameraFilterRND */,
+				1D2FCE17267DC19A00485D5B /* Storyboard */,
 				1DDAECCF261779B10008A056 /* AppCre */,
 				1DD0FDD62612FB4300736B91 /* Object */,
 				1DBA996A2610DA5F00B1F264 /* Extension+Helper */,
@@ -621,6 +711,7 @@
 				1DE10C352605B25D003D3C7A /* Frameworks */,
 				1DE10C362605B25D003D3C7A /* Resources */,
 				9D2ADB02F6B7D31DBC0D1F65 /* [CP] Embed Pods Frameworks */,
+				1D2FCE1A267DC1FB00485D5B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -642,6 +733,7 @@
 				TargetAttributes = {
 					1DE10C372605B25D003D3C7A = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -695,6 +787,7 @@
 				1DE10C7A2605D795003D3C7A /* pocket-watch@3x.png in Resources */,
 				1DE10C782605D795003D3C7A /* flip.png in Resources */,
 				1DE10C742605D795003D3C7A /* image@3x.png in Resources */,
+				1D2FCE3B267DFD0700485D5B /* Main.storyboard in Resources */,
 				1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */,
 				1DD0FE402613479C00736B91 /* house.png in Resources */,
 				1DD0FE22261343FB00736B91 /* plus.circle.fill.png in Resources */,
@@ -776,9 +869,11 @@
 				1D6F64EA261CAFB8000E7AA8 /* LoadingAnimationView.swift in Sources */,
 				1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */,
 				1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */,
+				1D2FCE30267DC35800485D5B /* VideoMixer.swift in Sources */,
 				1DDAED21261779B20008A056 /* ProfileCollectionViewFlowLayout.swift in Sources */,
 				1DDAED1B261779B20008A056 /* DiscoverViewController.swift in Sources */,
 				1DDAED0A261779B20008A056 /* PostsRequest.swift in Sources */,
+				1D2FCE36267DC35800485D5B /* DepthToGrayscale.metal in Sources */,
 				1DE10C3C2605B25D003D3C7A /* AppDelegate.swift in Sources */,
 				1DD0FE1926132A2F00736B91 /* TikTokImage.swift in Sources */,
 				1DDAED16261779B20008A056 /* HomeViewController.swift in Sources */,
@@ -790,12 +885,16 @@
 				1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */,
 				1DE10C8126060C33003D3C7A /* Helper.swift in Sources */,
 				1DDAED12261779B20008A056 /* HomeTableViewCell.swift in Sources */,
+				1D2FCE33267DC35800485D5B /* RosyMetalRenderer.swift in Sources */,
 				1DE10C572605B8BE003D3C7A /* UIView+Extension.swift in Sources */,
 				1DDAED31261779D30008A056 /* TabBarController.swift in Sources */,
 				1DDAED2E261779CE0008A056 /* BaseViewController.swift in Sources */,
 				1DDAED14261779B20008A056 /* VideoPlayerView.swift in Sources */,
 				1D6F63DC261B56CA000E7AA8 /* CameraTopView.swift in Sources */,
+				1D2FCE35267DC35800485D5B /* RosyEffect.metal in Sources */,
+				1D2FCE39267DC35800485D5B /* minMaxFromBuffer.m in Sources */,
 				1DDAED2B261779B20008A056 /* RecordButton.swift in Sources */,
+				1D2FCE3D267E40D800485D5B /* DemoFilterCamVC.swift in Sources */,
 				1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */,
 				1DDAED13261779B20008A056 /* HomeViewModel.swift in Sources */,
 				1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */,
@@ -803,6 +902,8 @@
 				1DDAED18261779B20008A056 /* CommentTableViewCell.swift in Sources */,
 				1DDAED09261779B20008A056 /* VideoPostRequest.swift in Sources */,
 				1DDAED1C261779B20008A056 /* InboxViewController.swift in Sources */,
+				1D2FCE37267DC35800485D5B /* Mixer.metal in Sources */,
+				1D2FCE31267DC35800485D5B /* FilterRenderer.swift in Sources */,
 				1DDAED26261779B20008A056 /* MediaViewController.swift in Sources */,
 				1DDAED25261779B20008A056 /* MediaViewModel.swift in Sources */,
 				1DDAED0D261779B20008A056 /* Number.swift in Sources */,
@@ -810,7 +911,9 @@
 				1DDAED27261779B20008A056 /* CameraManager.swift in Sources */,
 				1D6F63E6261B7A95000E7AA8 /* VedioPostVC.swift in Sources */,
 				1DDAED0E261779B20008A056 /* URL.swift in Sources */,
+				1D2FCE38267DC35800485D5B /* PassThrough.metal in Sources */,
 				1DDAED20261779B20008A056 /* ProfileCollectionViewCell.swift in Sources */,
+				1D2FCE2F267DC35800485D5B /* DepthToGrayscaleConverter.swift in Sources */,
 				1DD0FE8626138EA000736B91 /* CommnentsView.swift in Sources */,
 				1D6F64EF261CC3A2000E7AA8 /* VedioPostHeaderView.swift in Sources */,
 				1DDAED0B261779B20008A056 /* UserRequest.swift in Sources */,
@@ -824,13 +927,17 @@
 				1DDAED24261779B20008A056 /* MediaPostingViewController.swift in Sources */,
 				1DDAED15261779B20008A056 /* CommentPopUpView.swift in Sources */,
 				1DDAED07261779B20008A056 /* User.swift in Sources */,
+				1D2FCE2E267DC35800485D5B /* CameraViewController.swift in Sources */,
 				1DF73EE02630A90800A2ED59 /* FullScreenVedioView.swift in Sources */,
 				1DD0FE432613612100736B91 /* UserProfileVC.swift in Sources */,
 				1DDAED10261779B20008A056 /* UIKit Extensions.swift in Sources */,
+				1D2FCE3F267E44B800485D5B /* CapturedImageView.swift in Sources */,
+				1D2FCE34267DC35800485D5B /* PreviewMetalView.swift in Sources */,
 				1D0EBEDC263DBE1100B17FD4 /* CameraFilterView.swift in Sources */,
 				1DDAED05261779B20008A056 /* VideoCacheManager.swift in Sources */,
 				1DDAED0F261779B20008A056 /* String.swift in Sources */,
 				1DDAED28261779B20008A056 /* MediaPlayerView.swift in Sources */,
+				1D2FCE32267DC35800485D5B /* RosyCIRenderer.swift in Sources */,
 				1DD0FDDB2612FBE000736B91 /* TikTokLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -971,6 +1078,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24S2CUDM9Q;
 				INFOPLIST_FILE = TikTok/Info.plist;
@@ -981,6 +1089,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.portonics.TikTok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TikTok/CameraFilterRND/TikTok-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -992,6 +1102,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24S2CUDM9Q;
 				INFOPLIST_FILE = TikTok/Info.plist;
@@ -1002,6 +1113,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.portonics.TikTok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TikTok/CameraFilterRND/TikTok-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

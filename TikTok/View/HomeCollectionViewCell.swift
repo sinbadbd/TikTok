@@ -50,7 +50,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     let userProfileView = UIImageView()
     
     let leftContentView = UIView()
-    
+    let  pauseImgView = UIImageView()
     var userName = TikTokLabel()
     var commentLabel = TikTokLabel()
     
@@ -204,10 +204,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         VStackView.addArrangedSubview(VStackShareView)
         VStackView.addArrangedSubview(userProfileView)
         
-        //        pauseImgView = UIImageView()
-        //        addSubview(pauseImgView!)
-        //        pauseImgView?.fitToSuper()
-        //        pauseImgView?.size(width:50, height: 50)
+     
+        addSubview(pauseImgView)
+        pauseImgView.centerXInSuper()
+        pauseImgView.size(width:50, height: 50)
     }
     func configure(post: Post){
         self.post = post
@@ -279,25 +279,25 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func handlePause(){
-        //        if isPlaying {
-        //            // Pause video and show pause sign
-        //            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseIn, animations: { [weak self] in
-        //                guard let self = self else { return }
-        //                self.pauseImgView?.alpha = 0.35
-        //                self.pauseImgView?.transform = CGAffineTransform.init(scaleX: 0.45, y: 0.45)
-        //            }, completion: { [weak self] _ in
-        //                self?.pause()
-        //            })
-        //        } else {
-        //            // Start video and remove pause sign
-        //            UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
-        //                guard let self = self else { return }
-        //                self.pauseImgView?.alpha = 0
-        //            }, completion: { [weak self] _ in
-        //                self?.play()
-        //                self?.pauseImgView?.transform = .identity
-        //            })
-        //        }
+                if isPlaying {
+                    // Pause video and show pause sign
+                    UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseIn, animations: { [weak self] in
+                        guard let self = self else { return }
+                        self.pauseImgView.alpha = 0.35
+                        self.pauseImgView.transform = CGAffineTransform.init(scaleX: 0.45, y: 0.45)
+                    }, completion: { [weak self] _ in
+                        self?.pause()
+                    })
+                } else {
+                    // Start video and remove pause sign
+                    UIView.animate(withDuration: 0.075, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
+                        guard let self = self else { return }
+                        self.pauseImgView.alpha = 0
+                    }, completion: { [weak self] _ in
+                        self?.play()
+                        self?.pauseImgView.transform = .identity
+                    })
+                }
     }
     
     func resetViewsForReuse(){

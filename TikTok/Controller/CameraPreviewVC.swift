@@ -8,6 +8,14 @@
 import UIKit
 import AVFoundation
 
+
+
+struct FilterColor {
+    let colors : UIColor
+    let title: String
+}
+
+
 @available(iOS 13.0, *)
 class CameraPreviewVC: UIViewController, RecordingDelegate {
     
@@ -143,8 +151,8 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         cameraManager.delegate = self
         previewView.layer.cornerRadius = cornerRadius
         cameraManager.addPreviewLayerToView(view: previewView)
-        
         view.addSubview(previewView)
+//        previewView.lay
         previewView.fitToSuper()
         
     }
@@ -178,6 +186,8 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
             playerView = MediaPlayerView(frame: previewView.frame, videoURL: url)
             view.addSubview(playerView!)
             playerView?.fitToSuper()
+//            playerView?.backgroundColor = .red
+            
             view.bringSubviewToFront(closeBtn)
             closeBtn.position(top: view.topAnchor, left: view.leadingAnchor, insets: .init(top: 50, left: 20,bottom:0, right: 0))
             closeBtn.size(width:20,height: 20)
@@ -236,7 +246,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
             if sender.tag == CameraTapItem.addSoundbtn.rawValue {
                 print(sender.tag)
             } else if sender.tag == CameraTapItem.cameraSwitchbtn.rawValue {
-                print(sender.tag)
+                print("sender.tag")
  
             } else if sender.tag == CameraTapItem.filterBtn.rawValue {
                 print(sender.tag)
@@ -266,7 +276,16 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         
         recBtn.addSubview(recordView!)
         recordView?.isUserInteractionEnabled = true
-        recordView?.position(left:recBtn.leadingAnchor,bottom: recBtn.bottomAnchor,right: recBtn.trailingAnchor,insets: .init(top: 0, left: 0, bottom: 0, right: 0))
+        recordView?.position(
+            left:recBtn.leadingAnchor,
+            bottom: recBtn.bottomAnchor,right:
+                recBtn.trailingAnchor,
+            insets: .init(
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: 0)
+        )
         recordView?.size(height: 100, dimensionHeight:view.widthAnchor)
         //        recordView?.backgroundColor = .green
         recordView?.centerXInSuper()

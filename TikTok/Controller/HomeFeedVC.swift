@@ -58,6 +58,10 @@ class HomeFeedVC: UIViewController {
         setupUI()
         setupBinding()
         setupObservers()
+        
+        if let cell = collectionView.visibleCells.first as? HomeCollectionViewCell {
+            cell.play()
+        }
 
     }
     func setupUI(){

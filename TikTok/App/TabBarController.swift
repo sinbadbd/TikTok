@@ -18,8 +18,19 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     var mediaViewController: CameraPreviewVC!//MediaViewController!
     var inboxViewController: InboxViewController!
     var profileViewController: ProfileViewController!
+    
+    /*
+        MARK:- RND CAMERA
+     
+        - CameraViewController!
+        - DemoFilterCamVC
+     */
+    
+    var cameraFilerVC: CameraViewController!
+    var cameraRNDFViewVC : DemoFilterCamVC!
 
     var recordViewController: RecordViewController! //MARK::
+    
     //MARK: - LifeCycles
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -30,13 +41,16 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
 //        tabBar.unselectedItemTintColor = .gray
 //        tabBar.tintColor = .white
         
-        homeViewController = HomeFeedVC()//VedioPostVC()//HomeFeedVC()
+        homeViewController = HomeFeedVC()//HomeFeedVC()//VedioPostVC()//HomeFeedVC()
         homeNavigationController = BaseNavigationController(rootViewController: homeViewController)
         discoverViewController = DiscoverViewController()
-        mediaViewController = CameraPreviewVC()//MediaViewController()
+        mediaViewController = CameraPreviewVC()//MediaViewController() //MARK:- MY design vc
         inboxViewController = InboxViewController()
         profileViewController = ProfileViewController()
      
+        cameraFilerVC = CameraViewController()
+        cameraRNDFViewVC = DemoFilterCamVC()
+        
         recordViewController = RecordViewController()
         homeViewController.tabBarItem.image = UIImage(named: "house")
         homeViewController.tabBarItem.selectedImage = UIImage(named: "house.fill")
@@ -52,7 +66,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         profileViewController.tabBarItem.image = UIImage(named: "person.crop.circle")
         profileViewController.tabBarItem.selectedImage = UIImage(named: "person.crop.circle.fill")
         
-        viewControllers = [homeNavigationController, discoverViewController, mediaViewController, inboxViewController, profileViewController]
+        viewControllers = [homeViewController, discoverViewController, cameraRNDFViewVC, inboxViewController, profileViewController]
         
         let tabBarItemTitle = ["Home", "Discover", "Add", "Inbox", "Me"]
         
@@ -69,9 +83,9 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     
     //MARK: UITabbar Delegate
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController.isKind(of: CameraPreviewVC.self) {
+        if viewController.isKind(of: DemoFilterCamVC.self) {
 
-            let vc = CameraPreviewVC()
+            let vc = DemoFilterCamVC()//CameraPreviewVC()
             let navigationController = BaseNavigationController.init(rootViewController: vc)
 //            navigationController.modalPresentationStyle = .overFullScreen
             self.present(navigationController, animated: true, completion: nil)

@@ -20,8 +20,12 @@ protocol RecordingDelegate: AnyObject {
     func finishRecording(_ videoURL: URL?, _ err: Error?)
 }
 
+var frontCameraDeviceInput: AVCaptureDeviceInput?
+var backCameraDeviceInput: AVCaptureDeviceInput?
 
-class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
+class CameraManager: NSObject,
+                     AVCaptureFileOutputRecordingDelegate,
+                     AVCaptureVideoDataOutputSampleBufferDelegate {
     
     /// Capture session with customized settings
     var captureSession: AVCaptureSession?
@@ -33,6 +37,9 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
     var embeddingView: UIView?
     /// Recording Delegate
     weak var delegate: RecordingDelegate!
+    
+    var isFlash:Bool = false
+    let filteredImage = UIImageView()
     
     fileprivate var sessionQueue: DispatchQueue = DispatchQueue(label: "com.CameraSessionQueue")
     fileprivate var movieOutput: AVCaptureMovieFileOutput?
@@ -46,6 +53,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
     var frontCamera: AVCaptureDevice?
     //    var currentDevice: AVCaptureDevice?
     
+  
     
     fileprivate var tempFilePath: URL {
         get{
@@ -61,6 +69,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         cameraAndAudioAccessPermitted = (AVCaptureDevice.authorizationStatus(for: .video) == .authorized) &&
             (AVCaptureDevice.authorizationStatus(for: .audio) == .authorized)
         photoLibrary = PHPhotoLibrary.shared()
+//        setupDevice()
     }
     
     /**
@@ -76,9 +85,9 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
                 DispatchQueue.main.async {
                     guard let previewLayer = self.previewLayer else { return }
                     previewLayer.frame = view.layer.bounds
-                    view.clipsToBounds = true
+                    view.clipsToBounds = true 
                     view.layer.addSublayer(previewLayer)
-                    
+ 
                     /*
                      toggleCameraGestureRecognizer.direction = .up
                      toggleCameraGestureRecognizer.addTarget(self, action: #selector(self.switchCamera))
@@ -87,6 +96,8 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
                 }
                 
             }
+            
+//            switchCamera()
         }
     }
     
@@ -107,6 +118,21 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         removeAllTempFiles()
     }
     
+    /*
+    func setupDevice() {
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+        let devices = deviceDiscoverySession.devices
+        
+        for device in devices {
+            if device.position == AVCaptureDevice.Position.back {
+                backCamera = device
+            } else if device.position == AVCaptureDevice.Position.front {
+                frontCamera = device
+            }
+        }
+        captureDevice = backCamera
+        
+    }*/
     
     fileprivate func setupCamera(completion: @escaping RegularCompletionBlock){
         captureSession = AVCaptureSession()
@@ -122,7 +148,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
                 frontCamera = device
             }
         }
-        captureDevice = backCamera
+        captureDevice = frontCamera
         
         
         
@@ -181,8 +207,8 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         }
         
     }
-    
-    @objc func switchCamera() {
+    //MARK::- TODO : TEST
+    func switchCamera() {
         captureSession?.beginConfiguration()
         
         // Change the device based on the current camera
@@ -195,7 +221,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         }
         
         // Change to the new input
-        let cameraInput:AVCaptureDeviceInput?
+        let cameraInput:AVCaptureDeviceInput
         
         do {
             
@@ -206,14 +232,16 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
             return
         }
         
-        if ((captureSession?.canAddInput(cameraInput!)) != nil) {
-            captureSession?.addInput(cameraInput!)
+        if ((captureSession?.canAddInput(cameraInput)) != nil) {
+            captureSession?.addInput(cameraInput)
         }
         
         captureDevice = newDevice
         captureSession?.commitConfiguration()
     }
-    var isFlash:Bool = false
+    
+    
+   
     func isCameraFlushEnable(flashToggle:Bool){
         let avDevice = AVCaptureDevice.default(for: AVMediaType.video)
 
@@ -254,7 +282,7 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         
     }
     
-    // Finish Recording
+    // MARK:: Finish Recording
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if let error = error {
             print("Saving video failed: \(error.localizedDescription)")
@@ -263,6 +291,27 @@ class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate {
         }
     }
     
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+            let videoOutput = AVCaptureVideoDataOutput()
+            videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
+
+            let comicEffect = CIFilter(name: "CIComicEffect")
+
+            let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+            let cameraImage = CIImage(cvImageBuffer: pixelBuffer!)
+
+            comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
+
+            //let filteredImage = UIImage(CIImage: comicEffect!.valueForKey(kCIOutputImageKey) as! CIImage!)
+            let filteredImage = UIImage(ciImage: (comicEffect!.value(forKey: kCICategoryVideo) as! CIImage?)!)
+
+            print("made it here")
+
+
+            DispatchQueue.main.async {
+                self.filteredImage.image = filteredImage
+            }
+        }
     
     func removeAllTempFiles(){
         var directory = NSTemporaryDirectory()
