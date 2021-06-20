@@ -13,6 +13,8 @@
 		1D0EBEDE263DDE7900B17FD4 /* FilterCameraDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */; };
 		1D0EBEE0263E833800B17FD4 /* FilterCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */; };
 		1D0EBEE2263EB2D300B17FD4 /* disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0EBEE1263EB2D300B17FD4 /* disabled.png */; };
+		1D21C964267F953E00565C87 /* PhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D21C963267F953E00565C87 /* PhotoGalleryCell.swift */; };
+		1D21C966267FA86600565C87 /* MediaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D21C965267FA86600565C87 /* MediaFetch.swift */; };
 		1D2FCE18267DC1FB00485D5B /* Pods_TikTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */; };
 		1D2FCE19267DC1FB00485D5B /* Pods_TikTok.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D2FCE2E267DC35800485D5B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE1F267DC35700485D5B /* CameraViewController.swift */; };
@@ -34,6 +36,15 @@
 		1D2FCE46267E4FF100485D5B /* RnD2CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE45267E4FF100485D5B /* RnD2CameraVC.swift */; };
 		1D2FCE48267E84C300485D5B /* AddSoundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE47267E84C300485D5B /* AddSoundVC.swift */; };
 		1D2FCE4A267E852300485D5B /* PhotoGalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE49267E852300485D5B /* PhotoGalleryVC.swift */; };
+		1D2FCE4C267F522F00485D5B /* laughing.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D2FCE4B267F522E00485D5B /* laughing.png */; };
+		1D2FCE4E267F55A800485D5B /* photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D2FCE4D267F55A800485D5B /* photos.png */; };
+		1D2FCE50267F586300485D5B /* EffectAddCameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE4F267F586300485D5B /* EffectAddCameraVC.swift */; };
+		1D2FCE52267F671F00485D5B /* PageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE51267F671F00485D5B /* PageHeaderView.swift */; };
+		1D2FCE54267F6E8600485D5B /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE53267F6E8600485D5B /* TabView.swift */; };
+		1D2FCE56267F6EA400485D5B /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE55267F6EA400485D5B /* BaseScrollView.swift */; };
+		1D2FCE58267F6F1E00485D5B /* TabContentViewV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE57267F6F1E00485D5B /* TabContentViewV3.swift */; };
+		1D2FCE5B267F713300485D5B /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE5A267F713300485D5B /* VideoView.swift */; };
+		1D2FCE5D267F715700485D5B /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE5C267F715700485D5B /* PhotosView.swift */; };
 		1D6F63BE261B2C1E000E7AA8 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BC261B2C1E000E7AA8 /* close@3x.png */; };
 		1D6F63BF261B2C1E000E7AA8 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63BD261B2C1E000E7AA8 /* close@2x.png */; };
 		1D6F63C2261B2EEB000E7AA8 /* BtnTapTagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */; };
@@ -163,6 +174,8 @@
 		1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraDesignView.swift; sourceTree = "<group>"; };
 		1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D0EBEE1263EB2D300B17FD4 /* disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled.png; sourceTree = "<group>"; };
+		1D21C963267F953E00565C87 /* PhotoGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryCell.swift; sourceTree = "<group>"; };
+		1D21C965267FA86600565C87 /* MediaFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFetch.swift; sourceTree = "<group>"; };
 		1D2FCE1E267DC35600485D5B /* TikTok-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TikTok-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D2FCE1F267DC35700485D5B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1D2FCE20267DC35700485D5B /* DepthToGrayscaleConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthToGrayscaleConverter.swift; sourceTree = "<group>"; };
@@ -185,6 +198,15 @@
 		1D2FCE45267E4FF100485D5B /* RnD2CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RnD2CameraVC.swift; sourceTree = "<group>"; };
 		1D2FCE47267E84C300485D5B /* AddSoundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSoundVC.swift; sourceTree = "<group>"; };
 		1D2FCE49267E852300485D5B /* PhotoGalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryVC.swift; sourceTree = "<group>"; };
+		1D2FCE4B267F522E00485D5B /* laughing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laughing.png; sourceTree = "<group>"; };
+		1D2FCE4D267F55A800485D5B /* photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photos.png; sourceTree = "<group>"; };
+		1D2FCE4F267F586300485D5B /* EffectAddCameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectAddCameraVC.swift; sourceTree = "<group>"; };
+		1D2FCE51267F671F00485D5B /* PageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageHeaderView.swift; sourceTree = "<group>"; };
+		1D2FCE53267F6E8600485D5B /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		1D2FCE55267F6EA400485D5B /* BaseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
+		1D2FCE57267F6F1E00485D5B /* TabContentViewV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewV3.swift; sourceTree = "<group>"; };
+		1D2FCE5A267F713300485D5B /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		1D2FCE5C267F715700485D5B /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
 		1D6F63BC261B2C1E000E7AA8 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		1D6F63BD261B2C1E000E7AA8 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnTapTagEnum.swift; sourceTree = "<group>"; };
@@ -327,6 +349,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1D21C962267F950200565C87 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1DD0FE8826139A8F00736B91 /* CommentsTableViewCell.swift */,
+				1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */,
+				1D21C963267F953E00565C87 /* PhotoGalleryCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		1D2FCE17267DC19A00485D5B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,9 +424,21 @@
 			path = "RND-Camera-2";
 			sourceTree = "<group>";
 		};
+		1D2FCE59267F6F2D00485D5B /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				1D2FCE53267F6E8600485D5B /* TabView.swift */,
+				1D2FCE55267F6EA400485D5B /* BaseScrollView.swift */,
+				1D2FCE57267F6F1E00485D5B /* TabContentViewV3.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		1D6F63DE261B58AE000E7AA8 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				1D2FCE5C267F715700485D5B /* PhotosView.swift */,
+				1D2FCE5A267F713300485D5B /* VideoView.swift */,
 				1D6F63DB261B56CA000E7AA8 /* CameraTopView.swift */,
 			);
 			path = Camera;
@@ -421,6 +465,7 @@
 				1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */,
 				1D2FCE47267E84C300485D5B /* AddSoundVC.swift */,
 				1D2FCE49267E852300485D5B /* PhotoGalleryVC.swift */,
+				1D2FCE4F267F586300485D5B /* EffectAddCameraVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -428,15 +473,15 @@
 		1DBA99652610DA0D00B1F264 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D21C962267F950200565C87 /* Cell */,
 				1D6F64ED261CC380000E7AA8 /* VedioPost */,
 				1D6F63DE261B58AE000E7AA8 /* Camera */,
-				1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */,
 				1DD0FE8526138EA000736B91 /* CommnentsView.swift */,
-				1DD0FE8826139A8F00736B91 /* CommentsTableViewCell.swift */,
 				1DF73EDF2630A90800A2ED59 /* FullScreenVedioView.swift */,
 				1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */,
 				1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */,
 				1D0EBEDF263E833800B17FD4 /* FilterCameraCollectionViewCell.swift */,
+				1D2FCE51267F671F00485D5B /* PageHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,6 +515,8 @@
 				1DE10C562605B8BE003D3C7A /* UIView+Extension.swift */,
 				1D6F63C1261B2EEB000E7AA8 /* BtnTapTagEnum.swift */,
 				1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */,
+				1D2FCE59267F6F2D00485D5B /* Tab */,
+				1D21C965267FA86600565C87 /* MediaFetch.swift */,
 			);
 			path = "Extension+Helper";
 			sourceTree = "<group>";
@@ -693,6 +740,8 @@
 		1DE10C5B2605CE03003D3C7A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1D2FCE4D267F55A800485D5B /* photos.png */,
+				1D2FCE4B267F522E00485D5B /* laughing.png */,
 				1D6F63D6261B4702000E7AA8 /* plus (3)@2x.png */,
 				1D6F63D7261B4702000E7AA8 /* plus (3)@3x.png */,
 				1D6F63D2261B468A000E7AA8 /* plus (2)@2x.png */,
@@ -824,8 +873,10 @@
 				1DE10C782605D795003D3C7A /* flip.png in Resources */,
 				1DE10C742605D795003D3C7A /* image@3x.png in Resources */,
 				1D2FCE3B267DFD0700485D5B /* Main.storyboard in Resources */,
+				1D2FCE4E267F55A800485D5B /* photos.png in Resources */,
 				1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */,
 				1DD0FE402613479C00736B91 /* house.png in Resources */,
+				1D2FCE4C267F522F00485D5B /* laughing.png in Resources */,
 				1DD0FE22261343FB00736B91 /* plus.circle.fill.png in Resources */,
 				1DDAED1A261779B20008A056 /* HomeTableViewCell.xib in Resources */,
 				1DE10C7D2605D795003D3C7A /* speed@2x.png in Resources */,
@@ -897,8 +948,11 @@
 			files = (
 				1DDAED06261779B20008A056 /* Comment.swift in Sources */,
 				1DDAED17261779B20008A056 /* VideoPlayerManager.swift in Sources */,
+				1D2FCE50267F586300485D5B /* EffectAddCameraVC.swift in Sources */,
 				1D2FCE48267E84C300485D5B /* AddSoundVC.swift in Sources */,
+				1D2FCE56267F6EA400485D5B /* BaseScrollView.swift in Sources */,
 				1DD0FF9E26173BFC00736B91 /* Colors.swift in Sources */,
+				1D2FCE5B267F713300485D5B /* VideoView.swift in Sources */,
 				1DD0FDDE2612FBFF00736B91 /* TikTokTextLabel.swift in Sources */,
 				1DDAED22261779B20008A056 /* ProfileViewController.swift in Sources */,
 				1DBA99622610D8E200B1F264 /* SearchViewController.swift in Sources */,
@@ -910,6 +964,7 @@
 				1DDAED21261779B20008A056 /* ProfileCollectionViewFlowLayout.swift in Sources */,
 				1DDAED1B261779B20008A056 /* DiscoverViewController.swift in Sources */,
 				1D2FCE46267E4FF100485D5B /* RnD2CameraVC.swift in Sources */,
+				1D2FCE58267F6F1E00485D5B /* TabContentViewV3.swift in Sources */,
 				1DDAED0A261779B20008A056 /* PostsRequest.swift in Sources */,
 				1D2FCE36267DC35800485D5B /* DepthToGrayscale.metal in Sources */,
 				1DE10C3C2605B25D003D3C7A /* AppDelegate.swift in Sources */,
@@ -936,7 +991,9 @@
 				1D2FCE3D267E40D800485D5B /* DemoFilterCamVC.swift in Sources */,
 				1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */,
 				1DDAED13261779B20008A056 /* HomeViewModel.swift in Sources */,
+				1D2FCE5D267F715700485D5B /* PhotosView.swift in Sources */,
 				1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */,
+				1D21C964267F953E00565C87 /* PhotoGalleryCell.swift in Sources */,
 				1DDAED0C261779B20008A056 /* NetworkModel.swift in Sources */,
 				1DDAED18261779B20008A056 /* CommentTableViewCell.swift in Sources */,
 				1DDAED09261779B20008A056 /* VideoPostRequest.swift in Sources */,
@@ -970,8 +1027,11 @@
 				1D2FCE2E267DC35800485D5B /* CameraViewController.swift in Sources */,
 				1DF73EE02630A90800A2ED59 /* FullScreenVedioView.swift in Sources */,
 				1DD0FE432613612100736B91 /* UserProfileVC.swift in Sources */,
+				1D2FCE52267F671F00485D5B /* PageHeaderView.swift in Sources */,
 				1DDAED10261779B20008A056 /* UIKit Extensions.swift in Sources */,
+				1D21C966267FA86600565C87 /* MediaFetch.swift in Sources */,
 				1D2FCE3F267E44B800485D5B /* CapturedImageView.swift in Sources */,
+				1D2FCE54267F6E8600485D5B /* TabView.swift in Sources */,
 				1D2FCE34267DC35800485D5B /* PreviewMetalView.swift in Sources */,
 				1D0EBEDC263DBE1100B17FD4 /* CameraFilterView.swift in Sources */,
 				1DDAED05261779B20008A056 /* VideoCacheManager.swift in Sources */,

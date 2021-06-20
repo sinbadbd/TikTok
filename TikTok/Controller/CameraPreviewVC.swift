@@ -152,7 +152,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         previewView.layer.cornerRadius = cornerRadius
         cameraManager.addPreviewLayerToView(view: previewView)
         view.addSubview(previewView)
-//        previewView.lay
+        //        previewView.lay
         previewView.fitToSuper()
         
     }
@@ -186,7 +186,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
             playerView = MediaPlayerView(frame: previewView.frame, videoURL: url)
             view.addSubview(playerView!)
             playerView?.fitToSuper()
-//            playerView?.backgroundColor = .red
+            //            playerView?.backgroundColor = .red
             
             view.bringSubviewToFront(closeBtn)
             closeBtn.position(top: view.topAnchor, left: view.leadingAnchor, insets: .init(top: 50, left: 20,bottom:0, right: 0))
@@ -260,7 +260,7 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
                 print(sender.tag)
             } else if sender.tag == CameraTapItem.cameraSwitchbtn.rawValue {
                 print("sender.tag")
- 
+                
             } else if sender.tag == CameraTapItem.filterBtn.rawValue {
                 print(sender.tag)
             }else if sender.tag == CameraTapItem.closeBtn.rawValue {
@@ -271,6 +271,24 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
                 guard let videoURL = self.videoURL else { return }
                 vc.videoURL = videoURL
                 self.navigationController?.pushViewController(vc, animated: true)
+            }else if (sender.tag == CameraTapItem.effectBtn.rawValue){
+//                let vc = EffectAddCameraVC()
+                
+                let viewController = EffectAddCameraVC()
+                viewController.modalPresentationStyle = .popover
+                //viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+
+//                let animation = CATransition()
+//                animation.duration = 1
+//                animation.type = CATransitionType.fade
+//                self.view.window?.layer.add(animation, forKey: kCATransition)
+
+                self.present(viewController, animated: true, completion: nil)
+                
+//                present(vc, animated: true, completion: nil)
+            }else if (sender.tag == CameraTapItem.uploadBtn.rawValue){
+                let vc = PhotoGalleryVC()
+                present(vc, animated: true, completion: nil)
             }
         }
         
@@ -279,41 +297,89 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         
         recordView = RecordButton()
         
-        let recBtn = UIView()
+        let recBtnView = UIView()
         
-        view.addSubview(recBtn)
-        recBtn.position( bottom: view.bottomAnchor)
-        recBtn.size(width:100,height: 100)
-        //        recBtn.backgroundColor = .blue
-        recBtn.centerXInSuper()
+        view.addSubview(recBtnView)
+        recBtnView.position(
+            left: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            right: view.trailingAnchor
+        )
+        recBtnView.size(height: 80)
+        //recBtnView.backgroundColor = .yellow
+        //        recBtnView.centerYInSuper()
         
-        recBtn.addSubview(recordView!)
+        recBtnView.addSubview(recordView!)
         recordView?.isUserInteractionEnabled = true
         recordView?.position(
-            left:recBtn.leadingAnchor,
-            bottom: recBtn.bottomAnchor,right:
-                recBtn.trailingAnchor,
+            // left:recBtnView.leadingAnchor,
+            bottom: recBtnView.bottomAnchor,
+            // right: recBtnView.trailingAnchor,
             insets: .init(
                 top: 0,
                 left: 0,
                 bottom: 0,
                 right: 0)
         )
-        recordView?.size(height: 100, dimensionHeight:view.widthAnchor)
-        //        recordView?.backgroundColor = .green
+        recordView?.size(width:100, height: 100)
+        //recordView?.backgroundColor = .green
         recordView?.centerXInSuper()
         recordView?.layoutIfNeeded()
         let recordLongPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(recordBtnPressed(sender:)))
         recordLongPressGesture.minimumPressDuration = 0
         recordView?.addGestureRecognizer(recordLongPressGesture)
+        
+        // MARK:- EFFECT VIEW
+        let effectButton = UIButton()
+        recBtnView.addSubview(effectButton)
+        effectButton.position(
+            top:recBtnView.topAnchor,
+            left: recBtnView.leadingAnchor,
+            bottom: recBtnView.bottomAnchor,
+            insets: .init(
+                top: 10,
+                left: 20,
+                bottom: 10,
+                right: 10)
+        )
+        effectButton.setBackgroundImage(UIImage(named: "laughing"), for: .normal)
+        effectButton.setTitle("Effetc", for: .normal)
+        //      effectButton.centerYInSuper()
+        effectButton.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+        effectButton.size(width:60,height: 40)
+        //effectButton.backgroundColor = .blue
+        effectButton.tag = CameraTapItem.effectBtn.rawValue
+        
+        // MARK:- UPLOAD PHOTO
+        let uploadButton = UIButton()
+        recBtnView.addSubview(uploadButton)
+        uploadButton.position(
+            top:recBtnView.topAnchor,
+            //           left: recBtnView.leadingAnchor,
+            bottom: recBtnView.bottomAnchor,
+            right: recBtnView.trailingAnchor,
+            insets: .init(
+                top: 10,
+                left: 0,
+                bottom: 10,
+                right: 20)
+        )
+        //      effectButton.centerYInSuper()
+        uploadButton.setBackgroundImage(UIImage(named: "photos"), for: .normal)
+        uploadButton.setTitle("upload", for: .normal)
+        uploadButton.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+        uploadButton.size(width:60,height: 30)
+        uploadButton.tag = CameraTapItem.uploadBtn.rawValue
+        //uploadButton.backgroundColor = .blue
     }
     
-    @objc
-    func addSoundVC(){
+    @objc func addSoundVC(){
         let vc = AddSoundVC()
         
         present(vc, animated: true, completion: nil)
     }
+    
+ 
     
     func getButton(btn:UIButton, image:UIImage) -> UIButton  {
         let btn = btn
@@ -337,10 +403,10 @@ class CameraPreviewVC: UIViewController, RecordingDelegate {
         cameraTopView?.alpha = 0
         //closeBtn.alpha = 0
         
-//        cameraFilterView?.removeFromSuperview()
-//        cameraTopView?.removeFromSuperview()
-//        closeBtn.removeFromSuperview()
-       
+        //        cameraFilterView?.removeFromSuperview()
+        //        cameraTopView?.removeFromSuperview()
+        //        closeBtn.removeFromSuperview()
+        
         
         recordView?.startRecordingAnimation()
         cameraManager.startRecording()
@@ -396,27 +462,27 @@ extension CameraPreviewVC: CameraFilterProtocol {
     
     func filterCamera() {
         
- 
+        
         let filterView = FilterCameraDesignView()
         view.addSubview(filterView)
-//        filterView.fitToSuper()
-
-//        
+        //        filterView.fitToSuper()
+        
+        //
         filterView.position(bottom: view.bottomAnchor)
         filterView.size(  height: 160, dimensionWidth: view.widthAnchor)
-    
+        
         
         if ( self.view?.viewWithTag(100) != nil ){
             print("contain")
             cameraFilterView?.isHidden = true
-          }
-         else {
-//            view.addSubview(cameraFilterView!)
-//            cameraFilterView?.position(top: view.topAnchor, right: view.trailingAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 20))
-//            cameraFilterView?.size(width: 50, height: 300)
-//            cameraFilterView?.isHidden = false
-//            print("not contain")
-         }
+        }
+        else {
+            //            view.addSubview(cameraFilterView!)
+            //            cameraFilterView?.position(top: view.topAnchor, right: view.trailingAnchor, insets: .init(top: 40, left: 0, bottom: 0, right: 20))
+            //            cameraFilterView?.size(width: 50, height: 300)
+            //            cameraFilterView?.isHidden = false
+            //            print("not contain")
+        }
     }
     
     func flashCamera() {
