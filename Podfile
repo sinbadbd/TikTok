@@ -21,4 +21,5 @@ pod 'SnapKit'
 pod 'RxSwift', '~> 5'
 pod 'MarqueeLabel'
 pod 'lottie-ios'
+pod "NextLevel", "~> 0.16.0"
 end

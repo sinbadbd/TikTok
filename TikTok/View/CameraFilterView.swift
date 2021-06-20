@@ -100,7 +100,35 @@ class CameraFilterView: UIView {
     @objc func tapBtnTapped(_ sender:UIButton){
         if sender.tag == CameraTapItem.cameraSwitchbtn.rawValue {
             print(sender.tag)
-            cameraManager.switchCamera()
+            
+ 
+           
+//            if (cameraManager.frontCamera != nil) == false {
+//                cameraManager.switchCamera()
+//            }
+           
+            
+          
+            
+            print( cameraManager.captureDevice ?? "no camera preview")
+//            if cameraManager.captureDevice == cameraManager.frontCamera {
+////                cameraManager.setupDevice()
+//                cameraManager.switchCamera()
+//         /   }
+            
+//            cameraManager.setupDevice()
+//            cameraManager.captureSession?.beginConfiguration()
+//            //Change camera device inputs from back to front or opposite
+//            if cameraManager.captureSession?.inputs.contains(frontCamera!) == true {
+//                cameraManager.captureSession?.removeInput(frontCameraDeviceInput!)
+//                cameraManager.captureSession?.addInput(backCameraDeviceInput!)
+//            } else if cameraManager.captureSession?.inputs.contains(backCameraDeviceInput!) == true {
+//                cameraManager.captureSession?.removeInput(backCameraDeviceInput!)
+//                cameraManager.captureSession?.addInput(frontCameraDeviceInput!)
+//            }
+//
+//            //Commit all the configuration changes at once
+//            cameraManager.captureSession?.commitConfiguration();
   
         }else if sender.tag == CameraTapItem.filterBtn.rawValue {
             print("filter")

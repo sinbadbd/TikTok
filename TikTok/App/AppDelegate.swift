@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
-import ADEUMInstrumentation
 
 @available(iOS 13.0, *)
 @main
@@ -38,10 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBar.barTintColor = UIColor.clear
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
-        
-        
-        AppDynamicConfiguration()
-        
+                
         
         return true
     }
@@ -59,17 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
-    func AppDynamicConfiguration(){
-        
-//        let config = ADEumAgentConfiguration(appKey: "ezq96f13b1wc")
-//        let config = ADEumAgentConfiguration(appKey: "ezq96f13b1wc")
-//               // The default SaaS EUM Server and Screenshot Service are in
-//               // the Americas, so you can omit the following settings
-//               // if you are in the Americas.
-//               config.collectorURL = "https://col.eum-appdynamics.com"
-//               config.screenshotURL = "https://image.eum-appdynamics.com"
-//               ADEumInstrumentation.initWith(config)
-    }
+ 
 
     func fireStoreDB(){
         FirebaseApp.configure()

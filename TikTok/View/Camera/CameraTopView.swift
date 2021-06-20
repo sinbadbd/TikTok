@@ -6,9 +6,6 @@
 //
 
 import UIKit
-
-
-
 class CameraTopView: UIView {
     
     let addSoundView     = UIView()
@@ -22,12 +19,9 @@ class CameraTopView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .Blue
-//         addSubview(closeBtn)
-//        closeBtn.position(top: topAnchor, left: leadingAnchor, insets: .init(top: 0, left: 20,bottom:0, right: 0))
-//        closeBtn.size(width:20,height: 20)
-//        closeBtn.tag = CameraTapItem.closeBtn.rawValue
-//        closeBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
+        backgroundColor = .systemGray
+        alpha = 0.6
+        layer.cornerRadius = 4
         
         addSubview(addSoundView)
         addSoundView.position(top: topAnchor, insets: .init(top: 0, left: 0, bottom: 0, right: 0))
