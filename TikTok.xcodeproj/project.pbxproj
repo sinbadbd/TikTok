@@ -15,6 +15,8 @@
 		1D0EBEE2263EB2D300B17FD4 /* disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0EBEE1263EB2D300B17FD4 /* disabled.png */; };
 		1D21C964267F953E00565C87 /* PhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D21C963267F953E00565C87 /* PhotoGalleryCell.swift */; };
 		1D21C966267FA86600565C87 /* MediaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D21C965267FA86600565C87 /* MediaFetch.swift */; };
+		1D21C968267FC56200565C87 /* GalleryBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D21C967267FC56200565C87 /* GalleryBottomView.swift */; };
+		1D21C96A268122D600565C87 /* GallerySelectedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D21C969268122D600565C87 /* GallerySelectedItemCell.swift */; };
 		1D2FCE18267DC1FB00485D5B /* Pods_TikTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */; };
 		1D2FCE19267DC1FB00485D5B /* Pods_TikTok.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4C9AE82CB6704AC4DB57AB /* Pods_TikTok.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D2FCE2E267DC35800485D5B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FCE1F267DC35700485D5B /* CameraViewController.swift */; };
@@ -176,6 +178,8 @@
 		1D0EBEE1263EB2D300B17FD4 /* disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled.png; sourceTree = "<group>"; };
 		1D21C963267F953E00565C87 /* PhotoGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryCell.swift; sourceTree = "<group>"; };
 		1D21C965267FA86600565C87 /* MediaFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFetch.swift; sourceTree = "<group>"; };
+		1D21C967267FC56200565C87 /* GalleryBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryBottomView.swift; sourceTree = "<group>"; };
+		1D21C969268122D600565C87 /* GallerySelectedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallerySelectedItemCell.swift; sourceTree = "<group>"; };
 		1D2FCE1E267DC35600485D5B /* TikTok-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TikTok-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D2FCE1F267DC35700485D5B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1D2FCE20267DC35700485D5B /* DepthToGrayscaleConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthToGrayscaleConverter.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 				1DD0FE8826139A8F00736B91 /* CommentsTableViewCell.swift */,
 				1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */,
 				1D21C963267F953E00565C87 /* PhotoGalleryCell.swift */,
+				1D21C969268122D600565C87 /* GallerySelectedItemCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				1D2FCE5C267F715700485D5B /* PhotosView.swift */,
 				1D2FCE5A267F713300485D5B /* VideoView.swift */,
 				1D6F63DB261B56CA000E7AA8 /* CameraTopView.swift */,
+				1D21C967267FC56200565C87 /* GalleryBottomView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -977,11 +983,13 @@
 				1DE10C8C26061F6F003D3C7A /* RecordViewController.swift in Sources */,
 				1DDAED5626177DC90008A056 /* BaseNavigationController.swift in Sources */,
 				1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */,
+				1D21C96A268122D600565C87 /* GallerySelectedItemCell.swift in Sources */,
 				1DE10C8126060C33003D3C7A /* Helper.swift in Sources */,
 				1DDAED12261779B20008A056 /* HomeTableViewCell.swift in Sources */,
 				1D2FCE33267DC35800485D5B /* RosyMetalRenderer.swift in Sources */,
 				1DE10C572605B8BE003D3C7A /* UIView+Extension.swift in Sources */,
 				1DDAED31261779D30008A056 /* TabBarController.swift in Sources */,
+				1D21C968267FC56200565C87 /* GalleryBottomView.swift in Sources */,
 				1DDAED2E261779CE0008A056 /* BaseViewController.swift in Sources */,
 				1DDAED14261779B20008A056 /* VideoPlayerView.swift in Sources */,
 				1D6F63DC261B56CA000E7AA8 /* CameraTopView.swift in Sources */,

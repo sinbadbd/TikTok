@@ -14,11 +14,12 @@ enum StarPointHistoryTab: String {
 
 
 class PhotoGalleryVC: UIViewController {
+    
     var items = [String]()
     var selectedItem = ""
     var tabView:TabView?
     
-    
+    var  gallerySelectedView: GalleryBottomView?
     func setUI(){
         
         view.addSubview(closeBtn)
@@ -62,13 +63,29 @@ class PhotoGalleryVC: UIViewController {
                           insets: .init(
                             top: 20,
                             left: 0,
-                            bottom: 0,
+                            bottom: 45,
                             right: 0)
         )
         //        tabView?.fitToSuper()
         tabView?.menuItems = items
         tabView?.tabName = selectedItem.count > 0 ? selectedItem : items[0]
         tabView?.setupUI()
+        
+        
+        gallerySelectedView =  GalleryBottomView()
+        view.addSubview(gallerySelectedView!)
+        gallerySelectedView?.position(
+                          left: view.leadingAnchor,
+                          bottom: view.bottomAnchor,
+                          right: view.trailingAnchor,
+                          insets: .init(
+                            top: 0,
+                            left: 0,
+                            bottom: 0,
+                            right: 0)
+        )
+//        gallerySelectedView?.size(height:100)
+
     }
     
     let closeBtn :  UIButton = {
@@ -94,21 +111,11 @@ class PhotoGalleryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        
+     
         setUI()
-        
-        
-        //        closeBtn.size(width:20,height: 20)
-        
-        // Do any additional setup after loading the view.
+   
     }
-    
-    //    func showTab(tab:PackTab){
-    //        tabView?.tabName = stringFor(key: tab.rawValue)
-    //        tabView?.goToTab()
-    //    }
-    
+ 
     func setTabView(tabContentView: TabContentView){
         for subView in tabContentView.subviews {
             subView.removeFromSuperview()
@@ -118,24 +125,23 @@ class PhotoGalleryVC: UIViewController {
         
         if tabName == StarPointHistoryTab.video.rawValue {
             
-            let historyView = VideoView()
-            tabContentView.addSubview(historyView)
-            historyView.position(top: tabContentView.topAnchor, left: tabContentView.leadingAnchor, bottom: tabContentView.bottomAnchor)
-            historyView.size(dimensionWidth:tabContentView.widthAnchor, dimensionHeight: tabContentView.heightAnchor)
-            //            historyView.setupUI()
-            //            historyView.backgroundColor = .clear
-            historyView.tabName = "Video"
+            let videoView = VideoView()
+            videoView.delegate = self
+            tabContentView.addSubview(videoView)
+            videoView.position(top: tabContentView.topAnchor, left: tabContentView.leadingAnchor, bottom: tabContentView.bottomAnchor)
+            videoView.size(dimensionWidth:tabContentView.widthAnchor, dimensionHeight: tabContentView.heightAnchor)
+        
+            videoView.tabName = "Video"
         }
         
         else if tabName ==  StarPointHistoryTab.photos.rawValue {
             
-            let historyView = PhotosView()
-            tabContentView.addSubview(historyView)
-            historyView.position(top: tabContentView.topAnchor, left: tabContentView.leadingAnchor, bottom: tabContentView.bottomAnchor)
-            historyView.size(dimensionWidth:tabContentView.widthAnchor, dimensionHeight: tabContentView.heightAnchor)
-            //            historyView.setupUI()
-            //            historyView.backgroundColor = .clear
-             historyView.tabName = "Photo"
+            let photoView = PhotosView()
+            tabContentView.addSubview(photoView)
+            photoView.position(top: tabContentView.topAnchor, left: tabContentView.leadingAnchor, bottom: tabContentView.bottomAnchor)
+            photoView.size(dimensionWidth:tabContentView.widthAnchor, dimensionHeight: tabContentView.heightAnchor)
+ 
+             photoView.tabName = "Photo"
             
         }
     }
@@ -144,15 +150,7 @@ class PhotoGalleryVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+ 
     
 }
 extension PhotoGalleryVC: TabViewDelegate {
@@ -163,4 +161,24 @@ extension PhotoGalleryVC: TabViewDelegate {
             setTabView(tabContentView: view)
         }
     }
+}
+
+extension PhotoGalleryVC: PhotoSelectedDelegate{
+    func selectGallery(index: Int) {
+        print(index)
+        if index > 0 {
+//            self.gallerySelectedView?.removeFromSuperview()
+            self.gallerySelectedView?.nextBtn.isEnabled = true
+            self.gallerySelectedView?.nextBtn.backgroundColor = .systemRed
+            self.gallerySelectedView?.layoutIfNeeded()
+            
+            //MARK:- COLLECTION VIEW
+            self.gallerySelectedView?.collectionView.isHidden = false
+            self.gallerySelectedView?.collectionView.size(height:90)
+            
+            
+        }
+    }
+    
+    
 }
