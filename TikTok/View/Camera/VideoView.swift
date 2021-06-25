@@ -12,6 +12,9 @@ protocol PhotoSelectedDelegate:AnyObject {
     func selectGallery(index:Int)
 }
 
+
+var imageData = [UIImage]()
+
 class VideoView: UIView {
     
     var tabName = ""
@@ -185,24 +188,14 @@ extension VideoView: UICollectionViewDelegate,
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print(indexPath)
-   
+ 
+        let data = images[indexPath.item]
+        
+        imageData.append(data)
         
         delegate?.selectGallery(index: indexPath.item)
         
-        
-        //        let strData = arrData[indexPath.item]
-        //
-        //        if arrSelectedIndex.contains(indexPath) {
-        //            arrSelectedIndex = arrSelectedIndex.filter { $0 != indexPath}
-        //            arrSelectedData = arrSelectedData.filter { $0 != strData}
-        //        }
-        //        else {
-        //            arrSelectedIndex.append(indexPath)
-        //            arrSelectedData.append(strData)
-        //        }
-        //
-        //        collectionView.reloadData()
+ 
     }
 }
  

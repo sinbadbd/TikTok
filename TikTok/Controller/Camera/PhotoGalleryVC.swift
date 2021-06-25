@@ -84,6 +84,7 @@ class PhotoGalleryVC: UIViewController {
                             bottom: 0,
                             right: 0)
         )
+        gallerySelectedView?.collectionView.reloadData()
 //        gallerySelectedView?.size(height:100)
 
     }
@@ -148,6 +149,7 @@ class PhotoGalleryVC: UIViewController {
     
     @objc func handleClosebtn(){
         dismiss(animated: true, completion: nil)
+        imageData.removeAll()
     }
     
  
@@ -173,12 +175,22 @@ extension PhotoGalleryVC: PhotoSelectedDelegate{
             self.gallerySelectedView?.layoutIfNeeded()
             
             //MARK:- COLLECTION VIEW
+            self.gallerySelectedView?.collectionView.reloadData()
             self.gallerySelectedView?.collectionView.isHidden = false
             self.gallerySelectedView?.collectionView.size(height:90)
             
+          
             
         }
+        
+//        else if index == 0 && imageData.count < 0 {
+//           
+//                self.gallerySelectedView?.collectionView.reloadData()
+//                self.gallerySelectedView?.collectionView.isHidden = true
+//                self.gallerySelectedView?.collectionView.size(height:0)
+//          
+//            
+//        }
     }
-    
     
 }
