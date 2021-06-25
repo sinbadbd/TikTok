@@ -9,22 +9,15 @@ import UIKit
 
 class SliderCollectionView: UIView {
     
-    //    var arrData = ["String","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123","123"]
-    var arrData = ["123","123","123","123","123","123","123"]
-    
-    var cellScale:CGFloat = 0.7
+    var arrData = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
+    //    var arrData = ["123","123","123","123","123","123","123"]
     
     
-    let collectionMargin = CGFloat(16)
-    let itemSpacing = CGFloat(10)
+    
     let itemHeight = CGFloat(150)
     var itemWidth = CGFloat(300)
-    var currentItem = 0
     
     
-    var itemCellSize: CGSize = CGSize(width: 322, height: 170)
-    var itemCellsGap: CGFloat = 10
- 
     private lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: itemWidth, height:itemHeight)
@@ -40,7 +33,7 @@ class SliderCollectionView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        // collectionView.register(SomeCell.self)
+        collectionView.register(PhotoGalleryCell.self, forCellWithReuseIdentifier: PhotoGalleryCell.identify)
         return collectionView
     }()
     
@@ -49,11 +42,7 @@ class SliderCollectionView: UIView {
     
     func setupUI(){
         addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PhotoGalleryCell.self, forCellWithReuseIdentifier: PhotoGalleryCell.identify)
         collectionView.fitToSuper()
-        collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .clear
         collectionView.allowsMultipleSelection = false
         collectionView.reloadData()
@@ -83,19 +72,23 @@ extension SliderCollectionView: UICollectionViewDelegate,
         cell.photoImageView.backgroundColor = .blue
         cell.photoImageView.layer.cornerRadius = 8
         
+        let lbl = UILabel()
+        cell.addSubview(lbl)
+        lbl.fitToSuper()
+        //        lbl.size(width:200)
+        lbl.text = arrData[indexPath.item]
+        lbl.font = UIFont.systemFont(ofSize: 30)
+        lbl.textAlignment = .center
+        lbl.textColor = .white
+        lbl.backgroundColor = .red
         return cell
     }
- 
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        guard scrollView == collectionView else { return }
-        
-        let pageWidth = flowLayout.itemSize.width + flowLayout.minimumLineSpacing
-        currentIndex = Int(scrollView.contentOffset.x / pageWidth)
-    }
+    
+    
     
     //MARK:: THIS FUNCTION WORKING ===================================================================
-  
+    
     ///https://stackoverflow.com/questions/22895465/paging-uicollectionview-by-cells-not-screen
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         targetContentOffset.pointee = scrollView.contentOffset
@@ -104,12 +97,12 @@ extension SliderCollectionView: UICollectionViewDelegate,
         var index = indexes.first!
         // if velocity.x > 0 && (Get the number of items from your data) > index.row + 1 {
         if velocity.x > 0 && collectionView.numberOfItems(inSection: 0) > index.row + 1 {
-           index.row += 1
+            index.row += 1
         } else if velocity.x == 0 {
             let cell = collectionView.cellForItem(at: index)!
             let position = collectionView.contentOffset.x - cell.frame.origin.x
             if position > cell.frame.size.width / 2 {
-               index.row += 1
+                index.row += 1
             }
         }
         
