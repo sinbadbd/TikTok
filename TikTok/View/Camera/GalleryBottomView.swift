@@ -12,6 +12,8 @@ protocol NextButtonDelegate:AnyObject {
     func isHiddenView()
 }
 
+var imageArray = [UIImage]()
+
 class GalleryBottomView: UIView {
  
   
@@ -100,6 +102,17 @@ extension GalleryBottomView: UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoGalleryCell.identify, for: indexPath) as! PhotoGalleryCell
         
+//        cell.contentView.layer.cornerRadius = 4
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        cell.layer.shadowRadius = 1.0
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.masksToBounds = false
+//        cell.contentView.layer.borderWidth = 1.0
+//
+//
+//        cell.photoImageView.layer.cornerRadius = 4
+//        cell.photoImageView.clipsToBounds = true
         //        if arrSelectedIndex.contains(indexPath) { // You need to check wether selected index array contain current index if yes then change the color
         //            cell.backgroundColor = UIColor.red
         //        }

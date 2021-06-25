@@ -21,6 +21,7 @@ class VideoView: UIView {
     var arrSelectedData = [String]() // This is selected cell data array
     
     
+    var selectedImage = [Any]()
     
     var assets = [PHAsset]()
     var images = [UIImage]()
@@ -185,7 +186,7 @@ extension VideoView: UICollectionViewDelegate,
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        print(indexPath)
-       
+   
         
         delegate?.selectGallery(index: indexPath.item)
         
