@@ -18,6 +18,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     var mediaViewController             : CameraPreviewVC!//MediaViewController!
     var inboxViewController             : InboxViewController!
     var profileViewController           : ProfileViewController!
+    var searchViewController           : SearchViewController!
     
     /*
         MARK:- RND CAMERA
@@ -49,7 +50,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         mediaViewController         = CameraPreviewVC()//MediaViewController() //MARK:- MY design vc
         inboxViewController         = InboxViewController()
         profileViewController       = ProfileViewController()
-     
+        searchViewController        = SearchViewController()
         cameraFilerVC               = CameraViewController()
         cameraRNDFViewVC            = DemoFilterCamVC()
 //        rnD2CameraVC                = RnD2CameraVC()
@@ -58,8 +59,8 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         homeViewController.tabBarItem.image = UIImage(named: "house")
         homeViewController.tabBarItem.selectedImage = UIImage(named: "house.fill")
         
-        discoverViewController.tabBarItem.image = UIImage(named: "magnifyingglass.circle.png")
-        discoverViewController.tabBarItem.selectedImage = UIImage(named: "magnifyingglass.circle.fill.png")
+        searchViewController.tabBarItem.image = UIImage(named: "magnifyingglass.circle.png")
+        searchViewController.tabBarItem.selectedImage = UIImage(named: "magnifyingglass.circle.fill.png")
         
         mediaViewController.tabBarItem.image = UIImage(named: "plus (3)")?.withRenderingMode(.alwaysOriginal)
         
@@ -69,7 +70,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         profileViewController.tabBarItem.image = UIImage(named: "person.crop.circle")
         profileViewController.tabBarItem.selectedImage = UIImage(named: "person.crop.circle.fill")
         
-        viewControllers = [homeViewController, discoverViewController, mediaViewController, inboxViewController, profileViewController]
+        viewControllers = [homeViewController, searchViewController, mediaViewController, inboxViewController, profileViewController]
         
         let tabBarItemTitle = ["Home", "Discover", "Add", "Inbox", "Me"]
         

@@ -62,6 +62,7 @@
 		1D6F63E9261B8D24000E7AA8 /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */; };
 		1D6F64EA261CAFB8000E7AA8 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */; };
 		1D6F64EF261CC3A2000E7AA8 /* VedioPostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F64EE261CC3A2000E7AA8 /* VedioPostHeaderView.swift */; };
+		1D7F9DCC268620C800FCAEC5 /* SliderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F9DCB268620C800FCAEC5 /* SliderCollectionView.swift */; };
 		1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */; };
 		1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */; };
 		1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */; };
@@ -226,6 +227,7 @@
 		1D6F63E8261B8D24000E7AA8 /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		1D6F64EE261CC3A2000E7AA8 /* VedioPostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioPostHeaderView.swift; sourceTree = "<group>"; };
+		1D7F9DCB268620C800FCAEC5 /* SliderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCollectionView.swift; sourceTree = "<group>"; };
 		1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedVC.swift; sourceTree = "<group>"; };
 		1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -458,20 +460,69 @@
 			path = VedioPost;
 			sourceTree = "<group>";
 		};
-		1DBA99642610D9FD00B1F264 /* Controller */ = {
+		1D7F9DC52686204300FCAEC5 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				1D2FCE4F267F586300485D5B /* EffectAddCameraVC.swift */,
+				1D2FCE49267E852300485D5B /* PhotoGalleryVC.swift */,
+				1D2FCE47267E84C300485D5B /* AddSoundVC.swift */,
+				1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */,
+				1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */,
+				1DE10C8B26061F6F003D3C7A /* RecordViewController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		1D7F9DC62686204C00FCAEC5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */,
-				1DE10C8B26061F6F003D3C7A /* RecordViewController.swift */,
-				1DE10C83260612AE003D3C7A /* CameraPreviewVC.swift */,
-				1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1D7F9DC72686205100FCAEC5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
 				1DBA99612610D8E200B1F264 /* SearchViewController.swift */,
-				1DD0FE422613612100736B91 /* UserProfileVC.swift */,
+				1D7F9DCB268620C800FCAEC5 /* SliderCollectionView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1D7F9DC82686205700FCAEC5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
 				1D6F63E2261B79B4000E7AA8 /* ProfileVC.swift */,
-				1D6F63E5261B7A95000E7AA8 /* VedioPostVC.swift */,
-				1D2FCE47267E84C300485D5B /* AddSoundVC.swift */,
-				1D2FCE49267E852300485D5B /* PhotoGalleryVC.swift */,
-				1D2FCE4F267F586300485D5B /* EffectAddCameraVC.swift */,
+				1DD0FE422613612100736B91 /* UserProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1D7F9DC92686205F00FCAEC5 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
+		1D7F9DCA2686208400FCAEC5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1DBA99642610D9FD00B1F264 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D7F9DCA2686208400FCAEC5 /* App */,
+				1D7F9DC92686205F00FCAEC5 /* Inbox */,
+				1D7F9DC82686205700FCAEC5 /* Profile */,
+				1D7F9DC72686205100FCAEC5 /* Search */,
+				1D7F9DC62686204C00FCAEC5 /* Home */,
+				1D7F9DC52686204300FCAEC5 /* Camera */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1015,6 +1066,7 @@
 				1DDAED27261779B20008A056 /* CameraManager.swift in Sources */,
 				1D6F63E6261B7A95000E7AA8 /* VedioPostVC.swift in Sources */,
 				1DDAED0E261779B20008A056 /* URL.swift in Sources */,
+				1D7F9DCC268620C800FCAEC5 /* SliderCollectionView.swift in Sources */,
 				1D2FCE38267DC35800485D5B /* PassThrough.metal in Sources */,
 				1DDAED20261779B20008A056 /* ProfileCollectionViewCell.swift in Sources */,
 				1D2FCE2F267DC35800485D5B /* DepthToGrayscaleConverter.swift in Sources */,
