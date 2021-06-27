@@ -12,15 +12,16 @@ class PhotoGalleryCell: UICollectionViewCell {
     static let identify = "PhotoGalleryCell"
     
     let photoImageView : UIImageView = {
-            let image = UIImageView()
-            return image
-        }()
+        let image = UIImageView()
+        image.contentMode = .scaleToFill
+        return image
+    }()
     
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        backgroundColor = .systemGray
+        //        backgroundColor = .systemGray
         addSubview(photoImageView)
         photoImageView.fitToSuper()
     }

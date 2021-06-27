@@ -62,7 +62,6 @@ class HomeFeedVC: UIViewController {
         if let cell = collectionView.visibleCells.first as? HomeCollectionViewCell {
             cell.play()
         }
-
     }
     func setupUI(){
         
@@ -134,9 +133,7 @@ class HomeFeedVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
 //
-        if let cell = collectionView.visibleCells.first as? HomeCollectionViewCell {
-            cell.play()
-        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -208,20 +205,39 @@ extension HomeFeedVC: HomeFeedButtonClickDeleget{
         
         
         
-        let window = UIApplication.shared.keyWindow!
-        self.commentsView = CommnentsView()
-        window.addSubview(commentsView!)
-        commentsView?.centerXInSuper()
-        commentsView?.fitToSuper()
+//        let window = UIApplication.shared.keyWindow!
+//        self.commentsView = CommnentsView()
+//        window.addSubview(commentsView!)
+//        commentsView?.centerXInSuper()
+//        commentsView?.fitToSuper()
+//
+//        commentsView?.fadeIn()
+//
+//        let tapGesture = UITapGestureRecognizer(target: self,
+//                                                action: #selector(slideUpViewTapped))
+//        commentsView!.addGestureRecognizer(tapGesture)
+//        //
         
-        commentsView?.fadeIn()
-        
-        let tapGesture = UITapGestureRecognizer(target: self,
-                                                action: #selector(slideUpViewTapped))
-        commentsView!.addGestureRecognizer(tapGesture)
-        //
+         CommentPopUpView.init().show()
 
+       
+       // let vc =  CommentsVC()//CommentsVC()
         
+        
+//
+        
+        
+//        let transition: CATransition = CATransition()
+//        let timeFunc : CAMediaTimingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        transition.duration = 0
+//           transition.timingFunction = timeFunc
+//        transition.type = CATransitionType.fade
+//        transition.subtype = CATransitionSubtype.fromTop
+//        self.view.window!.layer.add(transition, forKey: kCATransition)
+//        self.present(vc, animated:true, completion:nil)
+
+//        vc.present(vc, animated: true, completion: nil)
+ 
     }
     
     func shareButtonTapped() {
@@ -232,7 +248,7 @@ extension HomeFeedVC: HomeFeedButtonClickDeleget{
         
     }
     
-    
+ 
     func profileButtonPressed() {
         
         let vc = UserProfileVC()

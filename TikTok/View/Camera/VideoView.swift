@@ -8,6 +8,13 @@
 import UIKit
 import Photos
 
+protocol PhotoSelectedDelegate:AnyObject {
+    func selectGallery(index:Int)
+}
+
+
+var imageData = [UIImage]()
+
 class VideoView: UIView {
     
     var tabName = ""
@@ -17,6 +24,7 @@ class VideoView: UIView {
     var arrSelectedData = [String]() // This is selected cell data array
     
     
+    var selectedImage = [Any]()
     
     var assets = [PHAsset]()
     var images = [UIImage]()
@@ -28,6 +36,44 @@ class VideoView: UIView {
     var loading = false
     var hasNextPage = false
     
+    
+    weak var delegate: PhotoSelectedDelegate?
+    
+    
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collection
+    }()
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .green
+        setupUI()
+        
+        // Fetch Gallery
+        let options = PHFetchOptions()
+        options.includeHiddenAssets = true
+        let sortDescriptions = NSSortDescriptor(key: "creationDate", ascending: false)
+        options.sortDescriptors = [sortDescriptions]
+        allPhotos = PHAsset.fetchAssets(with: .video, options: options)
+        
+        getImages()
+        
+        
+    }
+    func setupUI(){
+        addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(PhotoGalleryCell.self, forCellWithReuseIdentifier: PhotoGalleryCell.identify)
+        collectionView.fitToSuper()
+        collectionView.backgroundColor = .white
+        collectionView.allowsMultipleSelection = true
+        collectionView.reloadData()
+    }
     
     func getImages(){
         endIndex = beginIndex + (page - 1)
@@ -83,38 +129,6 @@ class VideoView: UIView {
         }
     }
     
-    let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return collection
-    }()
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .green
-        setupUI()
-        
-        // Fetch Gallery
-        let options = PHFetchOptions()
-        options.includeHiddenAssets = true
-        let sortDescriptions = NSSortDescriptor(key: "creationDate", ascending: false)
-        options.sortDescriptors = [sortDescriptions]
-        allPhotos = PHAsset.fetchAssets(with: .video, options: options)
-        
-        getImages()
-    }
-    func setupUI(){
-        addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PhotoGalleryCell.self, forCellWithReuseIdentifier: PhotoGalleryCell.identify)
-        collectionView.fitToSuper()
-        collectionView.backgroundColor = .white
-        collectionView.allowsMultipleSelection = true
-        collectionView.reloadData()
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -174,18 +188,14 @@ extension VideoView: UICollectionViewDelegate,
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
-        //        let strData = arrData[indexPath.item]
-        //
-        //        if arrSelectedIndex.contains(indexPath) {
-        //            arrSelectedIndex = arrSelectedIndex.filter { $0 != indexPath}
-        //            arrSelectedData = arrSelectedData.filter { $0 != strData}
-        //        }
-        //        else {
-        //            arrSelectedIndex.append(indexPath)
-        //            arrSelectedData.append(strData)
-        //        }
-        //
-        //        collectionView.reloadData()
+ 
+        let data = images[indexPath.item]
+        
+        imageData.append(data)
+        
+        delegate?.selectGallery(index: indexPath.item)
+        
+ 
     }
 }
+ 
