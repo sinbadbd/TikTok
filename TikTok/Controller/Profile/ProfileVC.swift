@@ -126,7 +126,7 @@ class ProfileVC: RootVC {
         
         stackView.distribution = .equalCentering
         stackView.alignment = .center
-        stackView.spacing = 20
+        stackView.spacing = 30
         stackView.axis = .horizontal
         
         
