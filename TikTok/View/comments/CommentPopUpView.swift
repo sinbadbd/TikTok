@@ -1,17 +1,10 @@
-//
-//  CommentPopUpView.swift
-//  KD Tiktok-Clone
-//
-//  Created by Sam Ding on 9/10/20.
-//  Copyright © 2020 Kaishan. All rights reserved.
-//
 
 import UIKit
 import SnapKit
 
 @available(iOS 13.0, *)
 class CommentPopUpView: UIView, UIScrollViewDelegate {
-
+    
     // MARK: - UI Components
     var backgroundView: UIView!
     var popUpView: UIView!
@@ -25,6 +18,7 @@ class CommentPopUpView: UIView, UIScrollViewDelegate {
     /// Sliding Distance for pop up comment view: - Default *0.0*
     var totalSlidingDistance = CGFloat()
     var panGesture : UIPanGestureRecognizer!
+    
     
     // MARK: - Initializers
     deinit {
@@ -51,7 +45,7 @@ class CommentPopUpView: UIView, UIScrollViewDelegate {
         
         // Background
         backgroundView = UIView(frame: self.bounds)
-        backgroundView.backgroundColor = .clear
+        backgroundView.backgroundColor = UIColor.init(white: 0.3, alpha: 0.9)
         backgroundView.isUserInteractionEnabled = true
         addSubview(backgroundView)
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleDismiss(sender:)))
@@ -107,15 +101,19 @@ class CommentPopUpView: UIView, UIScrollViewDelegate {
         commentTableView.tableFooterView = UIView()
         commentTableView.backgroundColor = .clear
         commentTableView.separatorStyle = .none
-        commentTableView.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        //        commentTableView.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        commentTableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.reuseIdentifier)
         self.popUpView.addSubview(commentTableView)
         commentTableView.snp.makeConstraints({ make in
             make.left.right.equalToSuperview()
             make.top.equalTo(commentCountLbl.snp.bottom).offset(5)
-            make.height.equalToSuperview().multipliedBy(0.85) // TODO: Constraint this to text field
+            make.height.equalToSuperview().multipliedBy(0.9) // TODO: Constraint this to text field
         })
         
         // Text field
+        
+
+        
         
         
     }
@@ -123,12 +121,19 @@ class CommentPopUpView: UIView, UIScrollViewDelegate {
     // MARK: - Display Animations
     @objc func show(){
         // Add CommentPopUpView in the front of the current window
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-          let sceneDelegate = windowScene.delegate as? SceneDelegate
-        else {
-          return
-        }
-        sceneDelegate.window?.addSubview(self)
+        //        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+        //          let sceneDelegate = windowScene.delegate as? SceneDelegate
+        //        else {
+        //          return
+        //        }
+        //        sceneDelegate.window?.addSubview(self)
+        
+        
+        let window = UIApplication.shared.keyWindow!
+        //                self.commentsView = CommnentsView()
+        window.addSubview(self)
+        //                commentsView?.centerXInSuper()
+        //                commentsView?.fitToSuper(
         
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseOut, animations: {
             self.frame.origin.y = 0
@@ -163,7 +168,7 @@ class CommentPopUpView: UIView, UIScrollViewDelegate {
                 sender.setTranslation(.zero, in: popUpView)
                 totalSlidingDistance += transition.y
             }
-
+            
         case .ended:
             //Pan gesture ended
             if sender.velocity(in: popUpView).y > 300{
@@ -173,7 +178,7 @@ class CommentPopUpView: UIView, UIScrollViewDelegate {
                                animations: {
                                 self.frame.origin.y -= self.totalSlidingDistance
                                 self.layoutIfNeeded()
-                }, completion: nil)
+                               }, completion: nil)
             }
             commentTableView.isUserInteractionEnabled = true
             totalSlidingDistance = 0
@@ -182,14 +187,14 @@ class CommentPopUpView: UIView, UIScrollViewDelegate {
                            animations: {
                             self.frame.origin.y -= self.totalSlidingDistance
                             self.layoutIfNeeded()
-            }, completion: nil)
+                           }, completion: nil)
             commentTableView.isUserInteractionEnabled = true
             totalSlidingDistance = 0
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset.y)
+        //        print(scrollView.contentOffset.y)
         if (scrollView.contentOffset.y <= 0 && !scrollView.isDragging){
             commentTableView.isUserInteractionEnabled = false
         } else {
@@ -206,7 +211,7 @@ extension CommentPopUpView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CommentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommentsTableViewCell.reuseIdentifier, for: indexPath) as! CommentsTableViewCell
         return cell
     }
     

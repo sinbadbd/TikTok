@@ -35,6 +35,11 @@ class GalleryBottomView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupUI()
+        //        nextBtn.tag = CameraTapItem.nextBtnVc.rawValue
+    }
+    
+    func setupUI(){
         
         addSubview(containerView)
         containerView.position(
@@ -53,7 +58,7 @@ class GalleryBottomView: UIView {
         //        collectionView.fitToSuper()
         collectionView.position(top: containerView.topAnchor, left: containerView.leadingAnchor, right: containerView.trailingAnchor, insets: .init(top: 0, left: 5, bottom: 5, right: 5))
         //        collectionView.size(height:90)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .red
         collectionView.isHidden = true
         //        collectionView.allowsMultipleSelection = true
         collectionView.reloadData()
@@ -77,7 +82,6 @@ class GalleryBottomView: UIView {
         nextBtn.layer.cornerRadius = 4
         nextBtn.isEnabled = false
         nextBtn.addTarget(self, action: #selector(tapBtnTapped), for: .touchUpInside)
-        //        nextBtn.tag = CameraTapItem.nextBtnVc.rawValue
     }
     
     @objc func tapBtnTapped(){

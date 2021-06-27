@@ -17,7 +17,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     var discoverViewController          : DiscoverViewController!
     var mediaViewController             : CameraPreviewVC!//MediaViewController!
     var inboxViewController             : InboxViewController!
-    var profileViewController           : ProfileViewController!
+    var profileViewController           : ProfileViewController!//ProfileVC! //ProfileViewController!
     var searchViewController           : SearchViewController!
     
     /*
@@ -49,7 +49,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         discoverViewController      = DiscoverViewController()
         mediaViewController         = CameraPreviewVC()//MediaViewController() //MARK:- MY design vc
         inboxViewController         = InboxViewController()
-        profileViewController       = ProfileViewController()
+        profileViewController       = ProfileViewController() //ProfileVC() //ProfileViewController()
         searchViewController        = SearchViewController()
         cameraFilerVC               = CameraViewController()
         cameraRNDFViewVC            = DemoFilterCamVC()
@@ -74,9 +74,17 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         
         let tabBarItemTitle = ["Home", "Discover", "Add", "Inbox", "Me"]
         
+        
         for (index, tabBarItem) in tabBar.items!.enumerated() {
             tabBarItem.title = tabBarItemTitle[index]
-            if index == 2 {
+            if index == 1 {
+                let tabBar = UITabBar.appearance()
+                tabBar.barTintColor = UIColor.clear
+                tabBar.backgroundImage = UIImage()
+                tabBar.shadowImage = UIImage()
+                        
+            }
+            else if index == 2 {
                 // Media Button
                 tabBarItem.title = ""
                 tabBarItem.imageInsets = UIEdgeInsets(top: -6, left: 0, bottom: -6, right: 0)

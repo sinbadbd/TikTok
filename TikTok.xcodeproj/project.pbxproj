@@ -63,9 +63,10 @@
 		1D6F64EA261CAFB8000E7AA8 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */; };
 		1D6F64EF261CC3A2000E7AA8 /* VedioPostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F64EE261CC3A2000E7AA8 /* VedioPostHeaderView.swift */; };
 		1D7F9DCC268620C800FCAEC5 /* SliderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F9DCB268620C800FCAEC5 /* SliderCollectionView.swift */; };
+		1D7F9DCF26884BED00FCAEC5 /* BottomCommentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F9DCE26884BED00FCAEC5 /* BottomCommentInputView.swift */; };
+		1D7F9DD1268857FD00FCAEC5 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F9DD0268857FD00FCAEC5 /* CommentsVC.swift */; };
 		1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */; };
 		1DBA995C2610BFE700B1F264 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */; };
-		1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */; };
 		1DBA99622610D8E200B1F264 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99612610D8E200B1F264 /* SearchViewController.swift */; };
 		1DD0FDD82612FB6B00736B91 /* TikTokButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FDD72612FB6B00736B91 /* TikTokButton.swift */; };
 		1DD0FDDB2612FBE000736B91 /* TikTokLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0FDDA2612FBE000736B91 /* TikTokLabel.swift */; };
@@ -228,9 +229,10 @@
 		1D6F64E9261CAFB8000E7AA8 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		1D6F64EE261CC3A2000E7AA8 /* VedioPostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioPostHeaderView.swift; sourceTree = "<group>"; };
 		1D7F9DCB268620C800FCAEC5 /* SliderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCollectionView.swift; sourceTree = "<group>"; };
+		1D7F9DCE26884BED00FCAEC5 /* BottomCommentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCommentInputView.swift; sourceTree = "<group>"; };
+		1D7F9DD0268857FD00FCAEC5 /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		1DBA9956261079FC00B1F264 /* HomeFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedVC.swift; sourceTree = "<group>"; };
 		1DBA995B2610BFE700B1F264 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1DBA99612610D8E200B1F264 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1DD0FDD72612FB6B00736B91 /* TikTokButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokButton.swift; sourceTree = "<group>"; };
 		1DD0FDDA2612FBE000736B91 /* TikTokLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokLabel.swift; sourceTree = "<group>"; };
@@ -509,9 +511,19 @@
 		1D7F9DCA2686208400FCAEC5 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				1DBA995E2610D8BE00B1F264 /* TabBarViewController.swift */,
+				1DDAED30261779D30008A056 /* TabBarController.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		1D7F9DCD26884B9C00FCAEC5 /* comments */ = {
+			isa = PBXGroup;
+			children = (
+				1DDAECE9261779B10008A056 /* CommentPopUpView.swift */,
+				1DD0FE8526138EA000736B91 /* CommnentsView.swift */,
+				1D7F9DCE26884BED00FCAEC5 /* BottomCommentInputView.swift */,
+			);
+			path = comments;
 			sourceTree = "<group>";
 		};
 		1DBA99642610D9FD00B1F264 /* Controller */ = {
@@ -523,6 +535,7 @@
 				1D7F9DC72686205100FCAEC5 /* Search */,
 				1D7F9DC62686204C00FCAEC5 /* Home */,
 				1D7F9DC52686204300FCAEC5 /* Camera */,
+				1D7F9DD0268857FD00FCAEC5 /* CommentsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -530,10 +543,10 @@
 		1DBA99652610DA0D00B1F264 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D7F9DCD26884B9C00FCAEC5 /* comments */,
 				1D21C962267F950200565C87 /* Cell */,
 				1D6F64ED261CC380000E7AA8 /* VedioPost */,
 				1D6F63DE261B58AE000E7AA8 /* Camera */,
-				1DD0FE8526138EA000736B91 /* CommnentsView.swift */,
 				1DF73EDF2630A90800A2ED59 /* FullScreenVedioView.swift */,
 				1D0EBEDB263DBE1000B17FD4 /* CameraFilterView.swift */,
 				1D0EBEDD263DDE7900B17FD4 /* FilterCameraDesignView.swift */,
@@ -558,7 +571,6 @@
 				1DE10C3B2605B25D003D3C7A /* AppDelegate.swift */,
 				1DE10C3D2605B25D003D3C7A /* SceneDelegate.swift */,
 				1DDAED2D261779CE0008A056 /* BaseViewController.swift */,
-				1DDAED30261779D30008A056 /* TabBarController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -692,7 +704,6 @@
 				1DDAECE6261779B10008A056 /* HomeTableViewCell.swift */,
 				1DDAECE7261779B10008A056 /* HomeViewModel.swift */,
 				1DDAECE8261779B10008A056 /* VideoPlayerView.swift */,
-				1DDAECE9261779B10008A056 /* CommentPopUpView.swift */,
 				1DDAECEA261779B10008A056 /* HomeViewController.swift */,
 				1DDAECEB261779B10008A056 /* VideoPlayerManager.swift */,
 				1DDAECEC261779B10008A056 /* CommentTableViewCell.swift */,
@@ -1019,6 +1030,7 @@
 				1DBA9957261079FC00B1F264 /* HomeFeedVC.swift in Sources */,
 				1D2FCE30267DC35800485D5B /* VideoMixer.swift in Sources */,
 				1DDAED21261779B20008A056 /* ProfileCollectionViewFlowLayout.swift in Sources */,
+				1D7F9DCF26884BED00FCAEC5 /* BottomCommentInputView.swift in Sources */,
 				1DDAED1B261779B20008A056 /* DiscoverViewController.swift in Sources */,
 				1D2FCE46267E4FF100485D5B /* RnD2CameraVC.swift in Sources */,
 				1D2FCE58267F6F1E00485D5B /* TabContentViewV3.swift in Sources */,
@@ -1048,7 +1060,6 @@
 				1D2FCE39267DC35800485D5B /* minMaxFromBuffer.m in Sources */,
 				1DDAED2B261779B20008A056 /* RecordButton.swift in Sources */,
 				1D2FCE3D267E40D800485D5B /* DemoFilterCamVC.swift in Sources */,
-				1DBA995F2610D8BE00B1F264 /* TabBarViewController.swift in Sources */,
 				1DDAED13261779B20008A056 /* HomeViewModel.swift in Sources */,
 				1D2FCE5D267F715700485D5B /* PhotosView.swift in Sources */,
 				1DE10C3E2605B25D003D3C7A /* SceneDelegate.swift in Sources */,
@@ -1089,6 +1100,7 @@
 				1DD0FE432613612100736B91 /* UserProfileVC.swift in Sources */,
 				1D2FCE52267F671F00485D5B /* PageHeaderView.swift in Sources */,
 				1DDAED10261779B20008A056 /* UIKit Extensions.swift in Sources */,
+				1D7F9DD1268857FD00FCAEC5 /* CommentsVC.swift in Sources */,
 				1D21C966267FA86600565C87 /* MediaFetch.swift in Sources */,
 				1D2FCE3F267E44B800485D5B /* CapturedImageView.swift in Sources */,
 				1D2FCE54267F6E8600485D5B /* TabView.swift in Sources */,

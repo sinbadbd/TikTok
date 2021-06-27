@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController {
         collectionView.layoutIfNeeded()
         
         // Profile Background Image view
-        profileBackgroundImgView = UIImageView(image: #imageLiteral(resourceName: "ProfileBackground"))
+        profileBackgroundImgView = UIImageView(image: #imageLiteral(resourceName: "laughing.png"))
         profileBackgroundImgView.translatesAutoresizingMaskIntoConstraints = false
         profileBackgroundImgView.contentMode = .scaleAspectFill
         profileBackgroundImgView.alpha = 0.6

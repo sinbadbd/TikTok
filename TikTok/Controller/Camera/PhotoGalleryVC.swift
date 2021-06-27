@@ -71,20 +71,7 @@ class PhotoGalleryVC: UIViewController {
         tabView?.tabName = selectedItem.count > 0 ? selectedItem : items[0]
         tabView?.setupUI()
         
-        
-        gallerySelectedView =  GalleryBottomView()
-        view.addSubview(gallerySelectedView!)
-        gallerySelectedView?.position(
-                          left: view.leadingAnchor,
-                          bottom: view.bottomAnchor,
-                          right: view.trailingAnchor,
-                          insets: .init(
-                            top: 0,
-                            left: 0,
-                            bottom: 0,
-                            right: 0)
-        )
-        gallerySelectedView?.collectionView.reloadData()
+
 //        gallerySelectedView?.size(height:100)
 
     }
@@ -169,6 +156,23 @@ extension PhotoGalleryVC: PhotoSelectedDelegate{
     func selectGallery(index: Int) {
         print(index)
         if index > 0 {
+            
+            
+            gallerySelectedView =  GalleryBottomView()
+            view.addSubview(gallerySelectedView!)
+            gallerySelectedView?.position(
+                              left: view.leadingAnchor,
+                              bottom: view.bottomAnchor,
+                              right: view.trailingAnchor,
+                              insets: .init(
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0)
+            )
+            gallerySelectedView?.setupUI()
+            gallerySelectedView?.collectionView.reloadData()
+            
 //            self.gallerySelectedView?.removeFromSuperview()
             self.gallerySelectedView?.nextBtn.isEnabled = true
             self.gallerySelectedView?.nextBtn.backgroundColor = .systemRed
@@ -183,14 +187,15 @@ extension PhotoGalleryVC: PhotoSelectedDelegate{
             
         }
         
-//        else if index == 0 && imageData.count < 0 {
-//           
+        else {
+//            if index == 0 || imageData.count == 0 {
+//                self.gallerySelectedView?.containerView.removeFromSuperview()
 //                self.gallerySelectedView?.collectionView.reloadData()
 //                self.gallerySelectedView?.collectionView.isHidden = true
 //                self.gallerySelectedView?.collectionView.size(height:0)
-//          
-//            
-//        }
+//            }
+
+        }
     }
     
 }
