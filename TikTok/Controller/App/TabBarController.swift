@@ -17,21 +17,21 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     var discoverViewController          : DiscoverViewController!
     var mediaViewController             : CameraPreviewVC!//MediaViewController!
     var inboxViewController             : InboxViewController!
-    var profileViewController           : ProfileViewController!//ProfileVC! //ProfileViewController!
+    var profileViewController           : ProfileVC! //ProfileViewController!//ProfileVC! //ProfileViewController!
     var searchViewController           : SearchViewController!
     
     /*
-        MARK:- RND CAMERA
+     MARK:- RND CAMERA
      
-        - CameraViewController!
-        - DemoFilterCamVC
-        - RnD2CameraVC
+     - CameraViewController!
+     - DemoFilterCamVC
+     - RnD2CameraVC
      */
     
     var cameraFilerVC                   : CameraViewController!
     var cameraRNDFViewVC                : DemoFilterCamVC!
-//    var rnD2CameraVC                    : RnD2CameraVC!
-
+    //    var rnD2CameraVC                    : RnD2CameraVC!
+    
     var recordViewController            : RecordViewController! //MARK::
     
     //MARK: - LifeCycles
@@ -39,21 +39,21 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         
-//        tabBar.barTintColor = .black
-//        tabBar.isTranslucent = false
-//        tabBar.unselectedItemTintColor = .gray
-//        tabBar.tintColor = .white
+        //        tabBar.barTintColor = .black
+        //        tabBar.isTranslucent = false
+        //        tabBar.unselectedItemTintColor = .gray
+        //        tabBar.tintColor = .white
         
         homeViewController          = HomeFeedVC()//HomeFeedVC()//VedioPostVC()//HomeFeedVC()
         homeNavigationController    = BaseNavigationController(rootViewController: homeViewController)
         discoverViewController      = DiscoverViewController()
         mediaViewController         = CameraPreviewVC()//MediaViewController() //MARK:- MY design vc
         inboxViewController         = InboxViewController()
-        profileViewController       = ProfileViewController() //ProfileVC() //ProfileViewController()
+        profileViewController       = ProfileVC()//ProfileViewController() //ProfileVC() //ProfileViewController()
         searchViewController        = SearchViewController()
         cameraFilerVC               = CameraViewController()
         cameraRNDFViewVC            = DemoFilterCamVC()
-//        rnD2CameraVC                = RnD2CameraVC()
+        //        rnD2CameraVC                = RnD2CameraVC()
         
         recordViewController = RecordViewController()
         homeViewController.tabBarItem.image = UIImage(named: "house")
@@ -82,7 +82,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
                 tabBar.barTintColor = UIColor.clear
                 tabBar.backgroundImage = UIImage()
                 tabBar.shadowImage = UIImage()
-                        
+                
             }
             else if index == 2 {
                 // Media Button
@@ -96,14 +96,14 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     //MARK: UITabbar Delegate
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController.isKind(of: CameraPreviewVC.self) {
-
+            
             let vc = CameraPreviewVC()//CameraPreviewVC()
             let navigationController = BaseNavigationController.init(rootViewController: vc)
-//            navigationController.modalPresentationStyle = .overFullScreen
+            //            navigationController.modalPresentationStyle = .overFullScreen
             self.present(navigationController, animated: true, completion: nil)
             return false
         }
-      return true
+        return true
     }
     
     

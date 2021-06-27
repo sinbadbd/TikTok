@@ -19,3 +19,9 @@ struct ScreenSize{
 
 /// Video File Type
 let VIDEO_FILE_EXTENSION = "mp4"
+
+var navController: UINavigationController = {
+    let nav = UINavigationController()
+    
+    return nav
+}()
