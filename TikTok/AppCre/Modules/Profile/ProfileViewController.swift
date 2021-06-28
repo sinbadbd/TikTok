@@ -114,10 +114,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         if indexPath.section == 1{
-            if kind == UICollectionView.elementKindSectionHeader{
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SLIDEBAR_ID, for: indexPath) as! ProfileSlideBarView
-                return header
-            }
+//            if kind == UICollectionView.elementKindSectionHeader{
+//                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SLIDEBAR_ID, for: indexPath) as! ProfileSlideBarView
+//                return header
+//            }
         }
             return UICollectionReusableView.init()
                

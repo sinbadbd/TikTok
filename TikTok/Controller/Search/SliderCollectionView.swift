@@ -56,6 +56,32 @@ class SliderCollectionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    
+    
+    
+    //MARK:: THIS FUNCTION WORKING ===================================================================
+    
+    ///https://stackoverflow.com/questions/22895465/paging-uicollectionview-by-cells-not-screen
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        targetContentOffset.pointee = scrollView.contentOffset
+        var indexes = collectionView.indexPathsForVisibleItems
+        indexes.sort()
+        var index = indexes.first!
+        // if velocity.x > 0 && (Get the number of items from your data) > index.row + 1 {
+        if velocity.x > 0 && collectionView.numberOfItems(inSection: 0) > index.row + 1 {
+            index.row += 1
+        } else if velocity.x == 0 {
+            let cell = collectionView.cellForItem(at: index)!
+            let position = collectionView.contentOffset.x - cell.frame.origin.x
+            if position > cell.frame.size.width / 2 {
+                index.row += 1
+            }
+        }
+        
+        collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true )
+    }
 }
 
 extension SliderCollectionView: UICollectionViewDelegate,
@@ -83,31 +109,7 @@ extension SliderCollectionView: UICollectionViewDelegate,
         lbl.backgroundColor = .red
         return cell
     }
-    
-    
-    
-    
-    //MARK:: THIS FUNCTION WORKING ===================================================================
-    
-    ///https://stackoverflow.com/questions/22895465/paging-uicollectionview-by-cells-not-screen
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        targetContentOffset.pointee = scrollView.contentOffset
-        var indexes = collectionView.indexPathsForVisibleItems
-        indexes.sort()
-        var index = indexes.first!
-        // if velocity.x > 0 && (Get the number of items from your data) > index.row + 1 {
-        if velocity.x > 0 && collectionView.numberOfItems(inSection: 0) > index.row + 1 {
-            index.row += 1
-        } else if velocity.x == 0 {
-            let cell = collectionView.cellForItem(at: index)!
-            let position = collectionView.contentOffset.x - cell.frame.origin.x
-            if position > cell.frame.size.width / 2 {
-                index.row += 1
-            }
-        }
-        
-        collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true )
-    }
+   
     
     
 }

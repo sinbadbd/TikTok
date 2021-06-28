@@ -34,6 +34,7 @@ class ProfileVC: RootVC {
         title.append(likeCount)
         title.append(following)
         btn.setAttributedTitle(title, for: .normal)
+        btn.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -50,9 +51,10 @@ class ProfileVC: RootVC {
         title.append(likeCount)
         title.append(following)
         btn.setAttributedTitle(title, for: .normal)
+        btn.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
         return btn
     }()
-    
+
     
     private lazy var LikeButton : UIButton  = {
         let btn = UIButton()
@@ -66,6 +68,7 @@ class ProfileVC: RootVC {
         title.append(likeCount)
         title.append(following)
         btn.setAttributedTitle(title, for: .normal)
+        btn.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -77,7 +80,8 @@ class ProfileVC: RootVC {
         btn.setTitleColor(.black, for: .normal)
         btn.layer.cornerRadius = 4
         btn.layer.borderWidth = 1
-        btn.layer.borderColor = UIColor.gray.cgColor
+        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -86,9 +90,21 @@ class ProfileVC: RootVC {
         btn.setImage(UIImage(named: "plus.circle.fill"), for: .normal)
         btn.layer.cornerRadius = 4
         btn.layer.borderWidth = 1
-        btn.layer.borderColor = UIColor.gray.cgColor
-        btn.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+        btn.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
         return btn
+    }()
+    
+    
+    var profileSlideBarView : ProfileSlideBarView?
+//    var menuBar: MenuBarView?
+    var borderTop : BroderView?
+    var  borderBottom : BroderView?
+    
+    var menuBar : MenuBarView = {
+        let menubar = MenuBarView()
+        return menubar
     }()
     
     override func viewDidLoad() {
@@ -96,14 +112,17 @@ class ProfileVC: RootVC {
         view.backgroundColor = .white
         
         setupVC()
+        
+        setupProfileUI()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        menuBar.firstItemSelected()
     }
     
     //MARK:-
     func setupVC(){
-        // removeScrollview()
         topViewHeight?.constant = navController.navigationBar.frame.size.height
         resetBase()
-        setupProfileUI()
     }
     func setupProfileUI(){
         
@@ -137,11 +156,33 @@ class ProfileVC: RootVC {
         contentView.addSubview(editProfileButton)
         editProfileButton.position(top: stackView.bottomAnchor,insets: .init(top: 10, left: 0, bottom: 0, right: 0))
         editProfileButton.centerXInSuper()
-        editProfileButton.size(width:100,height: 30)
+        editProfileButton.size(width:150,height: 35)
         
         contentView.addSubview(favoritesButton)
         favoritesButton.position(top:stackView.bottomAnchor, left: editProfileButton.trailingAnchor, insets: .init(top: 10, left: 10, bottom: 0, right: 0))
-        favoritesButton.size(width:40,height: 30)
+        favoritesButton.size(width:40,height: 35)
         
+        // MARK:- BORDER
+        borderTop = BroderView()
+        contentView.addSubview(borderTop!)
+        borderTop?.position(top: editProfileButton.bottomAnchor, left: contentView.leadingAnchor,  right: contentView.trailingAnchor, insets: .init(top: 10, left: 0, bottom: 0, right: 0))
+        
+        
+        menuBar = MenuBarView()
+        contentView.addSubview(menuBar)
+        menuBar.position(top: borderTop?.bottomAnchor, left: contentView.leadingAnchor, right: contentView.trailingAnchor, insets: .init(top: 10, left: 10, bottom: 0, right: 10))
+        menuBar.size(height:30)
+        menuBar.tabCout = 3
+        menuBar.backgroundColor = .red
+        
+        // MARK:- BORDER
+        borderBottom = BroderView()
+        contentView.addSubview(borderBottom!)
+        borderBottom?.position(top: menuBar.bottomAnchor, left: contentView.leadingAnchor, bottom:contentView.bottomAnchor , right: contentView.trailingAnchor, insets: .init(top: 10, left: 0, bottom: 0, right: 0))
+        
+    }
+    
+    @objc func  btnTapped(){
+        print("hii")
     }
 }

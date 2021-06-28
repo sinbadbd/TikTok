@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ProfileSlideBarView: UICollectionReusableView {
+class ProfileSlideBarView: UIView {
     
     // MARK: - UI Components
     var videosLbl: UILabel!
